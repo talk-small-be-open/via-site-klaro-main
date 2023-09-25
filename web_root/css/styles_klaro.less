@@ -1,0 +1,1401 @@
+//
+// Styles for hep Klaro
+//
+// Namespace: "l-" = short for local App
+
+// =======================================================================
+// Fonts
+// =======================================================================
+
+// // Roboto
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
+
+// // Falsche Leo-Schrift (Merriweather)
+// @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+// // Capitalis Monumentalis
+// @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
+
+@font-face {
+		font-family: 'DCH';
+		font-weight: 700;
+		font-style: normal;
+		src: url('fonts/dchbasisschrift.woff') format('woff');
+}
+
+
+// =======================================================================
+// Importing
+// =======================================================================
+
+// Full CSS reset
+@import "reset.css";
+
+// Import main styles
+@import "../../base/web_root/css/styles.less";
+
+// Our SITE own uikit theme (overrides to the via base uikit theme)
+// @import "uikit_theme/_import.less";
+
+@import "testdrive.less";
+
+// =======================================================================
+// Variables
+// =======================================================================
+
+
+// prefix @l = "local"
+// @a-color-background-light: #EAE7E380; // TODO? Transparenz?
+
+// @a-color-black: #575754;
+
+// @a-color-text-light: #878787;
+// @a-color-text-line: #87878780;
+
+// @a-color-main-light: #0382A60D;
+
+
+@l-color-lightgreen: #F6F7E5;
+@l-color-green: #B7C18D;
+
+
+
+@l-color-blue-d: #40627A;
+@l-color-blue: #5883A5;
+@l-color-blue-l: #89B3C3;
+@l-color-blue-ll: #ADCCD8;
+@l-color-blue-lll: #D6E5EB;
+@l-color-blue-llll: #EAF2F5;
+
+
+@l-color-blue-gray: #70899B;
+
+
+
+// @a-header-height:             4rem;
+@l-header-background: white;
+// @a-header-padding:            0;
+
+
+
+@l-color-background: #EAE7E3;
+@l-color-text: #575754;
+@l-color-main: @l-color-blue;
+
+
+
+
+// Redefine basics for this via sub-website
+@via-basic-color: @l-color-text;
+@via-basic-background-color: @l-color-background;
+// @via-coloredbutton-color: #555;
+// @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
+@wrongColor: red;
+@correctColor: #cfc;
+
+
+// =======================================================================
+// DEVELOPMENT ONLY
+// =======================================================================
+
+
+
+
+// =======================================================================
+// Mixins
+// =======================================================================
+
+@import "styles_klaro_mixins.less";
+
+
+// =======================================================================
+// General Styles
+// =======================================================================
+
+html {
+		//bad		height: 100%;
+		//scroll-behavior: smooth;
+}
+
+// Our own SVG icon set
+// span.svg-icon {
+// 		@size: 1.1em;
+// 		text-align: center;
+// 		font-size: @size;
+// 		//height: 1em;
+// 		width: @size;
+// 		display: inline-block;
+// 		svg.svg-icon {
+// 				//				width: 1.1em;
+// 				// height: 1em;
+// 				width: 100%;
+// 				height: 100%;
+// 				//stroke: currentcolor;
+// 				fill: currentcolor;
+// 				//				font-size: 1.25em;
+// 				// font-size: 1em;
+// 		}
+// }
+
+body {
+
+		
+
+		div.footer {
+				// padding: 40px 50px;
+				// background-color: @a-color-black;
+				// color: white;				
+		}
+
+
+		min-height: 100vh;
+//		background-color: @l-color-lightgreen;
+
+
+
+		// Styles for the non-logged in public UI
+		&.public {
+
+				// h1, h2, h3 {
+				// 		color: white; "WHY?"
+				// }
+
+				// input.submit, button, a.uk-button {
+				// 		color: white;
+				// 		border-color: white;
+				// }
+
+		}
+}
+
+
+
+span.pillarDocument {
+
+
+
+		div.pillarParagraph {
+
+				+ div.pillarParagraph {
+						margin-top: 1em;
+				}
+
+				&.border {
+						padding: 0.5em;
+						margin: 0.5em;
+						border: 1px solid black;
+				}
+
+				
+				.noWrap {
+						white-space: nowrap;
+				}
+				
+		}
+}
+
+
+// =======================================================================
+// UI components
+// =======================================================================
+
+div.VIAMainComponent {
+//		min-height: 99vh;
+		position: relative;
+		box-sizing: border-box;
+		
+		// .toccamoduleBorderColor("div.t-header nav.t-menubar ul.uk-navbar-nav li.active");
+		// .toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'stroke');
+		// .toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'fill');				
+}
+
+div.VIADeviceDetectorComponent {
+		background-color: @l-color-main;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		.spinner {
+				color: black;
+				font-size: 3rem;
+				// width: 33vw;
+				// height: 33vw;
+		}
+		
+		a.spinnerMessage {
+//				.uk-text-muted();
+				color: #666;
+				font-size: 80%;
+		}
+}
+
+//
+// header 
+//
+div.klaroHeader {
+    
+		background-color: @l-header-background;
+		color: white;
+		// padding: @a-header-padding;
+		// height: @a-header-height;
+
+		a.klaroLogo {
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: white;
+
+				svg.klaroLogo {
+						//stroke: currentcolor;
+						fill: currentcolor;
+						width: 2em;
+				}
+		}
+
+		nav {
+		//		height: @a-header-height;
+
+				// div.uk-navbar-left {
+				// 		padding-left: 0.5em;
+				// }
+				
+				&.klaroMenubar {
+
+						// div.menubarCenter {
+						// 		.uk-navbar-center();
+						// }
+
+						display: flex;
+						justify-content: space-between;
+
+						div.menubarLeft {
+								display: flex;
+								align-items: center;
+								padding-left: 0.5em;
+								padding-right: 0.5rem;
+						}
+						div.menubarCenter {
+								
+								// &.activeHome {
+								// 		border-color: @a-color-main;
+								// 		a svg {
+								// 				stroke: @a-color-main;
+								// 				fill: @a-color-main;
+								// 		}
+								// }
+								li a span.menuLabel {
+										margin-left: 0.1em;
+								}
+
+						}
+						div.menubarRight {
+								
+						}
+						
+						// button {
+						// 		color: white;
+						// 		vertical-align: middle;
+						// 		background-color: transparent;
+						// 		border: none;
+						// 		cursor: pointer;
+						// }
+
+						a {
+								color: white;
+								vertical-align: middle;
+
+								+ a {
+										margin-left: 0.5rem;
+								}
+								
+								&.mainMenuToggler {
+								}
+						}
+
+						form.searchForm {
+								
+								input.searchInput {
+										background-color: white;
+										color: black;
+										//width: 3em;
+
+										&::placeholder {
+												color: #999;
+										}
+								}
+						}
+
+				}
+		}
+		
+
+		// Menu, in navbar or in offcanvas
+		#mainMenu {
+				ul.uk-nav {
+						li {
+								font-size: 1.1rem;
+								font-weight: bold;
+
+								ul.uk-nav-sub {
+										li {
+												font-size: 1.1rem;
+												font-weight: normal;
+										}
+								}
+
+						}
+
+				}
+
+				&.uk-offcanvas {
+						//						color: white;
+						div.uk-offcanvas-close {
+								span.svg-icon {
+										font-size: 2em;
+								}
+						}
+						
+						ul.uk-nav {
+								li {
+										a {
+												//												color: white;
+												white-space: nowrap;
+
+												span.svg-icon, svg.svg-inline--fa.icon {
+														text-align: center;
+														display: inline-block;
+														width: 1.5rem;
+														//height: 1rem;
+												}
+
+												span.menuEntryText {
+														.uk-text-truncate();
+												}
+										}
+
+										&.logout {
+												padding-top: 1em;
+										}
+								}
+						}
+
+						div.uk-offcanvas-bar {
+								overflow-y: hidden;
+								
+								div.mainMenuContainer {
+										// position: absolute;
+										// bottom: 0;
+										// top: 0;
+										height: 100%;
+										display: flex;
+										flex-direction: column;
+										justify-content: space-between unsafe;
+										align-items: stretch;
+										overflow-y: auto;
+
+										div.mainMenuItems {
+												flex-grow: 1;
+												flex-shrink: 1;
+										}
+										
+										div.mainMenuFooter {
+												// position: absolute;
+												// bottom: 0;
+												padding-top: 2em;
+												flex-grow: 0;
+												flex-shrink: 0;
+
+												img.hepLogo {
+														width: 50%;
+														//										width: @offcanvas-bar-width
+												}
+										}
+
+								}
+								
+						}
+				}
+		}
+}
+
+
+div.inputDialog {
+		input[type=text], textarea {
+				width: 100%;
+				font-size: 120%;
+				margin: 1em 0;
+		}
+}
+
+div.VIAConfirmationComponent {
+		button {
+				min-width: 5em;
+				margin-right: 1em;
+		}
+}
+
+div.VIAPublicHomeComponent {
+
+		padding-bottom: 1em;
+		
+		div.klaroBanner {
+				// background-color: @t-color-red;
+				// background-image: url(/site/images/public_banner.jpg);
+				// background-repeat: no-repeat;
+				// background-size: cover;
+				padding: 0;
+				margin: 0;
+
+				// img.bannerImage {
+				// 		margin-bottom: 1em;
+				// }
+				
+				// div.title {
+				// 		background-image: url(/site/images/public_banner.jpg);
+				// 		background-repeat: no-repeat;
+				// 		background-size: cover;
+				// 		font-size: 4rem;
+				// 		line-height: 4rem;
+				// 		color: white;
+				// 		padding: 1em 0;
+				// 		text-align: center;
+				// 		margin-bottom: 1rem;
+				// }
+		}
+		
+		div.loginSection {
+				margin: 2em 0;
+				font-size: 120%;
+				
+		}
+
+		div.infoButtons {
+				//				.bigButtonStyle(@t-color-red);
+				div.infoButton {
+						font-size: 120%;
+						line-height: 150%;
+				}
+		}
+
+}
+
+
+div.VIAKlaLoginComponent {
+		height: 100%;
+//		background-color: @a-color-main;
+		
+		// h1 {
+		// 		text-align: center;
+		// }
+}
+
+div.VIAKlaStartComponent {
+		padding: 2em 0;
+
+		div.VIAModuleFinderComponent {
+				margin-bottom: 2em;
+		}
+		
+}
+
+
+
+div.VIAKlaModuleExerciser {
+
+		// Header gets units background color
+//		.toccamoduleBackgroundColor("div.moduleNavigation");
+		
+
+		div.titlePanel {
+				padding: 1em;
+				background-color: @l-color-blue-llll;
+				border-radius: 1em;
+
+				img.svgImage {
+						width: 3em;
+				}
+
+				span.moduleScore {
+						img.svgImage {
+								width: 1em;
+								margin: 0 0.2em;
+						}
+				}
+
+				span.modeIndicator {
+						float: right;
+				}
+		}
+
+		div.moduleBody {
+				margin: 0;
+				padding-bottom: 1em;
+		}
+
+
+		div.VIAKlaTaskExerciser {
+				padding-left: 0.2em;
+				padding-right: 0.2em;
+				margin-bottom: 4em;
+
+				div.VIAKlaSpeedReaderExerciser {
+
+						div.speedReader {
+								div.speedTextArea {
+										height: 50vh;
+										display: flex;
+										justify-content: center; /* Align horizontal */
+										align-items: center;
+										
+										div.speedText {
+												font-family: DCH;
+												color: @l-color-blue;
+												font-size: 6rem;
+												text-align: center;
+										}
+
+										&.magic-spell {
+												background-color: pink;
+										}
+								}
+								
+								div.navigationArea {
+										padding: 1em;
+										display: flex;
+										justify-content: center;
+										
+										span.mainButton {
+												display: inline-block;
+												width: 5em;
+												height: 5em;
+												margin: 1em;
+
+												&.active {
+														.activeButton();
+												}
+
+										}
+								}
+
+								div.subNavigationArea {
+										padding: 1em;
+										display: flex;
+										justify-content: center;
+										
+										span.nextButton {
+												display: inline-block;
+												width: 3em;
+												height: 3em;
+												margin: 1em;
+										}
+								}
+
+
+
+								.activeButton() {
+//										background-color: yellow;
+										path.filled {
+												fill: @l-color-blue-l;
+										}
+										path.lightFilled {
+												fill: #eaf2f5;
+										}
+								}
+								
+								svg.sign {
+
+										stroke-width: 0px;
+
+										.blank {
+												fill: #fff;
+										}
+										.filled {
+												fill: #adccd8;
+										}
+										.lightFilled {
+												fill: #fff;
+										}
+
+										&.active {
+												.activeButton();
+										}
+										
+										&:hover {
+												.activeButton();
+										}
+
+										&.read, &.speak, &.listen {
+												path.timerArc {
+														fill: none;
+														stroke-width: 4px;
+														stroke: @l-color-blue;
+												}
+										}
+
+										
+								}
+
+								div.progressbar {
+										width: 100%;
+										height: 1em;
+										border-radius: 1em;
+										background-color: @l-color-blue-llll;
+
+										div.filledBar {
+												height: 1em;
+												border-radius: 1em;
+												background-color: @l-color-blue-l;
+										}
+								}
+
+								
+								// &.read { div.navigationArea span.mainButton.read { .activeButton() }}
+								// &.speak { div.navigationArea span.mainButton.speak { .activeButton() }}
+								// &.listen { div.navigationArea svg.sign.listen { .activeButton() }}
+						}
+				}
+
+		}
+}
+
+
+
+// Not inside the VIAKlaModuleExerciser, because it could be stand alone (e.g. in the backend testdrive)
+// Styles inside the content of tasks
+div.exercise {
+		
+		@dropTargetHoverColor: yellow;
+		
+		// Wozu?
+//		margin-bottom: 50px;
+
+		// General wrapping styles for backend usage
+		.spaced {
+				letter-spacing: 0.1em;
+				line-height: 1.6em;
+		}
+		.framed {
+				padding: 10px;
+				margin: 15px 0;
+				border: 1px solid #aaa;
+		}
+		.smaller {
+				font-size: 88%;
+		}
+		.indented {
+				margin-left: 10%;
+				margin-right: 10%;
+		}
+
+		table {
+				//						border: 1px solid #999;
+				border-collapse: collapse;
+
+				tr {
+						border-bottom: 1px solid #999;								
+				}
+
+				td, th {
+						padding-top: 5px;
+						padding-bottom: 5px;
+						padding-right: 2px;
+				}
+
+				td + td, th + th {
+						border-left: 1px solid #999;
+						padding-left: 2px;
+				}
+		}
+
+		
+		input[type=text] {
+				font-family: inherit;
+				font-size: inherit;
+				padding: 0 2px;
+				margin: -2px 0;
+		}
+
+		input[type=text].clozeTextPlaceholder {
+				.clozeTextPlaceholder();
+
+				&:focus {
+						outline: 1px solid #ccc;
+						background-color: #ffd;
+				}
+
+				// Intentionally set as empty by user
+				&.markedAsEmpty {
+						background-color: black;
+				}
+		}
+
+		p {
+				margin-top: 3px;
+				margin-bottom: 3px;
+		}
+
+		hr.divider {
+				border-color: #999;
+				margin: 2em 0;
+		}
+
+
+		
+ 
+		div.exerciserMainButtons {
+				margin-top: 30px;
+
+				// // .toccamoduleButton("input.submit");
+				// // //Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
+				// // .toccamoduleButton(".bigButton");
+				// // .toccamoduleButton("button.uk-button");
+				// // .toccamoduleButton("a.uk-button");
+
+				// .toccamoduleButton(".uk-button", white, true);
+		}
+
+
+		div.audioPlayer {
+				.clearfix();
+
+				margin: 10px 0px;
+				span.assetInfo {
+						float: right;
+				}
+		}
+
+		
+		div.videoPlayer {
+				.clearfix();
+				
+				div.videoContainer {
+						margin-right: 10px;
+
+						video {
+								width: 100%;
+								height: auto;
+								//box-sizing: border-box;
+						}
+				}
+
+
+				span.assetInfo {
+						float: right;
+				}
+		}
+
+
+		div.imageDisplayer {
+				span.image {
+						margin-top: 0.5em;
+						margin-bottom: 0.5em;
+						display: inline-block;
+						text-align: right;
+						img {
+								display: block;
+						}
+						span.assetInfo {
+						}
+						
+				}
+		}
+
+		div.fileDownloader {
+				a {
+						.icon {
+								margin-right: 0.5em;
+						}
+
+						img.downloadPreview {
+								max-width: 10em;
+								border: 1px solid #eee;
+						}
+
+						&:hover {
+								img.downloadPreview {
+										max-width: 10em;
+										border-color: @base-link-color;
+								}
+								
+						}
+				}
+				span.assetInfo {
+						margin-left: 0.5em;
+				}
+				
+		}
+
+		span.assetInfo {
+//				.uk-text-muted();
+				cursor: pointer;
+		}
+
+		span.hintSymbol {
+				display: inline-block;
+				margin: 0.2em;
+				//						vertical-align: middle;
+		}
+
+
+
+
+
+
+		div.taskGroup {
+				
+				div.taskGroupItem {
+						margin: 10px 0px;
+				}
+		}
+
+		div.taskBrickGroupToggler {
+				padding: 0.5em 3px;
+				margin: 0.5em 0;
+				cursor: pointer;
+				background-color: #eee;
+				//						color: white;
+				border: none;
+
+				&:hover {
+						background: #999;
+				}
+		}
+
+		div.taskBrickGroup {
+				// border: 1px solid black;
+				padding: 5px;
+
+				&.hidden {
+						.hiddenSectionButWithDefinedDimension()
+				}
+
+		}
+		
+
+		div.dualImageSwitcher {
+				div.imagesContainer {
+						display: inline-block;
+						div.image {
+								display: inline-block;
+								text-align: right;
+								img {
+										display: block;
+								}
+								span.assetInfo {
+								}
+								&.hidden {
+										display: none;
+								}
+								// &.image2 {
+								// 		img {
+								// 				border: 2px solid yellow;
+								// 		}
+								// }
+						}
+				}
+
+				div.tools {
+//						.uk-margin-top();
+						.printThis {
+//								.uk-margin-left();
+								float: right;
+						}
+				}
+		}
+
+
+		div.textMemo {
+				background-color: #eee;
+				padding: 1em;
+				textarea.textMemo {
+						width: 100%;
+						margin-top: 1em;
+						padding: 1em;
+						border: 1px solid #666;
+						background-color: #fefefe;
+						box-sizing: border-box;
+				}
+		}
+		
+} // div.exercise
+
+
+
+div.zoomBox {
+		padding: 0.3em;
+		margin-top: 0.3em;
+		//		border: 1px solid black;
+		div.header {
+				position: relative;
+				padding: 0.5em 0;
+//				background-color: #999;
+				color: #999;
+				font-size: 85%;
+				text-align: center;
+				//border-bottom: 1px dotted black;
+				
+				span.title {
+						
+				}
+				span.close {
+						font-size: 2rem;
+						//				font-weight: bold;
+//						text-align: right;
+						position: absolute;
+						right: 0;
+						top: 2px;
+						a {
+								color: black;
+						}
+				}
+		}
+}
+
+div.VIAKlaMyProfileComponent, div.VIAKlaTeacherMyCockpit, div.VIAKlaMyPortfolioComponent {
+
+		padding-top: 1em;
+
+		h1 {
+				color: @l-color-main;
+		}
+		
+		h1, h2, h3, h4 {
+				text-align: left;
+		}
+		
+}
+
+div.VIAKlaTeacherMyCockpit {
+
+		.invitationCode {
+				font-family: monospace;
+				font-size: 120%;
+				border: 1px solid black;
+		}
+}
+
+div.VIAKlaMyPortfolioComponent {
+
+		h4.currentUnit {
+				margin-top: 0;
+		}
+		
+		div.legend {
+				text-align: right;
+				font-size: 80%;
+		}
+
+		a.deleteAction {
+//				margin-top: 0.3em;
+				margin-right: 1em;
+//				flex-shrink: 0;
+//				color: black;
+//				float: right;
+//				vertical-align: bottom;
+		}
+		
+}
+
+
+
+
+div.lightboxModal {
+		div.invitationCode {
+				font-size: 300%;
+				text-align: center;
+				font-family: monospace;
+		}
+}
+
+
+div.VIAInformationComponent {
+		div.message {
+				margin-bottom: 1em;
+		}
+}
+
+div.VIAStaticTextDisplayerComponent {
+		padding: 1em;
+}
+
+div.VIACaptchaComponent {
+		pre.captcha {
+				line-height: 1.1em;
+		}
+		input.captcha {
+				font-size: 200%;
+				font-family: monospace;
+				border: 2px solid green;
+				padding: 0.2em;
+				margin: 0.2em 0 0.2em 0;
+				max-width: 100%;
+				box-sizing: border-box;
+		}
+}
+
+div.VIAKlaRegisterComponent {
+		label {
+				font-weight: bold;
+		}
+}
+
+// ===========================================
+// Demo
+// ===========================================
+
+@demoColor: #fffd37;
+
+span.uk-label.demoLabel {
+		background-color: @demoColor;
+		color: #000000;
+		border: 1px solid #ccc;
+		transform: rotate(-10deg);
+		font-size: 0.7rem;
+		font-weight: normal;
+		padding-left: 0.3em;
+		padding-right: 0.3em;
+		position: relative;
+		left: -0.5em;
+}
+
+div.VIADemoUnitComponent {
+		span.uk-label.demoLabel {
+				margin-left: 0.2em;
+		}
+}
+
+div.demoRibbon {
+		@dim: 20em;
+		
+		position: fixed;
+		width: @dim;
+		height: @dim;
+		bottom: -(@dim/1.8);
+		right: -(@dim/1.9);
+		padding-top: 1em;
+		transform-origin: center;
+		transform: rotate(-45deg);
+		z-index: 999999; 
+
+		div.ribbonText {
+				width: 100%;
+				text-align: center;
+				border-top: 1px solid black;
+				padding: 0.3em 1em 10em 1em;
+				background: @demoColor;
+				color: black;
+		}
+}
+
+// Cookiebar redefinitions
+// #cookie-bar-button {
+// 		background-color:  !important;
+// }
+
+// ============================================
+// Misc
+// ============================================
+
+// TODO: Oben einsortieren!
+
+figure.inlineAssetImage {
+		display: inline-block;
+		margin: 0;
+
+		figcaption {
+				line-height: 1em;
+				span.assetInfo {
+						font-size: 75%;
+						float: right;
+				}
+		}
+}
+
+span.inlineAssetAudio {
+		audio {
+				display: inline-block;
+				width: 5em;
+		}
+
+		div.mejs__container {
+				display: inline-block;
+				width: 5em;
+				vertical-align: middle;
+		}
+}
+
+.correct {
+		background-color: @correctColor;
+}
+
+.wrong {
+		// why?!
+//		background-color: transparent;
+}
+
+span.partiallyCorrectIcon {
+		color: orange;
+}
+
+span.correctIcon {
+		color: #1a1;
+}
+
+span.wrongIcon {
+		color: red;
+		padding-left: 2px;
+		padding-right: 2px;
+}
+
+div.webui-popover {
+		div.webui-popover-content {
+				word-break: break-word;
+				max-width: 20em;
+		}
+		
+		span.markAsEmpty {
+				cursor: pointer;
+				border: 2px solid green;
+
+				&.active {
+						background-color: green;
+				}
+		}
+
+		// &.webui-popover-hintBalloon {
+		// 		background-color: yellow;
+		// 		// div.webui-popover-content {
+		// 		// 		background-color: yellow;
+		// 		// }				
+		// }
+}
+
+
+div.VIAKlaExerciserSolutionComponent {
+		.colors() {
+				// background-color: lightyellow;
+
+				&.answerWasWrong {
+						// background-color: @wrongColor;
+				}
+
+				&.answerWasCorrect {
+						background-color: @correctColor;
+				}
+
+		}
+
+		.solution {
+				.colors();
+		}
+
+		div.clozeText {
+				span.selectOneInput.solution {
+						border: 1px dotted black;
+				}
+ 
+				input.clozeTextPlaceholder.solution {
+						.colors();
+						
+						&.blankIsSolution {
+								//						width: 2em;
+								color: transparent;
+						}
+				}
+		}
+}
+
+// // div.VIAKlaExerciserFinishedComponent {
+// // 		.solution {
+
+// // 				&.answerWasWrong {
+// // 						// background-color: transparent;
+// // 				}
+
+// // 		}
+// // }
+
+
+span.copyPaste, pre.copyPaste {
+		cursor: pointer;
+}
+
+
+
+
+// // TODO Evt. innerhalb taskEditor
+// div.inputEditor {
+// 		> div.inputEditor {
+// 				border: 1px solid #333;
+// 				background-color: #f3f3f3;
+// 				padding: 5px;
+// 				margin: 10px 0;
+// 		}
+// }
+
+span.dictionaryEntry {
+		// border-bottom: 1px dotted #333;
+		text-decoration: underline;
+		text-decoration-color: #333;
+		text-decoration-style: dotted; 
+}
+
+
+
+
+
+div.moduleBody {
+		clear: both;
+		position: relative; // Wichtig, damit eingebettete versteckte absolute-Elemente die Breite korrekt berechnen können
+}
+
+.testdriveTools {
+		font-size: 80%;
+		color: #999;
+
+		a {
+				color: #666;
+		}
+}
+
+
+
+
+
+.slide-in-right {
+		animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+// See https://animista.net/play/entrances/slide-in/slide-in-right
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+div.VIAKlaPagerComponent {
+
+		div.VIAKlaPageComponent {
+				display: contents;
+
+				&.VIAKlaExercisePage {
+						div.klaroPage {
+								height: 80vh;
+								padding: 0 0.5em;
+								// position: absolute;
+								// top: 0;
+								// bottom: 0;
+								// left: 0;
+								// right: 0;
+						}
+				}
+
+				&.VIAKlaStationPage {
+						div.klaroPage {
+								background-color: @l-color-lightgreen;
+
+								div.title {
+										display: flex;
+										justify-content: center;
+								}
+								
+								div.exercisePanel {
+										background-color: white;
+										padding: 1em;
+										border-radius: 0.5em;
+										margin: 1em 2em;
+								}
+						}
+				}
+
+				&.VIAKlaTransientAnimationPage div.klaroPage {
+						dotlottie-player.transientAnimation {
+								width: 100vw;
+								height: 100vh;
+						}
+				}
+
+				span.pagerAnchor {
+						cursor: pointer;
+				}
+
+
+				.topbar {
+
+						// div.menubarCenter {
+						// 		.uk-navbar-center();
+						// }
+
+						display: flex;
+						justify-content: space-between;
+						padding: 0.3em 0;
+
+						div.topbarLeft {
+								// display: flex;
+								// align-items: center;
+								// padding-left: 0.5em;
+								// padding-right: 0.5rem;
+						}
+						div.topbarCenter {
+								
+								// &.activeHome {
+								// 		border-color: @a-color-main;
+								// 		a svg {
+								// 				stroke: @a-color-main;
+								// 				fill: @a-color-main;
+								// 		}
+								// }
+
+						}
+						div.topbarRight {
+								
+						}
+				}
+
+
+
+				
+		}
+		
+		div.klaroPage {
+				// hidden and parked away
+				display: none;
+//				left: 1000px;
+
+
+				// &.nonCurrent {
+				// 		display: none;
+				// }
+				&.current {
+						display: block;
+//						left: 0;
+
+						&.slide {
+								animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+						}
+				}
+		}
+}
+
+
+// =======================================================================
+// UI Breakpoints (leave at end of file, for CSS precedence)
+// =======================================================================
+
+@import "styles_klaro_responsive.less";
+
+
+// Keep this for Emacs editor!
+//
+// Local Variables:
+// less-css-compile-at-save: t
+// End:

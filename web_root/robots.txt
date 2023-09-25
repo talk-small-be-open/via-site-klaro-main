@@ -1,0 +1,14 @@
+# Disallow all and everything, since this is an app
+User-agent: *
+Disallow: /
+
+User-agent: *
+Disallow: /files/
+
+User-agent: *
+Disallow: /app?*
+
+User-agent: *
+Disallow: /app/sso?*
+
+Crawl-delay: 10

@@ -1,0 +1,4 @@
+deployment/** filter=git-crypt diff=git-crypt
+
+.gitignore !filter !diff
+.gitattributes !filter !diff

@@ -1,0 +1,154 @@
+// UI Breakpoints
+
+
+// Not small phones =======================================================================================
+@media (min-width: @breakpoint-medium) {
+
+		body.loggedIn {
+				div.core {
+						min-height: 500px;
+				}
+		}
+
+
+		div.VIAKlaPagerComponent {
+				div.VIAKlaPageComponent {
+						&.VIAKlaExercisePage {
+								div.klaroPage {
+										padding: 0 10%;
+								}
+						}
+				}
+		}
+		
+}
+
+// Only small phones =====================================================================================
+@media (max-width: @breakpoint-small-max) {
+
+		// div.coreContainer {
+		// 		padding-left: 0;
+		// 		padding-right: 0;
+		// }
+
+		// div.footer {
+		// 		// position: sticky;
+		// 		bottom: 3px;
+		// 		position: absolute;
+		// 		font-size: 90%;
+		// }
+
+		
+}
+
+// Not large screens ==============================================================================================
+@media (max-width: @breakpoint-large) {
+
+		body {
+				// div.mainContainer {
+				// 		padding-bottom: 3em;
+				// }
+				
+				// div.footer {
+				// 		bottom: 3px;
+				// 		position: absolute;
+				// 		font-size: 90%;
+				// }
+		}
+}
+
+// Only large screens ============================================================================================
+@media (min-width: @breakpoint-large) {
+
+		@backgroundcolor: #EFEBE8;
+		@sidePadding: 10vw;
+		
+		html {
+				min-height: 100vh;
+//				background-color: @backgroundcolor;
+		}
+		
+		body {
+//				background-color: @backgroundcolor;
+
+
+				div.klaroHeader {
+						padding-left: @sidePadding;
+				}
+				
+				// div.coreContainer {
+				// 		padding-left: @sidePadding;
+				// 		padding-right: @sidePadding;
+
+				// 		div.core {
+				// 				padding-bottom: 1em;
+				// 		}
+				// }
+
+				
+				// &.wantColorBackground {
+				// 		background-color: @l-color-main;
+				// 		div.coreContainer {
+				// 				background-color: @l-color-main;
+				// 				div.core {
+				// 						background-color: @l-color-main;
+				// 				}
+				// 		}
+				// }
+
+
+		}
+		
+
+		div.klaroHeader {
+				padding-left: 10%;
+				padding-right: 10%;
+
+				// nav.t-menubar {
+				// 		form.searchForm {
+				// 				input.searchInput {
+				// 						width: 10em;
+				// 				}
+				// 		}
+				// }
+				
+		}
+
+		// div.VIAAurTaskExerciser {
+		// 		div.exercise {
+		// 				div.audioPlayer {
+		// 						width: 50%;
+		// 				}
+
+		// 				div.videoPlayer, div.youtubePlayer, div.vimeoPlayer, div.srgVideoPlayer {
+		// 						max-width: 60%;
+		// 				}
+		// 		}
+		// }
+
+		// div.footer {
+		// 		position: fixed;
+		// 		width: 100%;
+		// 		bottom: 0;
+		// 		background-color: @backgroundcolor;
+		// }
+
+// 		div.zoomBox {
+// 				div.header {
+// //						background-color: #eee;
+// 		//				color: #999;
+// 						// span.close {
+// 						// 		a {
+// 						// 				color: black;
+// 						// 		}
+// 						// }
+
+// 				}
+// 		}
+}
+
+
+// Keep this for Emacs editor!
+// Local Variables:
+// less-css-compile-at-save: t
+// End:

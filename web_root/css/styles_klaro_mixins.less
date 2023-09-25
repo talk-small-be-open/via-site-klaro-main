@@ -1,0 +1,45 @@
+// =======================================================================
+// Mixins
+// =======================================================================
+
+
+// Prevent that the user can select text
+.noUserSelect() {
+		user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		cursor: default;
+}
+
+// Prevent touch actions
+.noTouch() {
+		touch-action: none;
+}
+
+.draggable() {
+		.noUserSelect();
+		.noTouch();
+		cursor: move;
+}
+
+.dropHover() {
+		&.dropHover {
+				background-color: @dropTargetHoverColor;
+		}
+}
+
+.hiddenSectionButWithDefinedDimension() {
+		// Nicht display:none, weil das Berechnungen der enthaltenen Elemente mit Breite etc. nicht möglich macht				
+		position: absolute !important;
+		top: -9999px !important;
+		left: -9999px !important;
+		width: 100%; // TODO: Smarter, aber ich fand nicht heraus, wo die Breite drin steht. Wir brauchen aber eine feste Breite, damit die Berechnung per JS OK ist
+		visibility: hidden;
+}
+
+
+
+// Local Variables:
+// less-css-compile-at-save: t
+// End:
