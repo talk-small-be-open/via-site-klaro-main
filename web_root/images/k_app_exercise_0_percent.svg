@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Ebene_1"
+   viewBox="0 0 17.459999 17.450002"
+   version="1.1"
+   sodipodi:docname="k_app_exercise_0_percent.svg"
+   width="17.459999"
+   height="17.450001"
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)">
+  <metadata
+     id="metadata857">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1715"
+     inkscape:window-height="1228"
+     id="namedview855"
+     showgrid="false"
+     inkscape:zoom="8.8606851"
+     inkscape:cx="11.219806"
+     inkscape:cy="8.825"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="Ebene_1" />
+  <defs
+     id="defs835">
+    <style
+       id="style833">.cls-1{stroke-width:2.5px;}.cls-1,.cls-2,.cls-3{stroke:#5883a5;}.cls-1,.cls-2,.cls-3,.cls-4{stroke-miterlimit:10;}.cls-1,.cls-5{fill:#fff;}.cls-2,.cls-6{fill:#5883a5;}.cls-2,.cls-3{stroke-width:1.61px;}.cls-6{font-family:UnitRoundedPro-Medium, 'Unit Rounded Pro';font-size:16.96px;font-weight:500;}.cls-6,.cls-7{isolation:isolate;}.cls-3,.cls-4{fill:none;}.cls-4{stroke:#89b3c3;}.cls-5{stroke-width:0px;}</style>
+  </defs>
+  <path
+     id="Pfad_907"
+     class="cls-5"
+     d="m 8.73,16.95 c 4.54,0 8.23,-3.68 8.23,-8.23 H 0.5 c 0,4.54 3.68,8.23 8.23,8.23" />
+  <path
+     id="Pfad_908"
+     class="cls-4"
+     d="m 8.73,16.95 c 4.54,0 8.23,-3.68 8.23,-8.23 H 0.5 c 0,4.54 3.68,8.23 8.23,8.23 z" />
+  <path
+     id="Pfad_913"
+     class="cls-5"
+     d="M 8.73,0.5 C 4.19,0.5 0.5,4.18 0.5,8.73 H 16.96 C 16.96,4.19 13.28,0.5 8.73,0.5" />
+  <path
+     id="Pfad_914"
+     class="cls-4"
+     d="M 8.73,0.5 C 4.19,0.5 0.5,4.18 0.5,8.73 H 16.96 C 16.96,4.19 13.28,0.5 8.73,0.5 Z" />
+</svg>
