@@ -93,10 +93,23 @@ function countdown_redraw() {
 
 function countdown_pause() {
 	clearInterval(countdown_interval);
+	countdown_interval = null;
 }
 
 function countdown_continue() {
 	countdown_interval = setInterval(countdown_interval_ticker, countdown_step);
+}
+
+function countdown_is_running() {
+	return countdown_interval != null;
+}
+
+function countdown_toggle() {
+	if (countdown_is_running()) {
+		countdown_pause();
+	} else {
+		countdown_continue();
+	}
 }
 
 // function countdown_stop() {

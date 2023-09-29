@@ -79,7 +79,7 @@
 
 
 @l-color-background: #EAE7E3;
-@l-color-text: #575754;
+@l-color-text: @l-color-blue; //  #575754;
 @l-color-main: @l-color-blue;
 
 
@@ -92,11 +92,6 @@
 // @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
 @wrongColor: red;
 @correctColor: #cfc;
-
-
-// =======================================================================
-// DEVELOPMENT ONLY
-// =======================================================================
 
 
 
@@ -139,7 +134,7 @@ html {
 
 body {
 
-		
+		color: @l-color-text;
 
 		div.footer {
 				// padding: 40px 50px;
@@ -168,7 +163,16 @@ body {
 		}
 }
 
+a {
+		// Dadurch sind Links von Text nicht unterscheidbar nach Farbe. Wir arbeiten aber mit Symbolen.
+		color: @l-color-text;
 
+		&:hover, &:active {
+				color: @l-color-blue-d;
+				text-decoration: none;
+		}
+		
+}
 
 span.pillarDocument {
 
@@ -194,6 +198,17 @@ span.pillarDocument {
 		}
 }
 
+
+span.betatestArea {
+		display: block;
+		margin: 1em 0;
+		border: 1px dotted black;
+		font-size: 66%;
+
+		a {
+				color: inherit;
+		}
+}
 
 // =======================================================================
 // UI components
@@ -1304,32 +1319,49 @@ div.VIAKlaPagerComponent {
 		div.VIAKlaPageComponent {
 				display: contents;
 
-				&.VIAKlaExercisePage {
-						div.klaroPage {
-								height: 80vh;
-								padding: 0 0.5em;
-								// position: absolute;
-								// top: 0;
-								// bottom: 0;
-								// left: 0;
-								// right: 0;
-						}
+				div.klaroPage {
+						min-height: 100vh;
 				}
 
-				&.VIAKlaStationPage {
-						div.klaroPage {
-								background-color: @l-color-lightgreen;
+				&.VIAKlaExercisePage div.klaroPage {
+						height: 80vh;
+						padding: 0 0.5em;
+						// position: absolute;
+						// top: 0;
+						// bottom: 0;
+						// left: 0;
+						// right: 0;
 
-								div.title {
-										display: flex;
-										justify-content: center;
+						dotlottie-player.lottieAnimation {
+								// width: 100vw;
+								// height: 100vh;
+
+								&.manualToAutomatic {
+										width: 50vw;
 								}
-								
-								div.exercisePanel {
-										background-color: white;
-										padding: 1em;
-										border-radius: 0.5em;
-										margin: 1em 2em;
+						}
+
+						
+				}
+
+				&.VIAKlaStationPage div.klaroPage {
+						background-color: @l-color-lightgreen;
+
+						div.title {
+								display: flex;
+								justify-content: center;
+						}
+						
+						div.exercisePanel {
+								background-color: white;
+								padding: 1em;
+								border-radius: 0.5em;
+								margin: 1em 2em;
+
+								div.exerciseLink {
+										font-size: 200%;
+										display: flex;
+										justify-content: space-between;
 								}
 						}
 				}
