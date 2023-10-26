@@ -7,14 +7,6 @@
 // Fonts
 // =======================================================================
 
-// // Roboto
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
-
-// // Falsche Leo-Schrift (Merriweather)
-// @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
-
-// // Capitalis Monumentalis
-// @import url('https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap');
 
 @font-face {
 		font-family: 'DCH';
@@ -22,6 +14,55 @@
 		font-style: normal;
 		src: url('fonts/dchbasisschrift.woff') format('woff');
 }
+
+
+@font-face {
+    font-family: 'FF Unit Rounded Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('FF Unit Rounded Pro Regular'), url('fonts/FF Unit Rounded Pro Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'FF Unit Rounded Pro Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('FF Unit Rounded Pro Light'), url('fonts/FF Unit Rounded Pro Light.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'FF Unit Rounded Pro Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('FF Unit Rounded Pro Medium'), url('fonts/FF Unit Rounded Pro Medium.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'FF Unit Rounded Pro Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('FF Unit Rounded Pro Bold'), url('fonts/FF Unit Rounded Pro Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'FF Unit Rounded Pro Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('FF Unit Rounded Pro Black'), url('fonts/FF Unit Rounded Pro Black.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'FF Unit Rounded Pro Ultra';
+    font-style: normal;
+    font-weight: normal;
+    src: local('FF Unit Rounded Pro Ultra'), url('fonts/FF Unit Rounded Pro Ultra.woff') format('woff');
+}
+
+
 
 
 // =======================================================================
@@ -133,7 +174,7 @@ html {
 // }
 
 body {
-
+		font-family: 'FF Unit Rounded Pro Regular';
 		color: @l-color-text;
 
 		div.footer {
@@ -523,23 +564,41 @@ div.VIAKlaModuleExerciser {
 		
 
 		div.titlePanel {
-				padding: 1em;
+				@circleWidth: 3em;
+				@sidePad: 2em;
+				@borderRadius: @sidePad + @circleWidth/2;
+				@height: 2 * @borderRadius;
+																								 
+				padding: @sidePad;
+				height: @height;
 				background-color: @l-color-blue-llll;
-				border-radius: 1em;
+				border-radius: @borderRadius;
+
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
 
 				img.svgImage {
 						width: 3em;
 				}
 
+				svg.stationNumber {
+						width: @circleWidth;
+				}
+				
 				span.moduleScore {
+						@space: 0.2em;
+						margin-left: @space;
 						img.svgImage {
-								width: 1em;
-								margin: 0 0.2em;
+								width: @circleWidth/2;
+								margin: 0 @space;
 						}
 				}
 
 				span.modeIndicator {
 						float: right;
+						display: block;
+						margin: auto 0;
 				}
 		}
 
@@ -558,7 +617,7 @@ div.VIAKlaModuleExerciser {
 
 						div.speedReader {
 								div.speedTextArea {
-										height: 50vh;
+										height: 40vh;
 										display: flex;
 										justify-content: center; /* Align horizontal */
 										align-items: center;
@@ -573,6 +632,12 @@ div.VIAKlaModuleExerciser {
 										&.magic-spell {
 												background-color: pink;
 										}
+								}
+
+								&.speak, &.listen {
+										div.speedText {
+												opacity: 45%;
+										}										
 								}
 								
 								div.navigationArea {
@@ -599,6 +664,14 @@ div.VIAKlaModuleExerciser {
 										justify-content: center;
 										
 										span.nextButton {
+												display: inline-block;
+												width: 3em;
+												height: 3em;
+												margin: 1em;
+										}
+
+										span.playPauseButton {
+												cursor: pointer;
 												display: inline-block;
 												width: 3em;
 												height: 3em;
@@ -1295,32 +1368,75 @@ div.moduleBody {
 
 
 
-.slide-in-right {
-		animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-
-// See https://animista.net/play/entrances/slide-in/slide-in-right
-
-@keyframes slide-in-right {
-  0% {
-    transform: translateX(300px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 
 div.VIAKlaPagerComponent {
 
+
 		div.VIAKlaPageComponent {
+
+				@sidePad: 1em;
+				
 				display: contents;
 
 				div.klaroPage {
 						min-height: 100vh;
+						padding: 0;
+						display: none; // default hidden and parked away
+						position: relative;
+
+						&.current {
+								display: block;
+
+								&.slide {
+										.slide-in-right();
+								}
+						}
+
+
+						.topbar {
+
+								// div.menubarCenter {
+								// 		.uk-navbar-center();
+								// }
+
+								background-color: white;
+								display: flex;
+								justify-content: space-between;
+								padding: 1em @sidePad;
+
+								div.topbarLeft {
+										img.svgImage.menu_zurueck {
+												width: 1.5em;
+												margin-right: 0.5em;
+										}
+								}
+								div.topbarCenter {
+										
+										// &.activeHome {
+										// 		border-color: @a-color-main;
+										// 		a svg {
+										// 				stroke: @a-color-main;
+										// 				fill: @a-color-main;
+										// 		}
+										// }
+
+								}
+								div.topbarRight {
+										img.svgImage.menu {
+												width: 2em;
+										}
+								}
+						}
+
+						div.footer {
+								position: absolute;
+								width: 100%;
+								bottom: 0;
+								padding: 1em;
+								text-align: center;
+						}
+
+						
 				}
 
 				&.VIAKlaExercisePage div.klaroPage {
@@ -1347,22 +1463,49 @@ div.VIAKlaPagerComponent {
 				&.VIAKlaStationPage div.klaroPage {
 						background-color: @l-color-lightgreen;
 
-						div.title {
+						div.moduleTitle {
 								display: flex;
 								justify-content: center;
-						}
-						
-						div.exercisePanel {
-								background-color: white;
-								padding: 1em;
-								border-radius: 0.5em;
-								margin: 1em 2em;
+								margin: 1em 0;
 
-								div.exerciseLink {
-										font-size: 200%;
-										display: flex;
-										justify-content: space-between;
+								svg.stationNumber {
+										width: 3em;
 								}
+						}
+
+						div.exercisePanels {
+								padding-left: @sidePad;
+								padding-right: @sidePad;
+								
+								div.exercisePanel {
+										background-color: white;
+										padding: 1em;
+										border-radius: 0.5em;
+										margin: 1em 0;
+										position: relative;
+
+										div.exerciseTitle {
+												font-size: 200%;
+												// display: flex;
+												// justify-content: space-between;
+										}
+
+										span.progress {
+												position: absolute;
+												top: 10px;
+												right: 10px;
+										}
+
+										span.actionSymbol {
+												position: absolute;
+												right: 10px;
+												top: 45%;
+
+												&.nextTask {
+														.pulseAnimation();
+												}
+										}
+								}								
 						}
 				}
 
@@ -1376,65 +1519,26 @@ div.VIAKlaPagerComponent {
 				span.pagerAnchor {
 						cursor: pointer;
 				}
-
-
-				.topbar {
-
-						// div.menubarCenter {
-						// 		.uk-navbar-center();
-						// }
-
-						display: flex;
-						justify-content: space-between;
-						padding: 0.3em 0;
-
-						div.topbarLeft {
-								// display: flex;
-								// align-items: center;
-								// padding-left: 0.5em;
-								// padding-right: 0.5rem;
-						}
-						div.topbarCenter {
-								
-								// &.activeHome {
-								// 		border-color: @a-color-main;
-								// 		a svg {
-								// 				stroke: @a-color-main;
-								// 				fill: @a-color-main;
-								// 		}
-								// }
-
-						}
-						div.topbarRight {
-								
-						}
-				}
-
-
-
 				
 		}
 		
-		div.klaroPage {
-				// hidden and parked away
-				display: none;
-//				left: 1000px;
-
-
-				// &.nonCurrent {
-				// 		display: none;
-				// }
-				&.current {
-						display: block;
-//						left: 0;
-
-						&.slide {
-								animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-						}
-				}
-		}
 }
 
+
+svg.stationNumber {
+		.circle {
+				fill: #fff;
+				stroke: #5883a5;
+				stroke-miterlimit: 10;
+				stroke-width: 2.5px;
+		}
+		.text {
+				fill: #5883a5;
+//				font-family: UnitRoundedPro-Medium, ''Unit Rounded Pro'';
+				font-size: 16.96px;
+//				font-weight: 500;
+		}
+}
 
 // =======================================================================
 // UI Breakpoints (leave at end of file, for CSS precedence)

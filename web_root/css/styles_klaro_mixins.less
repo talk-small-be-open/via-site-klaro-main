@@ -39,6 +39,41 @@
 }
 
 
+@keyframes pulse { 
+		0% {
+				opacity: 100%;
+		} 
+		50% {
+				opacity: 50%;
+		} 
+}
+.pulseAnimation() {
+		animation-name: pulse;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+}
+
+// See https://animista.net/play/entrances/slide-in/slide-in-right
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right() {
+		animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+
 
 // Local Variables:
 // less-css-compile-at-save: t

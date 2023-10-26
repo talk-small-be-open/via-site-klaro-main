@@ -87,7 +87,9 @@ function describeArc(centerX, centerY, radius, endAngle){
 }
 
 function countdown_redraw() {
-	const completness = countdown_milliseconds_togo / countdown_milliseconds;
+	var completness = countdown_milliseconds_togo / countdown_milliseconds;
+	if (completness == 1) { completness = 0.999 }
+	
 	$("span.mainButton.active svg.sign path.timerArc").attr('d', describeArc(35, 35, 32, 360 * completness))
 }
 
@@ -124,10 +126,14 @@ function countdown_finished() {
 	countdown_finished_callback();
 }
 
-function countdown_start(seconds, finishedCallback) {
+function countdown_init(seconds, finishedCallback) {
 	countdown_milliseconds = seconds * 1000;
 	countdown_milliseconds_togo = countdown_milliseconds;
 	countdown_finished_callback = finishedCallback;
+	countdown_redraw();
+}
+
+function countdown_start() {
 	countdown_continue();
 }
 
