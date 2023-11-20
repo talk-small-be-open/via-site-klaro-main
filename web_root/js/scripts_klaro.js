@@ -62,44 +62,46 @@ var countdown_interval;
 var countdown_finished_callback;
 
 
-function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-  var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
+// function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+//   var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
 
-  return {
-    x: centerX + (radius * Math.cos(angleInRadians)),
-    y: centerY + (radius * Math.sin(angleInRadians))
-  };
-}
+//   return {
+//     x: centerX + (radius * Math.cos(angleInRadians)),
+//     y: centerY + (radius * Math.sin(angleInRadians))
+//   };
+// }
 
-function describeArc(centerX, centerY, radius, endAngle){
+// function describeArc(centerX, centerY, radius, endAngle){
 
-    var start = polarToCartesian(centerX, centerY, radius, endAngle);
-    var end = polarToCartesian(centerX, centerY, radius, 0);
+//     var start = polarToCartesian(centerX, centerY, radius, endAngle);
+//     var end = polarToCartesian(centerX, centerY, radius, 0);
 
-    var largeArcFlag = endAngle <= 180 ? "0" : "1";
+//     var largeArcFlag = endAngle <= 180 ? "0" : "1";
 
-    var d = [
-        "M", start.x, start.y, 
-        "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
-    ].join(" ");
+//     var d = [
+//         "M", start.x, start.y, 
+//         "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
+//     ].join(" ");
 
-    return d;       
-}
+//     return d;       
+// }
 
 function countdown_redraw() {
 	var completness = countdown_milliseconds_togo / countdown_milliseconds;
-	if (completness == 1) { completness = 0.999 }
-	
-	$("span.mainButton.active svg.sign path.timerArc").attr('d', describeArc(35, 35, 32, 360 * completness))
+
+	// if (completness == 1) { completness = 0.999 }
+	// $("span.mainButton.active svg.sign path.timerArc").attr('d', describeArc(35, 35, 32, 360 * completness))
 }
 
 function countdown_pause() {
 	clearInterval(countdown_interval);
 	countdown_interval = null;
+	if (countdown_animeAnimation) { countdown_animeAnimation.pause() }
 }
 
 function countdown_continue() {
 	countdown_interval = setInterval(countdown_interval_ticker, countdown_step);
+	if (countdown_animeAnimation) { countdown_animeAnimation.play() }
 }
 
 function countdown_is_running() {
@@ -124,6 +126,8 @@ function countdown_finished() {
 	clearInterval(countdown_interval);
 	countdown_redraw();
 	countdown_finished_callback();
+	if (countdown_animeAnimation) { countdown_animeAnimation.pause() }
+
 }
 
 function countdown_init(seconds, finishedCallback) {
@@ -133,8 +137,13 @@ function countdown_init(seconds, finishedCallback) {
 	countdown_redraw();
 }
 
+var countdown_animeAnimation;
 function countdown_start() {
 	countdown_continue();
+}
+
+function countdown_load_animation(animeAnimation) {
+	countdown_animeAnimation = animeAnimation;
 }
 
 function countdown_interval_ticker() {

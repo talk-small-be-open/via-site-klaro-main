@@ -1,1 +1,76 @@
-<?xml version="1.0" encoding="UTF-8"?><svg id="Ebene_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.73 65.75"><defs><style>.cls-1{fill:none;stroke:#fff;}.cls-1,.cls-2{stroke-linecap:round;stroke-linejoin:round;}.cls-2{fill:#fff;stroke:#89b3c3;stroke-width:2px;}.cls-3{fill:#89b3c3;}.cls-3,.cls-4{stroke-width:0px;}.cls-4{fill:#eaf2f5;}</style></defs><path class="cls-4" d="m65.73,0H29C12.98,0,0,12.98,0,29s12.98,29,29,29h36.73V0Z"/><circle class="cls-2" cx="31.45" cy="28.96" r="20.12"/><line class="cls-2" x1="38.73" y1="21.69" x2="24.18" y2="36.24"/><line class="cls-2" x1="24.18" y1="21.69" x2="38.73" y2="36.24"/><circle class="cls-3" cx="31.45" cy="55.15" r="10.6"/><polyline class="cls-1" points="31.3 60.47 26.03 55.2 31.4 49.83"/><line class="cls-1" x1="26.03" y1="55.2" x2="36.88" y2="55.2"/></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Ebene_1"
+   width="65.730003"
+   height="58"
+   viewBox="0 0 65.730003 58"
+   version="1.1"
+   sodipodi:docname="k_app_bewertung_links_1.svg"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="12.498141"
+     inkscape:cx="54.048037"
+     inkscape:cy="28.964307"
+     inkscape:window-width="2560"
+     inkscape:window-height="1395"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Ebene_1" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">.cls-1{fill:none;}.cls-1,.cls-2,.cls-3{stroke:#89b3c3;stroke-linecap:round;stroke-linejoin:round;}.cls-2{stroke-width:2px;}.cls-2,.cls-3{fill:#fff;}.cls-4{opacity:.7;}.cls-3{stroke-width:3px;}.cls-5{fill:#eaf2f5;stroke-width:0px;}</style>
+  </defs>
+  <path
+     class="cls-5"
+     d="M 65.73,0 H 29 C 12.98,0 0,12.98 0,29 0,45.02 12.98,58 29,58 h 36.73 z"
+     id="path1" />
+  <circle
+     class="cls-3"
+     cx="32.360001"
+     cy="28.959999"
+     r="20.120001"
+     id="circle2" />
+  <line
+     class="cls-2"
+     x1="39.639999"
+     y1="21.690001"
+     x2="25.09"
+     y2="36.240002"
+     id="line2" />
+  <line
+     class="cls-2"
+     x1="25.09"
+     y1="21.690001"
+     x2="39.639999"
+     y2="36.240002"
+     id="line3" />
+  <g
+     class="cls-4"
+     id="g6">
+    <polyline
+       class="cls-1"
+       points="54.99 53.36 49.72 48.08 55.08 42.72"
+       id="polyline5" />
+    <line
+       class="cls-1"
+       x1="49.720001"
+       y1="48.080002"
+       x2="60.560001"
+       y2="48.080002"
+       id="line6" />
+  </g>
+</svg>

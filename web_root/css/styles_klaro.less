@@ -113,6 +113,7 @@
 
 
 
+
 // @a-header-height:             4rem;
 @l-header-background: white;
 // @a-header-padding:            0;
@@ -561,11 +562,12 @@ div.VIAKlaModuleExerciser {
 
 		// Header gets units background color
 //		.toccamoduleBackgroundColor("div.moduleNavigation");
-		
+
+		margin: 0 @pageSidePad;
 
 		div.titlePanel {
-				@circleWidth: 3em;
-				@sidePad: 2em;
+				@circleWidth: 2em;
+				@sidePad: @pageSidePad;
 				@borderRadius: @sidePad + @circleWidth/2;
 				@height: 2 * @borderRadius;
 																								 
@@ -578,9 +580,9 @@ div.VIAKlaModuleExerciser {
 				align-items: center;
 				justify-content: space-between;
 
-				img.svgImage {
-						width: 3em;
-				}
+				// img.svgImage {
+				// 		width: 3em;
+				// }
 
 				svg.stationNumber {
 						width: @circleWidth;
@@ -590,7 +592,7 @@ div.VIAKlaModuleExerciser {
 						@space: 0.2em;
 						margin-left: @space;
 						img.svgImage {
-								width: @circleWidth/2;
+								width: @circleWidth*2/3;
 								margin: 0 @space;
 						}
 				}
@@ -599,6 +601,9 @@ div.VIAKlaModuleExerciser {
 						float: right;
 						display: block;
 						margin: auto 0;
+						img.svgImage {
+								width: 2em;
+						}
 				}
 		}
 
@@ -616,6 +621,19 @@ div.VIAKlaModuleExerciser {
 				div.VIAKlaSpeedReaderExerciser {
 
 						div.speedReader {
+								div.automaticStarter {
+										position: absolute;
+										top: 0;
+										left: 0;
+										right: 0;
+										bottom: 0;
+										z-index: 99;
+										background-color: white;
+										text-align: center;
+										font-size: 200%;
+										padding-top: 2em;
+								}
+								
 								div.speedTextArea {
 										height: 40vh;
 										display: flex;
@@ -629,54 +647,81 @@ div.VIAKlaModuleExerciser {
 												text-align: center;
 										}
 
+										svg.sign.sound, svg.sign.ellipsis {
+												width: 6em;
+										}
+
+
+										
+
 										&.magic-spell {
 												background-color: pink;
 										}
 								}
 
 								&.speak, &.listen {
-										div.speedText {
-												opacity: 45%;
-										}										
+										// div.speedText {
+										// 		opacity: 45%;
+										// }										
 								}
 								
 								div.navigationArea {
-										padding: 1em;
+//										padding: 1em;
+										margin: 1em 0;
 										display: flex;
 										justify-content: center;
 										
 										span.mainButton {
 												display: inline-block;
-												width: 5em;
-												height: 5em;
-												margin: 1em;
+												width: 4em;
+//												height: 4em;
+												margin: .5em;
 
 												&.active {
 														.activeButton();
+												}
+
+												img.svgImage {
+														width: 100%;
 												}
 
 										}
 								}
 
 								div.subNavigationArea {
-										padding: 1em;
+//										padding: 1em;
+										margin: 1em 0;
 										display: flex;
 										justify-content: center;
 										
-										span.nextButton {
+										span.nextButton, span.playPauseButton {
 												display: inline-block;
-												width: 3em;
-												height: 3em;
+												width: 9em;
+//												height: 3em;
 												margin: 1em;
+
+												img.svgImage {
+														width: 100%;
+												}
 										}
 
-										span.playPauseButton {
-												cursor: pointer;
+										span.redoButton, span.doneButton {
 												display: inline-block;
-												width: 3em;
-												height: 3em;
-												margin: 1em;
+												width: 4em;
+												margin: 0.1em;
+
+												img.svgImage {
+														width: 100%;
+												}
 										}
+
+										// span.playPauseButton {
+										// 		cursor: pointer;
+										// 		display: inline-block;
+										// 		width: 3em;
+										// 		height: 3em;
+										// 		margin: 1em;
+										// }
 								}
 
 
@@ -731,11 +776,15 @@ div.VIAKlaModuleExerciser {
 										}
 
 										&.read, &.speak, &.listen {
-												path.timerArc {
-														fill: none;
-														stroke-width: 4px;
-														stroke: @l-color-blue;
-												}
+												// path.timerArc {
+												// 		fill: none;
+												// 		stroke-width: 4px;
+												// 		stroke: @l-color-blue;
+												// }
+										}
+
+										&.sound, &.ellipsis {
+												fill: currentcolor;
 										}
 
 										
@@ -1367,6 +1416,7 @@ div.moduleBody {
 
 
 
+@pageSidePad: 1em;
 
 
 div.VIAKlaPagerComponent {
@@ -1374,7 +1424,6 @@ div.VIAKlaPagerComponent {
 
 		div.VIAKlaPageComponent {
 
-				@sidePad: 1em;
 				
 				display: contents;
 
@@ -1402,7 +1451,7 @@ div.VIAKlaPagerComponent {
 								background-color: white;
 								display: flex;
 								justify-content: space-between;
-								padding: 1em @sidePad;
+								padding: 1em @pageSidePad;
 
 								div.topbarLeft {
 										img.svgImage.menu_zurueck {
@@ -1439,21 +1488,58 @@ div.VIAKlaPagerComponent {
 						
 				}
 
+				&.VIAKlaNavigatorPage div.klaroPage {
+						svg.navigatorStage {
+								width: 100%;
+								height: auto;
+								
+								g[id^="Station_"] {
+
+										@highlighted: #e72f72ff;
+										
+										&.enabled {
+												cursor: pointer;
+
+												g[id^="Kreis_gross"] {
+														path {
+																fill: @highlighted;
+														}
+												}
+
+												g[id^="Uebung_"] {
+														&.done {
+																path {
+																		fill: @highlighted;
+																}
+														}
+												}
+
+										}
+
+										
+								}
+
+						}
+				}
+				
 				&.VIAKlaExercisePage div.klaroPage {
 						height: 80vh;
-						padding: 0 0.5em;
+
+						//padding: 0 1em;
+
 						// position: absolute;
 						// top: 0;
 						// bottom: 0;
 						// left: 0;
 						// right: 0;
 
-						dotlottie-player.lottieAnimation {
+						div.lottieAnimation {
 								// width: 100vw;
 								// height: 100vh;
 
 								&.manualToAutomatic {
-										width: 50vw;
+										width: 100vw;
+										height: 80vh;
 								}
 						}
 
@@ -1474,8 +1560,8 @@ div.VIAKlaPagerComponent {
 						}
 
 						div.exercisePanels {
-								padding-left: @sidePad;
-								padding-right: @sidePad;
+								padding-left: @pageSidePad;
+								padding-right: @pageSidePad;
 								
 								div.exercisePanel {
 										background-color: white;
