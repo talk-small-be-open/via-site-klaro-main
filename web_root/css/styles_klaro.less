@@ -176,6 +176,7 @@ html {
 
 body {
 		font-family: 'FF Unit Rounded Pro Regular';
+		font-size: 15px;
 		color: @l-color-text;
 
 		div.footer {
@@ -591,9 +592,47 @@ div.VIAKlaModuleExerciser {
 				span.moduleScore {
 						@space: 0.2em;
 						margin-left: @space;
-						img.svgImage {
+						// img.svgImage {
+						// 		width: @circleWidth*2/3;
+						// 		margin: 0 @space;
+						// }
+
+						svg.iconProgress {
 								width: @circleWidth*2/3;
 								margin: 0 @space;
+
+								path.top, path.bottom {
+										fill: none;
+										stroke: @l-color-blue-l;
+										stroke-miterlimit: 10;
+										stroke-width: 1.61px;
+								}
+
+								&.active {
+										path.top {
+												stroke: @l-color-blue;
+										}
+								}
+
+								&.progress50 {
+										path.top {
+												stroke: @l-color-blue;
+												fill: @l-color-blue;
+										}
+										&.active {
+												path.bottom {
+														stroke: @l-color-blue;
+												}
+										}
+								}
+
+								&.progress100 {
+										path.top, path.bottom {
+												stroke: @l-color-blue;
+												fill: @l-color-blue;
+										}
+								}
+								
 						}
 				}
 
@@ -1506,7 +1545,7 @@ div.VIAKlaPagerComponent {
 														}
 												}
 
-												g[id^="Uebung_"] {
+												g.taskScore {
 														&.done {
 																path {
 																		fill: @highlighted;
@@ -1569,6 +1608,10 @@ div.VIAKlaPagerComponent {
 										border-radius: 0.5em;
 										margin: 1em 0;
 										position: relative;
+										display: flex;
+										justify-content: space-between;
+										align-items: flex-start;
+										
 
 										div.exerciseTitle {
 												font-size: 200%;
@@ -1583,13 +1626,22 @@ div.VIAKlaPagerComponent {
 										}
 
 										span.actionSymbol {
-												position: absolute;
-												right: 10px;
-												top: 45%;
+												// position: absolute;
+												// right: 10px;
+												// top: 10px;
+//												top: 45%;
 
 												&.nextTask {
 														.pulseAnimation();
 												}
+										}
+
+										span.infoButton {
+												cursor: pointer;
+												display: inline-block;
+												background-color: white;
+												border: 1px solid @l-color-blue;
+												padding: 1px 15px;
 										}
 								}								
 						}
@@ -1614,12 +1666,12 @@ div.VIAKlaPagerComponent {
 svg.stationNumber {
 		.circle {
 				fill: #fff;
-				stroke: #5883a5;
+				stroke: @l-color-blue;
 				stroke-miterlimit: 10;
 				stroke-width: 2.5px;
 		}
 		.text {
-				fill: #5883a5;
+				fill: @l-color-blue;
 //				font-family: UnitRoundedPro-Medium, ''Unit Rounded Pro'';
 				font-size: 16.96px;
 //				font-weight: 500;
