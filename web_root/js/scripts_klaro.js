@@ -35,7 +35,7 @@ function swapContent(a, b) {
 // Work globally with some objects in a context. Used globally in the first place,
 // but also when content is being loaded partially
 function processHtmlDocument(contextElement) {
-  $('textarea', contextElement).autosize();
+	//  $('textarea', contextElement).autosize();
 }
 
 /* =========== PAGER ================ */
@@ -44,22 +44,169 @@ function processHtmlDocument(contextElement) {
 
 function pager_gotoPage(pagerId, pageId) {
 	processHtmlDocument(pageId);
-	$('div.klaroPage', pagerId).removeClass('current slide');
+	$('div.klaroPage', pagerId).removeClass('current appear');
 
 	// Slide-In Animation! See CSS ...
 	
-	$(pageId).addClass('current slide');
+	$(pageId).addClass('current appear');
 }
 
 
 
 /* ====== TIMER ============ */
 
-var countdown_milliseconds = 0;
-var countdown_milliseconds_togo = 0;
-const countdown_step = 100;
-var countdown_interval;
-var countdown_finished_callback;
+class SpeedReaderTimer {
+	milliseconds = 0;
+	milliseconds_togo = 0;
+	step = 100;
+	interval;
+	finished_callback;
+	gameBoard;
+	animeAnimation;
+	speedFactor = 1;
+
+	// constructor() {
+	// }
+
+
+	init(gameBoardId, seconds, finishedCallback) {
+		this.gameBoard = $('#'+gameBoardId);
+		this.milliseconds = seconds * 1000 * this.speedFactor;
+		this.milliseconds_togo = this.milliseconds;
+		this.finished_callback = finishedCallback;
+		this.redraw();
+		this.be_speed_normal();
+	}
+
+
+	be_speed_normal() {
+		this.speedFactor = 1;
+	}
+
+	be_speed_fast() {
+		this.speedFactor = 0.75;
+	}
+
+	be_speed_slow() {
+		this.speedFactor = 2;
+	}
+
+	redraw() {
+		//	var completness = this.milliseconds_togo / this.milliseconds;
+		// if (completness == 1) { completness = 0.999 }
+		// $("span.mainButton.active svg.sign path.timerArc").attr('d', describeArc(35, 35, 32, 360 * completness))
+	}
+
+	pause() {
+		clearInterval(this.interval);
+		this.interval = null;
+		this.gameBoard.removeClass('playing').addClass('pausing');
+		if (this.animeAnimation) { this.animeAnimation.pause() }
+	}
+
+	continue() {
+		this.interval = setInterval( () => { this.interval_ticker() }, this.step);
+		this.gameBoard.removeClass('pausing').addClass('playing');
+		if (this.animeAnimation) { this.animeAnimation.play() }
+	}
+
+	is_running() {
+		return this.interval != null;
+	}
+
+	toggle() {
+		if (this.is_running()) {
+			this.pause();
+		} else {
+			this.continue();
+		}
+	}
+
+	// function this.stop() {
+	// 	this.milliseconds = 0;
+	// 	clearInterval(this.interval);
+	// 	this.redraw();
+	// }
+
+	finished() {
+		clearInterval(this.interval);
+		this.redraw();
+		this.finished_callback();
+		if (this.animeAnimation) { this.animeAnimation.pause() }
+
+	}
+
+	start() {
+		this.continue();
+	}
+
+	load_animation(animeAnimation) {
+		this.animeAnimation = animeAnimation;
+	}
+
+	interval_ticker() {
+		this.milliseconds_togo = this.milliseconds_togo - this.step;
+		if (this.milliseconds_togo <= 0) {
+			this.finished();
+		} else {
+			this.redraw();
+		}
+		
+	}
+
+
+	
+}
+
+// Singleton instance
+const speedReaderTimer = new SpeedReaderTimer();
+
+
+// =============== AUDIO ================
+function enableAudio () {
+  var bufferLength = 10;
+  var audioCtx = new window.AudioContext();
+  var myArrayBuffer = audioCtx.createBuffer(1, bufferLength, audioCtx.sampleRate);
+
+  var nowBuffering = myArrayBuffer.getChannelData(0);
+  for (var i = 0; i < bufferLength; i++) {    
+    nowBuffering[i] = Math.random() * 2 - 1;
+  }
+
+  function playFakeAudio (callback) {
+    var done = false;
+		var source = audioCtx.createBufferSource();
+    source.onended = function (a) {
+      done = true;
+      callback(true);
+    }
+		source.buffer = myArrayBuffer;
+		source.connect(audioCtx.destination);
+    source.start(0);
+
+		// If not played, then this timer will catch it a bit later
+    setTimeout(function () {if (!done) callback(false)}, bufferLength + 50);
+  }
+
+  playFakeAudio(function (isAudioEnabled) {
+    if (isAudioEnabled == false) {
+			console.log('Audio NOT unlocked, waiting on next touch event');
+
+			// Trying to catch the next touch event
+			var onTouch = function () {
+        playFakeAudio(function(){
+					// Remove event handler, no matter if successful or not
+          document.removeEventListener('touchstart', onTouch)
+        })
+      }
+      // TODO SHow nice dialog to click on: document.write('<h3>BITTE HIER KLICKEN, UM DEN TON EINZUSCHALTEN</h3>')
+      document.addEventListener('touchstart', onTouch)
+    } else {
+			console.log('Audio UNLOCKED');
+		}
+  })
+}
+
 
 
 // function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
@@ -86,75 +233,6 @@ var countdown_finished_callback;
 //     return d;       
 // }
 
-function countdown_redraw() {
-	var completness = countdown_milliseconds_togo / countdown_milliseconds;
-
-	// if (completness == 1) { completness = 0.999 }
-	// $("span.mainButton.active svg.sign path.timerArc").attr('d', describeArc(35, 35, 32, 360 * completness))
-}
-
-function countdown_pause() {
-	clearInterval(countdown_interval);
-	countdown_interval = null;
-	if (countdown_animeAnimation) { countdown_animeAnimation.pause() }
-}
-
-function countdown_continue() {
-	countdown_interval = setInterval(countdown_interval_ticker, countdown_step);
-	if (countdown_animeAnimation) { countdown_animeAnimation.play() }
-}
-
-function countdown_is_running() {
-	return countdown_interval != null;
-}
-
-function countdown_toggle() {
-	if (countdown_is_running()) {
-		countdown_pause();
-	} else {
-		countdown_continue();
-	}
-}
-
-// function countdown_stop() {
-// 	countdown_milliseconds = 0;
-// 	clearInterval(countdown_interval);
-// 	countdown_redraw();
-// }
-
-function countdown_finished() {
-	clearInterval(countdown_interval);
-	countdown_redraw();
-	countdown_finished_callback();
-	if (countdown_animeAnimation) { countdown_animeAnimation.pause() }
-
-}
-
-function countdown_init(seconds, finishedCallback) {
-	countdown_milliseconds = seconds * 1000;
-	countdown_milliseconds_togo = countdown_milliseconds;
-	countdown_finished_callback = finishedCallback;
-	countdown_redraw();
-}
-
-var countdown_animeAnimation;
-function countdown_start() {
-	countdown_continue();
-}
-
-function countdown_load_animation(animeAnimation) {
-	countdown_animeAnimation = animeAnimation;
-}
-
-function countdown_interval_ticker() {
-	countdown_milliseconds_togo -= countdown_step;
-	if (countdown_milliseconds_togo <= 0) {
-		countdown_finished();
-	} else {
-		countdown_redraw();
-	}
-	
-}
 
 
 /* Haupt JS init */
@@ -165,5 +243,7 @@ $(document).ready(function(){
 	preventBackButton(function(){
 //TODO nice message		alert('No back function available');
 	});
+
+	enableAudio();
 
 });

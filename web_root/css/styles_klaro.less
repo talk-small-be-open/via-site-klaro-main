@@ -107,6 +107,7 @@
 @l-color-blue-ll: #ADCCD8;
 @l-color-blue-lll: #D6E5EB;
 @l-color-blue-llll: #EAF2F5;
+@l-color-blue-lllll: #FAFCFC;
 
 
 @l-color-blue-gray: #70899B;
@@ -132,8 +133,8 @@
 @via-basic-background-color: @l-color-background;
 // @via-coloredbutton-color: #555;
 // @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
-@wrongColor: red;
-@correctColor: #cfc;
+// @wrongColor: red;
+// @correctColor: #cfc;
 
 
 
@@ -186,22 +187,13 @@ body {
 		}
 
 
-		min-height: 100vh;
-//		background-color: @l-color-lightgreen;
-
+		// background should always span screen
+//?		min-height: 100vh;
 
 
 		// Styles for the non-logged in public UI
 		&.public {
 
-				// h1, h2, h3 {
-				// 		color: white; "WHY?"
-				// }
-
-				// input.submit, button, a.uk-button {
-				// 		color: white;
-				// 		border-color: white;
-				// }
 
 		}
 }
@@ -217,9 +209,13 @@ a {
 		
 }
 
+// Basic colors for our svg icons
+svg.svg-icon {
+		stroke: currentcolor;
+		fill: currentcolor;
+}
+
 span.pillarDocument {
-
-
 
 		div.pillarParagraph {
 
@@ -252,6 +248,11 @@ span.betatestArea {
 				color: inherit;
 		}
 }
+
+span.clickAction {
+		cursor: pointer;
+}
+
 
 // =======================================================================
 // UI components
@@ -292,190 +293,100 @@ div.VIADeviceDetectorComponent {
 //
 // header 
 //
-div.klaroHeader {
+// div.klaroHeader {
     
-		background-color: @l-header-background;
-		color: white;
-		// padding: @a-header-padding;
-		// height: @a-header-height;
+// 		background-color: @l-header-background;
+// 		color: white;
+// 		// padding: @a-header-padding;
+// 		// height: @a-header-height;
 
-		a.klaroLogo {
-				font-size: 1.5rem;
-				font-weight: bold;
-				color: white;
+// 		a.klaroLogo {
+// 				font-size: 1.5rem;
+// 				font-weight: bold;
+// 				color: white;
 
-				svg.klaroLogo {
-						//stroke: currentcolor;
-						fill: currentcolor;
-						width: 2em;
-				}
-		}
+// 				svg.klaroLogo {
+// 						//stroke: currentcolor;
+// 						fill: currentcolor;
+// 						width: 2em;
+// 				}
+// 		}
 
-		nav {
-		//		height: @a-header-height;
+// 		nav {
+// 		//		height: @a-header-height;
 
-				// div.uk-navbar-left {
-				// 		padding-left: 0.5em;
-				// }
+// 				// div.uk-navbar-left {
+// 				// 		padding-left: 0.5em;
+// 				// }
 				
-				&.klaroMenubar {
+// 				&.klaroMenubar {
 
-						// div.menubarCenter {
-						// 		.uk-navbar-center();
-						// }
+// 						// div.menubarCenter {
+// 						// 		.uk-navbar-center();
+// 						// }
 
-						display: flex;
-						justify-content: space-between;
+// 						display: flex;
+// 						justify-content: space-between;
 
-						div.menubarLeft {
-								display: flex;
-								align-items: center;
-								padding-left: 0.5em;
-								padding-right: 0.5rem;
-						}
-						div.menubarCenter {
+// 						div.menubarLeft {
+// 								display: flex;
+// 								align-items: center;
+// 								padding-left: 0.5em;
+// 								padding-right: 0.5rem;
+// 						}
+// 						div.menubarCenter {
 								
-								// &.activeHome {
-								// 		border-color: @a-color-main;
-								// 		a svg {
-								// 				stroke: @a-color-main;
-								// 				fill: @a-color-main;
-								// 		}
-								// }
-								li a span.menuLabel {
-										margin-left: 0.1em;
-								}
+// 								// &.activeHome {
+// 								// 		border-color: @a-color-main;
+// 								// 		a svg {
+// 								// 				stroke: @a-color-main;
+// 								// 				fill: @a-color-main;
+// 								// 		}
+// 								// }
+// 								li a span.menuLabel {
+// 										margin-left: 0.1em;
+// 								}
 
-						}
-						div.menubarRight {
+// 						}
+// 						div.menubarRight {
 								
-						}
+// 						}
 						
-						// button {
-						// 		color: white;
-						// 		vertical-align: middle;
-						// 		background-color: transparent;
-						// 		border: none;
-						// 		cursor: pointer;
-						// }
+// 						// button {
+// 						// 		color: white;
+// 						// 		vertical-align: middle;
+// 						// 		background-color: transparent;
+// 						// 		border: none;
+// 						// 		cursor: pointer;
+// 						// }
 
-						a {
-								color: white;
-								vertical-align: middle;
+// 						a {
+// 								color: white;
+// 								vertical-align: middle;
 
-								+ a {
-										margin-left: 0.5rem;
-								}
+// 								+ a {
+// 										margin-left: 0.5rem;
+// 								}
 								
-								&.mainMenuToggler {
-								}
-						}
+// 								&.mainMenuToggler {
+// 								}
+// 						}
 
-						form.searchForm {
+// 						form.searchForm {
 								
-								input.searchInput {
-										background-color: white;
-										color: black;
-										//width: 3em;
+// 								input.searchInput {
+// 										background-color: white;
+// 										color: black;
+// 										//width: 3em;
 
-										&::placeholder {
-												color: #999;
-										}
-								}
-						}
-
-				}
-		}
-		
-
-		// Menu, in navbar or in offcanvas
-		#mainMenu {
-				ul.uk-nav {
-						li {
-								font-size: 1.1rem;
-								font-weight: bold;
-
-								ul.uk-nav-sub {
-										li {
-												font-size: 1.1rem;
-												font-weight: normal;
-										}
-								}
-
-						}
-
-				}
-
-				&.uk-offcanvas {
-						//						color: white;
-						div.uk-offcanvas-close {
-								span.svg-icon {
-										font-size: 2em;
-								}
-						}
-						
-						ul.uk-nav {
-								li {
-										a {
-												//												color: white;
-												white-space: nowrap;
-
-												span.svg-icon, svg.svg-inline--fa.icon {
-														text-align: center;
-														display: inline-block;
-														width: 1.5rem;
-														//height: 1rem;
-												}
-
-												span.menuEntryText {
-														.uk-text-truncate();
-												}
-										}
-
-										&.logout {
-												padding-top: 1em;
-										}
-								}
-						}
-
-						div.uk-offcanvas-bar {
-								overflow-y: hidden;
-								
-								div.mainMenuContainer {
-										// position: absolute;
-										// bottom: 0;
-										// top: 0;
-										height: 100%;
-										display: flex;
-										flex-direction: column;
-										justify-content: space-between unsafe;
-										align-items: stretch;
-										overflow-y: auto;
-
-										div.mainMenuItems {
-												flex-grow: 1;
-												flex-shrink: 1;
-										}
-										
-										div.mainMenuFooter {
-												// position: absolute;
-												// bottom: 0;
-												padding-top: 2em;
-												flex-grow: 0;
-												flex-shrink: 0;
-
-												img.hepLogo {
-														width: 50%;
-														//										width: @offcanvas-bar-width
-												}
-										}
-
-								}
-								
-						}
-				}
-		}
-}
+// 										&::placeholder {
+// 												color: #999;
+// 										}
+// 								}
+// 						}
+// 				}
+// 		}
+// }
 
 
 div.inputDialog {
@@ -539,23 +450,18 @@ div.VIAPublicHomeComponent {
 }
 
 
-div.VIAKlaLoginComponent {
-		height: 100%;
-//		background-color: @a-color-main;
-		
-		// h1 {
-		// 		text-align: center;
-		// }
-}
+// div.VIAKlaLoginComponent {
+// 		height: 100%;
+// }
 
-div.VIAKlaStartComponent {
-		padding: 2em 0;
+// div.VIAKlaStartComponent {
+// 		padding: 2em 0;
 
-		div.VIAModuleFinderComponent {
-				margin-bottom: 2em;
-		}
+// 		div.VIAModuleFinderComponent {
+// 				margin-bottom: 2em;
+// 		}
 		
-}
+// }
 
 
 
@@ -670,45 +576,54 @@ div.VIAKlaModuleExerciser {
 										background-color: white;
 										text-align: center;
 										font-size: 200%;
-										padding-top: 2em;
+										padding-top: 4em;
 								}
 								
 								div.speedTextArea {
-										height: 40vh;
+										height: 50vh;
 										display: flex;
 										justify-content: center; /* Align horizontal */
 										align-items: center;
-										
-										div.speedText {
-												font-family: DCH;
-												color: @l-color-blue;
-												font-size: 6rem;
-												text-align: center;
+										overflow: hidden;
+
+										div.speedTextAreaContent {
+												display: flex;
+												justify-content: center; /* Align horizontal */
+												align-items: center;
+												overflow: hidden;
+												
+												div.speedText {
+														font-family: DCH;
+														color: @l-color-blue;
+														font-size: 6rem;
+														text-align: center;
+												}
+
+												svg.sign.sound, svg.sign.ellipsis {
+														width: 6em;
+												}
 										}
 
-										svg.sign.sound, svg.sign.ellipsis {
-												width: 6em;
-										}
-
-
-										
 
 										&.magic-spell {
-												background-color: pink;
+												div.speedTextAreaContent {
+														background-color: @l-color-blue-lllll;
+														width: 40vh;
+														height: 40vh;
+														border-radius: 50%;
+														flex-shrink: 0;
+												}
 										}
 								}
 
-								&.speak, &.listen {
-										// div.speedText {
-										// 		opacity: 45%;
-										// }										
-								}
 								
 								div.navigationArea {
 //										padding: 1em;
-										margin: 1em 0;
+//										margin: 1em 0;
 										display: flex;
 										justify-content: center;
+										align-items: flex-start;
+										height: 12vh;
 										
 										span.mainButton {
 												display: inline-block;
@@ -729,18 +644,50 @@ div.VIAKlaModuleExerciser {
 
 								div.subNavigationArea {
 //										padding: 1em;
-										margin: 1em 0;
+//										margin: 1em 0;
 										display: flex;
 										justify-content: center;
+										align-items: center;
+										height: 12vh;
 										
 										span.nextButton, span.playPauseButton {
 												display: inline-block;
 												width: 9em;
 //												height: 3em;
-												margin: 1em;
+//												margin: 1em;
 
 												img.svgImage {
 														width: 100%;
+												}
+										}
+
+										span.playPauseButton {
+												position: relative;
+												
+												div.speedChooser {
+														@border: 2px solid @l-color-blue;
+														
+														position: absolute;
+														left: 80%;
+														top: -1em;
+														z-index: 1;
+														border: @border;
+														background-color: white;
+
+														div.speed {
+																padding: 0.1em 1em 0.1em 0;
+																white-space: nowrap;
+																cursor: pointer;
+
+																span.icon {
+																		width: 1.3em;
+																		display: inline-block;
+																}
+														
+																& + div.speed {
+																		border-top: @border;
+																}
+														}
 												}
 										}
 
@@ -754,12 +701,20 @@ div.VIAKlaModuleExerciser {
 												}
 										}
 
+										// Play/Pause button switcher
 										// span.playPauseButton {
-										// 		cursor: pointer;
-										// 		display: inline-block;
-										// 		width: 3em;
-										// 		height: 3em;
-										// 		margin: 1em;
+										// 		img.play {
+										// 				visibility: hidden;
+										// 				div.speedReader.pausing & {
+										// 						visibility: visible;
+										// 				}
+										// 		}
+										// 		img.pause {
+										// 				visibility: hidden;
+										// 				div.speedReader.playing & {
+										// 						visibility: visible;
+										// 				}
+										// 		}
 										// }
 								}
 
@@ -834,6 +789,8 @@ div.VIAKlaModuleExerciser {
 										height: 1em;
 										border-radius: 1em;
 										background-color: @l-color-blue-llll;
+										// position: fixed;
+										// bottom: 1em;
 
 										div.filledBar {
 												height: 1em;
@@ -846,6 +803,30 @@ div.VIAKlaModuleExerciser {
 								// &.read { div.navigationArea span.mainButton.read { .activeButton() }}
 								// &.speak { div.navigationArea span.mainButton.speak { .activeButton() }}
 								// &.listen { div.navigationArea svg.sign.listen { .activeButton() }}
+								&.playing {
+										div.subNavigationArea {
+												span.playPauseButton {
+														.play {
+																display: none;
+														}
+														.pause {
+																display: unset;
+														}
+												}
+										}
+								}
+								&.pausing {
+										div.subNavigationArea {
+												span.playPauseButton {
+														.play {
+																display: unset;
+														}
+														.pause {
+																display: none;
+														}
+												}
+										}
+								}
 						}
 				}
 
@@ -909,19 +890,19 @@ div.exercise {
 				margin: -2px 0;
 		}
 
-		input[type=text].clozeTextPlaceholder {
-				.clozeTextPlaceholder();
+		// input[type=text].clozeTextPlaceholder {
+		// 		.clozeTextPlaceholder();
 
-				&:focus {
-						outline: 1px solid #ccc;
-						background-color: #ffd;
-				}
+		// 		&:focus {
+		// 				outline: 1px solid #ccc;
+		// 				background-color: #ffd;
+		// 		}
 
-				// Intentionally set as empty by user
-				&.markedAsEmpty {
-						background-color: black;
-				}
-		}
+		// 		// Intentionally set as empty by user
+		// 		&.markedAsEmpty {
+		// 				background-color: black;
+		// 		}
+		// }
 
 		p {
 				margin-top: 3px;
@@ -936,214 +917,204 @@ div.exercise {
 
 		
  
-		div.exerciserMainButtons {
-				margin-top: 30px;
-
-				// // .toccamoduleButton("input.submit");
-				// // //Conflict with mediaelement and anyway to general		.toccamoduleButton("button");
-				// // .toccamoduleButton(".bigButton");
-				// // .toccamoduleButton("button.uk-button");
-				// // .toccamoduleButton("a.uk-button");
-
-				// .toccamoduleButton(".uk-button", white, true);
-		}
+		// div.exerciserMainButtons {
+		// 		margin-top: 30px;
+		// }
 
 
-		div.audioPlayer {
-				.clearfix();
+		// div.audioPlayer {
+		// 		.clearfix();
 
-				margin: 10px 0px;
-				span.assetInfo {
-						float: right;
-				}
-		}
+		// 		margin: 10px 0px;
+		// 		span.assetInfo {
+		// 				float: right;
+		// 		}
+		// }
 
 		
-		div.videoPlayer {
-				.clearfix();
+		// div.videoPlayer {
+		// 		.clearfix();
 				
-				div.videoContainer {
-						margin-right: 10px;
+		// 		div.videoContainer {
+		// 				margin-right: 10px;
 
-						video {
-								width: 100%;
-								height: auto;
-								//box-sizing: border-box;
-						}
-				}
-
-
-				span.assetInfo {
-						float: right;
-				}
-		}
+		// 				video {
+		// 						width: 100%;
+		// 						height: auto;
+		// 						//box-sizing: border-box;
+		// 				}
+		// 		}
 
 
-		div.imageDisplayer {
-				span.image {
-						margin-top: 0.5em;
-						margin-bottom: 0.5em;
-						display: inline-block;
-						text-align: right;
-						img {
-								display: block;
-						}
-						span.assetInfo {
-						}
+		// 		span.assetInfo {
+		// 				float: right;
+		// 		}
+		// }
+
+
+		// div.imageDisplayer {
+		// 		span.image {
+		// 				margin-top: 0.5em;
+		// 				margin-bottom: 0.5em;
+		// 				display: inline-block;
+		// 				text-align: right;
+		// 				img {
+		// 						display: block;
+		// 				}
+		// 				span.assetInfo {
+		// 				}
 						
-				}
-		}
+		// 		}
+		// }
 
-		div.fileDownloader {
-				a {
-						.icon {
-								margin-right: 0.5em;
-						}
+		// div.fileDownloader {
+		// 		a {
+		// 				.icon {
+		// 						margin-right: 0.5em;
+		// 				}
 
-						img.downloadPreview {
-								max-width: 10em;
-								border: 1px solid #eee;
-						}
+		// 				img.downloadPreview {
+		// 						max-width: 10em;
+		// 						border: 1px solid #eee;
+		// 				}
 
-						&:hover {
-								img.downloadPreview {
-										max-width: 10em;
-										border-color: @base-link-color;
-								}
+		// 				&:hover {
+		// 						img.downloadPreview {
+		// 								max-width: 10em;
+		// 								border-color: @base-link-color;
+		// 						}
 								
-						}
-				}
-				span.assetInfo {
-						margin-left: 0.5em;
-				}
+		// 				}
+		// 		}
+		// 		span.assetInfo {
+		// 				margin-left: 0.5em;
+		// 		}
 				
-		}
+		// }
 
-		span.assetInfo {
-//				.uk-text-muted();
-				cursor: pointer;
-		}
+		// span.assetInfo {
+		// 		cursor: pointer;
+		// }
 
-		span.hintSymbol {
-				display: inline-block;
-				margin: 0.2em;
-				//						vertical-align: middle;
-		}
+		// span.hintSymbol {
+		// 		display: inline-block;
+		// 		margin: 0.2em;
+		// }
 
 
 
 
 
 
-		div.taskGroup {
+		// div.taskGroup {
 				
-				div.taskGroupItem {
-						margin: 10px 0px;
-				}
-		}
+		// 		div.taskGroupItem {
+		// 				margin: 10px 0px;
+		// 		}
+		// }
 
-		div.taskBrickGroupToggler {
-				padding: 0.5em 3px;
-				margin: 0.5em 0;
-				cursor: pointer;
-				background-color: #eee;
-				//						color: white;
-				border: none;
+		// div.taskBrickGroupToggler {
+		// 		padding: 0.5em 3px;
+		// 		margin: 0.5em 0;
+		// 		cursor: pointer;
+		// 		background-color: #eee;
+		// 		//						color: white;
+		// 		border: none;
 
-				&:hover {
-						background: #999;
-				}
-		}
+		// 		&:hover {
+		// 				background: #999;
+		// 		}
+		// }
 
-		div.taskBrickGroup {
-				// border: 1px solid black;
-				padding: 5px;
+		// div.taskBrickGroup {
+		// 		// border: 1px solid black;
+		// 		padding: 5px;
 
-				&.hidden {
-						.hiddenSectionButWithDefinedDimension()
-				}
+		// 		&.hidden {
+		// 				.hiddenSectionButWithDefinedDimension()
+		// 		}
 
-		}
+		// }
 		
 
-		div.dualImageSwitcher {
-				div.imagesContainer {
-						display: inline-block;
-						div.image {
-								display: inline-block;
-								text-align: right;
-								img {
-										display: block;
-								}
-								span.assetInfo {
-								}
-								&.hidden {
-										display: none;
-								}
-								// &.image2 {
-								// 		img {
-								// 				border: 2px solid yellow;
-								// 		}
-								// }
-						}
-				}
+// 		div.dualImageSwitcher {
+// 				div.imagesContainer {
+// 						display: inline-block;
+// 						div.image {
+// 								display: inline-block;
+// 								text-align: right;
+// 								img {
+// 										display: block;
+// 								}
+// 								span.assetInfo {
+// 								}
+// 								&.hidden {
+// 										display: none;
+// 								}
+// 								// &.image2 {
+// 								// 		img {
+// 								// 				border: 2px solid yellow;
+// 								// 		}
+// 								// }
+// 						}
+// 				}
 
-				div.tools {
-//						.uk-margin-top();
-						.printThis {
-//								.uk-margin-left();
-								float: right;
-						}
-				}
-		}
+// 				div.tools {
+// //						.uk-margin-top();
+// 						.printThis {
+// //								.uk-margin-left();
+// 								float: right;
+// 						}
+// 				}
+// 		}
 
 
-		div.textMemo {
-				background-color: #eee;
-				padding: 1em;
-				textarea.textMemo {
-						width: 100%;
-						margin-top: 1em;
-						padding: 1em;
-						border: 1px solid #666;
-						background-color: #fefefe;
-						box-sizing: border-box;
-				}
-		}
+		// div.textMemo {
+		// 		background-color: #eee;
+		// 		padding: 1em;
+		// 		textarea.textMemo {
+		// 				width: 100%;
+		// 				margin-top: 1em;
+		// 				padding: 1em;
+		// 				border: 1px solid #666;
+		// 				background-color: #fefefe;
+		// 				box-sizing: border-box;
+		// 		}
+		// }
 		
 } // div.exercise
 
 
 
-div.zoomBox {
-		padding: 0.3em;
-		margin-top: 0.3em;
-		//		border: 1px solid black;
-		div.header {
-				position: relative;
-				padding: 0.5em 0;
-//				background-color: #999;
-				color: #999;
-				font-size: 85%;
-				text-align: center;
-				//border-bottom: 1px dotted black;
+// div.zoomBox {
+// 		padding: 0.3em;
+// 		margin-top: 0.3em;
+// 		//		border: 1px solid black;
+// 		div.header {
+// 				position: relative;
+// 				padding: 0.5em 0;
+// //				background-color: #999;
+// 				color: #999;
+// 				font-size: 85%;
+// 				text-align: center;
+// 				//border-bottom: 1px dotted black;
 				
-				span.title {
+// 				span.title {
 						
-				}
-				span.close {
-						font-size: 2rem;
-						//				font-weight: bold;
-//						text-align: right;
-						position: absolute;
-						right: 0;
-						top: 2px;
-						a {
-								color: black;
-						}
-				}
-		}
-}
+// 				}
+// 				span.close {
+// 						font-size: 2rem;
+// 						//				font-weight: bold;
+// //						text-align: right;
+// 						position: absolute;
+// 						right: 0;
+// 						top: 2px;
+// 						a {
+// 								color: black;
+// 						}
+// 				}
+// 		}
+// }
 
 div.VIAKlaMyProfileComponent, div.VIAKlaTeacherMyCockpit, div.VIAKlaMyPortfolioComponent {
 
@@ -1159,36 +1130,36 @@ div.VIAKlaMyProfileComponent, div.VIAKlaTeacherMyCockpit, div.VIAKlaMyPortfolioC
 		
 }
 
-div.VIAKlaTeacherMyCockpit {
+// div.VIAKlaTeacherMyCockpit {
 
-		.invitationCode {
-				font-family: monospace;
-				font-size: 120%;
-				border: 1px solid black;
-		}
-}
+// 		.invitationCode {
+// 				font-family: monospace;
+// 				font-size: 120%;
+// 				border: 1px solid black;
+// 		}
+// }
 
-div.VIAKlaMyPortfolioComponent {
+// div.VIAKlaMyPortfolioComponent {
 
-		h4.currentUnit {
-				margin-top: 0;
-		}
+// 		h4.currentUnit {
+// 				margin-top: 0;
+// 		}
 		
-		div.legend {
-				text-align: right;
-				font-size: 80%;
-		}
+// 		div.legend {
+// 				text-align: right;
+// 				font-size: 80%;
+// 		}
 
-		a.deleteAction {
-//				margin-top: 0.3em;
-				margin-right: 1em;
-//				flex-shrink: 0;
-//				color: black;
-//				float: right;
-//				vertical-align: bottom;
-		}
+// 		a.deleteAction {
+// //				margin-top: 0.3em;
+// 				margin-right: 1em;
+// //				flex-shrink: 0;
+// //				color: black;
+// //				float: right;
+// //				vertical-align: bottom;
+// 		}
 		
-}
+// }
 
 
 
@@ -1208,30 +1179,30 @@ div.VIAInformationComponent {
 		}
 }
 
-div.VIAStaticTextDisplayerComponent {
-		padding: 1em;
-}
+// div.VIAStaticTextDisplayerComponent {
+// 		padding: 1em;
+// }
 
-div.VIACaptchaComponent {
-		pre.captcha {
-				line-height: 1.1em;
-		}
-		input.captcha {
-				font-size: 200%;
-				font-family: monospace;
-				border: 2px solid green;
-				padding: 0.2em;
-				margin: 0.2em 0 0.2em 0;
-				max-width: 100%;
-				box-sizing: border-box;
-		}
-}
+// div.VIACaptchaComponent {
+// 		pre.captcha {
+// 				line-height: 1.1em;
+// 		}
+// 		input.captcha {
+// 				font-size: 200%;
+// 				font-family: monospace;
+// 				border: 2px solid green;
+// 				padding: 0.2em;
+// 				margin: 0.2em 0 0.2em 0;
+// 				max-width: 100%;
+// 				box-sizing: border-box;
+// 		}
+// }
 
-div.VIAKlaRegisterComponent {
-		label {
-				font-weight: bold;
-		}
-}
+// div.VIAKlaRegisterComponent {
+// 		label {
+// 				font-weight: bold;
+// 		}
+// }
 
 // ===========================================
 // Demo
@@ -1252,11 +1223,11 @@ span.uk-label.demoLabel {
 		left: -0.5em;
 }
 
-div.VIADemoUnitComponent {
-		span.uk-label.demoLabel {
-				margin-left: 0.2em;
-		}
-}
+// div.VIADemoUnitComponent {
+// 		span.uk-label.demoLabel {
+// 				margin-left: 0.2em;
+// 		}
+// }
 
 div.demoRibbon {
 		@dim: 20em;
@@ -1292,112 +1263,77 @@ div.demoRibbon {
 
 // TODO: Oben einsortieren!
 
-figure.inlineAssetImage {
-		display: inline-block;
-		margin: 0;
+// figure.inlineAssetImage {
+// 		display: inline-block;
+// 		margin: 0;
 
-		figcaption {
-				line-height: 1em;
-				span.assetInfo {
-						font-size: 75%;
-						float: right;
-				}
-		}
-}
+// 		figcaption {
+// 				line-height: 1em;
+// 				span.assetInfo {
+// 						font-size: 75%;
+// 						float: right;
+// 				}
+// 		}
+// }
 
-span.inlineAssetAudio {
-		audio {
-				display: inline-block;
-				width: 5em;
-		}
+// span.inlineAssetAudio {
+// 		audio {
+// 				display: inline-block;
+// 				width: 5em;
+// 		}
 
-		div.mejs__container {
-				display: inline-block;
-				width: 5em;
-				vertical-align: middle;
-		}
-}
+// 		div.mejs__container {
+// 				display: inline-block;
+// 				width: 5em;
+// 				vertical-align: middle;
+// 		}
+// }
 
-.correct {
-		background-color: @correctColor;
-}
+// .correct {
+// 		background-color: @correctColor;
+// }
 
-.wrong {
-		// why?!
-//		background-color: transparent;
-}
+// .wrong {
+// }
 
-span.partiallyCorrectIcon {
-		color: orange;
-}
+// span.partiallyCorrectIcon {
+// 		color: orange;
+// }
 
-span.correctIcon {
-		color: #1a1;
-}
+// span.correctIcon {
+// 		color: #1a1;
+// }
 
-span.wrongIcon {
-		color: red;
-		padding-left: 2px;
-		padding-right: 2px;
-}
+// span.wrongIcon {
+// 		color: red;
+// 		padding-left: 2px;
+// 		padding-right: 2px;
+// }
 
-div.webui-popover {
-		div.webui-popover-content {
-				word-break: break-word;
-				max-width: 20em;
-		}
+// div.webui-popover {
+// 		div.webui-popover-content {
+// 				word-break: break-word;
+// 				max-width: 20em;
+// 		}
 		
-		span.markAsEmpty {
-				cursor: pointer;
-				border: 2px solid green;
+// 		span.markAsEmpty {
+// 				cursor: pointer;
+// 				border: 2px solid green;
 
-				&.active {
-						background-color: green;
-				}
-		}
+// 				&.active {
+// 						background-color: green;
+// 				}
+// 		}
 
-		// &.webui-popover-hintBalloon {
-		// 		background-color: yellow;
-		// 		// div.webui-popover-content {
-		// 		// 		background-color: yellow;
-		// 		// }				
-		// }
-}
+// 		// &.webui-popover-hintBalloon {
+// 		// 		background-color: yellow;
+// 		// 		// div.webui-popover-content {
+// 		// 		// 		background-color: yellow;
+// 		// 		// }				
+// 		// }
+// }
 
 
-div.VIAKlaExerciserSolutionComponent {
-		.colors() {
-				// background-color: lightyellow;
-
-				&.answerWasWrong {
-						// background-color: @wrongColor;
-				}
-
-				&.answerWasCorrect {
-						background-color: @correctColor;
-				}
-
-		}
-
-		.solution {
-				.colors();
-		}
-
-		div.clozeText {
-				span.selectOneInput.solution {
-						border: 1px dotted black;
-				}
- 
-				input.clozeTextPlaceholder.solution {
-						.colors();
-						
-						&.blankIsSolution {
-								//						width: 2em;
-								color: transparent;
-						}
-				}
-		}
-}
 
 // // div.VIAKlaExerciserFinishedComponent {
 // // 		.solution {
@@ -1410,9 +1346,9 @@ div.VIAKlaExerciserSolutionComponent {
 // // }
 
 
-span.copyPaste, pre.copyPaste {
-		cursor: pointer;
-}
+// span.copyPaste, pre.copyPaste {
+// 		cursor: pointer;
+// }
 
 
 
@@ -1427,12 +1363,12 @@ span.copyPaste, pre.copyPaste {
 // 		}
 // }
 
-span.dictionaryEntry {
-		// border-bottom: 1px dotted #333;
-		text-decoration: underline;
-		text-decoration-color: #333;
-		text-decoration-style: dotted; 
-}
+// span.dictionaryEntry {
+// 		// border-bottom: 1px dotted #333;
+// 		text-decoration: underline;
+// 		text-decoration-color: #333;
+// 		text-decoration-style: dotted; 
+// }
 
 
 
@@ -1467,16 +1403,20 @@ div.VIAKlaPagerComponent {
 				display: contents;
 
 				div.klaroPage {
-						min-height: 100vh;
 						padding: 0;
 						display: none; // default hidden and parked away
 						position: relative;
 
+//						min-height: 100vh;
+						height: 100vh;
+						scroll-behavior: smooth;
+						overflow-y: auto;
+
+						
 						&.current {
 								display: block;
-
-								&.slide {
-										.slide-in-right();
+								&.appear {
+										.pageAppear();
 								}
 						}
 
@@ -1514,8 +1454,117 @@ div.VIAKlaPagerComponent {
 												width: 2em;
 										}
 								}
+
 						}
 
+						div.offcanvasMenu {
+								@iconWidth: 1.5rem;
+
+								position: fixed;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								z-index: 999;
+								background-color: @l-color-green;
+								padding: 5em 1em 1em 1em;
+
+								.slide-inout();
+								
+								// &.in {
+								// 		display: block;
+								// 		.slide-in-right();
+								// }
+								// &.out {
+								// 		display: block;
+								// 		.slide-out-right();
+								// }
+
+
+								ul {
+										padding-left: 0;
+
+										li {
+												font-size: 1.1rem;
+												font-weight: bold;
+
+												ul.subMenu {
+														padding-left: @iconWidth;
+														li {
+																font-size: 1.1rem;
+																font-weight: normal;
+														}
+												}
+
+												a {
+														//												color: white;
+														white-space: nowrap;
+
+														span.svg-icon {
+//																text-align: center;
+																display: inline-block;
+																width: @iconWidth;
+																//height: 1rem;
+														}
+
+														span.menuEntryText {
+																.uk-text-truncate();
+														}
+												}
+
+												&.logout {
+														padding-top: 1em;
+												}
+
+												&.menuDivider {
+														padding-top: 1em;
+												}
+										}
+								}
+
+								div.offcanvasClose {
+										position: absolute;
+										top: 5px;
+										right: 5px;
+										span.svg-icon {
+												display: inline-block;
+												width: 2rem;
+										}
+								}
+
+								div.pageMenuContainer {
+										// position: absolute;
+										// bottom: 0;
+										// top: 0;
+										height: 100%;
+										display: flex;
+										flex-direction: column;
+										justify-content: space-between unsafe;
+										align-items: stretch;
+										overflow-y: auto;
+
+										div.pageMenuItems {
+												flex-grow: 1;
+												flex-shrink: 1;
+										}
+										
+										div.pageMenuFooter {
+												// position: absolute;
+												// bottom: 0;
+												padding-top: 2em;
+												flex-grow: 0;
+												flex-shrink: 0;
+
+												img.hepLogo {
+														width: 50%;
+														//										width: @offcanvas-bar-width
+												}
+										}
+
+								}
+								
+						}
+		
 						div.footer {
 								position: absolute;
 								width: 100%;
@@ -1523,8 +1572,6 @@ div.VIAKlaPagerComponent {
 								padding: 1em;
 								text-align: center;
 						}
-
-						
 				}
 
 				&.VIAKlaNavigatorPage div.klaroPage {
@@ -1554,15 +1601,62 @@ div.VIAKlaPagerComponent {
 												}
 
 										}
+								}
 
+
+								g#Hexenhaus {
+										> g {
+//												visibility: hidden;
+												opacity: 0.1;
+										}
+
+										g#Haus_00 {
+												opacity: 1;
+//												visibility: visible;
+										}
+										
+										> g.moduleFinished {
+												opacity: 1;
+//												visibility: visible;												
+										}
+								}
+
+
+								
+								@keyframes witchflying {
+										0% {
+												translate: 1px 3px;
+										}
+										20% {
+												translate: 1px -1px;
+										}
+										50% {
+												translate: -3px 2px;
+										}
+										80% {
+												translate: -1px -2px;
+										}
+										100% {
+												translate: 1px 3px;
+										}
+								}				
+								
+								g#Hexe_Klara {
+										animation-name: witchflying;
+										animation-duration: 8s;
+										animation-direction: normal;
+										animation-iteration-count: infinite;
+										animation-timing-function: ease-in-out;
 										
 								}
 
 						}
 				}
+
+
 				
 				&.VIAKlaExercisePage div.klaroPage {
-						height: 80vh;
+						// height: 80vh; // why?
 
 						//padding: 0 1em;
 
@@ -1632,12 +1726,17 @@ div.VIAKlaPagerComponent {
 //												top: 45%;
 
 												&.nextTask {
+														display: inline-block;
+														margin-top: 0.5em;
 														.pulseAnimation();
+												}
+
+												img.svgImage {
+														margin: 0 0.5em;
 												}
 										}
 
 										span.infoButton {
-												cursor: pointer;
 												display: inline-block;
 												background-color: white;
 												border: 1px solid @l-color-blue;

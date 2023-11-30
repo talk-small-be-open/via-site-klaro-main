@@ -17,26 +17,26 @@
 		touch-action: none;
 }
 
-.draggable() {
-		.noUserSelect();
-		.noTouch();
-		cursor: move;
-}
+// .draggable() {
+// 		.noUserSelect();
+// 		.noTouch();
+// 		cursor: move;
+// }
 
-.dropHover() {
-		&.dropHover {
-				background-color: @dropTargetHoverColor;
-		}
-}
+// .dropHover() {
+// 		&.dropHover {
+// 				background-color: @dropTargetHoverColor;
+// 		}
+// }
 
-.hiddenSectionButWithDefinedDimension() {
-		// Nicht display:none, weil das Berechnungen der enthaltenen Elemente mit Breite etc. nicht möglich macht				
-		position: absolute !important;
-		top: -9999px !important;
-		left: -9999px !important;
-		width: 100%; // TODO: Smarter, aber ich fand nicht heraus, wo die Breite drin steht. Wir brauchen aber eine feste Breite, damit die Berechnung per JS OK ist
-		visibility: hidden;
-}
+// .hiddenSectionButWithDefinedDimension() {
+// 		// Nicht display:none, weil das Berechnungen der enthaltenen Elemente mit Breite etc. nicht möglich macht				
+// 		position: absolute !important;
+// 		top: -9999px !important;
+// 		left: -9999px !important;
+// 		width: 100%; // TODO: Smarter, aber ich fand nicht heraus, wo die Breite drin steht. Wir brauchen aber eine feste Breite, damit die Berechnung per JS OK ist
+// 		visibility: hidden;
+// }
 
 
 @keyframes pulse { 
@@ -44,7 +44,7 @@
 				opacity: 100%;
 		} 
 		50% {
-				opacity: 50%;
+				opacity: 30%;
 		} 
 }
 .pulseAnimation() {
@@ -57,7 +57,7 @@
 
 // See https://animista.net/play/entrances/slide-in/slide-in-right
 
-@keyframes slide-in-right {
+@keyframes pageAppear {
   0% {
     transform: translateX(300px);
     opacity: 0;
@@ -68,8 +68,40 @@
   }
 }
 
-.slide-in-right() {
-		animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.pageAppear() {
+		animation: pageAppear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes pageDisappear {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+		display: block;
+  }
+  100% {
+    transform: translateX(300px);
+    opacity: 0;
+		display: none;
+  }
+}
+
+.pageDisappear() {
+		animation: pageDisappear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+
+.slide-inout() {
+		transform: translateX(100vw);
+    opacity: 0;
+		transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
+		&.slideIn {
+				transform: translateX(0);
+				opacity: 1;
+				transition-property: transform, opacity;
+				transition-duration: 0.5s;
+				transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+		}
 }
 
 
