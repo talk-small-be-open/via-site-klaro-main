@@ -1640,6 +1640,10 @@ div.VIAKlaPagerComponent {
 										&.enabled {
 												cursor: pointer;
 
+												&.isNewExercise {
+														.pulseAnimation();
+												}
+												
 												g[id^="Kreis_gross"] {
 														path {
 																fill: @highlighted;
