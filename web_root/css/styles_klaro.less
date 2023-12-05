@@ -253,6 +253,12 @@ span.clickAction {
 		cursor: pointer;
 }
 
+span.klaroLogo {
+		img {
+				width: 100%;
+		}
+}
+
 
 // =======================================================================
 // UI components
@@ -406,44 +412,39 @@ div.VIAConfirmationComponent {
 
 div.VIAPublicHomeComponent {
 
-		padding-bottom: 1em;
+		padding: 1em 0;
+		font-size: 120%;
+		line-height: 150%;
+
+		div.klaroLogo {
+				margin: 0 auto;
+				display: flex;
+				justify-content: center;
+		}
 		
 		div.klaroBanner {
-				// background-color: @t-color-red;
-				// background-image: url(/site/images/public_banner.jpg);
-				// background-repeat: no-repeat;
-				// background-size: cover;
-				padding: 0;
-				margin: 0;
-
-				// img.bannerImage {
-				// 		margin-bottom: 1em;
-				// }
-				
-				// div.title {
-				// 		background-image: url(/site/images/public_banner.jpg);
-				// 		background-repeat: no-repeat;
-				// 		background-size: cover;
-				// 		font-size: 4rem;
-				// 		line-height: 4rem;
-				// 		color: white;
-				// 		padding: 1em 0;
-				// 		text-align: center;
-				// 		margin-bottom: 1rem;
-				// }
+				display: flex;
+				justify-content: center;
 		}
 		
-		div.loginSection {
-				margin: 2em 0;
-				font-size: 120%;
-				
+		div.info {
+				margin: 1em 0;
+				padding: 0 1em;
 		}
 
-		div.infoButtons {
-				//				.bigButtonStyle(@t-color-red);
-				div.infoButton {
-						font-size: 120%;
-						line-height: 150%;
+		div.loginSection {
+				margin: 1em 0;
+				padding: 0 1em;
+		}
+
+		form.codeInput {
+				margin: 1em 0;
+				
+				input[type=text] {
+						border: 1px solid black;						
+						width: 100%;
+						padding: 0.2em;
+						margin: 1em 0;
 				}
 		}
 
@@ -477,7 +478,8 @@ div.VIAKlaModuleExerciser {
 				@sidePad: @pageSidePad;
 				@borderRadius: @sidePad + @circleWidth/2;
 				@height: 2 * @borderRadius;
-																								 
+
+				margin-top: 1em;
 				padding: @sidePad;
 				height: @height;
 				background-color: @l-color-blue-llll;
@@ -508,15 +510,16 @@ div.VIAKlaModuleExerciser {
 								margin: 0 @space;
 
 								path.top, path.bottom {
-										fill: none;
+										fill: white;
 										stroke: @l-color-blue-l;
-										stroke-miterlimit: 10;
-										stroke-width: 1.61px;
+//										stroke-miterlimit: 10;
+										stroke-width: 1px;
 								}
 
 								&.active {
 										path.top {
 												stroke: @l-color-blue;
+												stroke-width: 1.61px;
 										}
 								}
 
@@ -524,10 +527,12 @@ div.VIAKlaModuleExerciser {
 										path.top {
 												stroke: @l-color-blue;
 												fill: @l-color-blue;
+												stroke-width: 1.61px;
 										}
 										&.active {
 												path.bottom {
 														stroke: @l-color-blue;
+														stroke-width: 1.61px;
 												}
 										}
 								}
@@ -536,6 +541,7 @@ div.VIAKlaModuleExerciser {
 										path.top, path.bottom {
 												stroke: @l-color-blue;
 												fill: @l-color-blue;
+												stroke-width: 1.61px;
 										}
 								}
 								
@@ -565,6 +571,7 @@ div.VIAKlaModuleExerciser {
 
 				div.VIAKlaSpeedReaderExerciser {
 
+						// "Gameboard"
 						div.speedReader {
 								div.automaticStarter {
 										position: absolute;
@@ -803,6 +810,8 @@ div.VIAKlaModuleExerciser {
 								// &.read { div.navigationArea span.mainButton.read { .activeButton() }}
 								// &.speak { div.navigationArea span.mainButton.speak { .activeButton() }}
 								// &.listen { div.navigationArea svg.sign.listen { .activeButton() }}
+
+								// Automatic timer is playing
 								&.playing {
 										div.subNavigationArea {
 												span.playPauseButton {
@@ -814,7 +823,9 @@ div.VIAKlaModuleExerciser {
 														}
 												}
 										}
+
 								}
+								// Automatic timer is pausing
 								&.pausing {
 										div.subNavigationArea {
 												span.playPauseButton {
@@ -823,6 +834,29 @@ div.VIAKlaModuleExerciser {
 														}
 														.pause {
 																display: none;
+														}
+												}
+										}
+								}
+								// Is on step listen
+								&.listen {
+										div.navigationArea {
+												div.listenButtons {
+														span.mainButton.listen.replay {
+																display: none;
+														}
+												}
+										}
+										
+										&.hasPlayedSpeech {
+												div.navigationArea {
+														div.listenButtons {
+																span.mainButton.listen.normalPlay {
+																		display: none;
+																}
+																span.mainButton.listen.replay {
+																		display: inline-block;
+																}
 														}
 												}
 										}
@@ -1430,15 +1464,20 @@ div.VIAKlaPagerComponent {
 								background-color: white;
 								display: flex;
 								justify-content: space-between;
-								padding: 1em @pageSidePad;
+								padding: 0.5em @pageSidePad;
 
 								div.topbarLeft {
+										display: flex;
+										align-items: center;
+										font-size: 0.8rem;
 										img.svgImage.menu_zurueck {
 												width: 1.5em;
 												margin-right: 0.5em;
 										}
 								}
 								div.topbarCenter {
+										display: flex;
+										align-items: center;
 										
 										// &.activeHome {
 										// 		border-color: @a-color-main;
@@ -1450,6 +1489,8 @@ div.VIAKlaPagerComponent {
 
 								}
 								div.topbarRight {
+										display: flex;
+										align-items: center;
 										img.svgImage.menu {
 												width: 2em;
 										}
@@ -1481,46 +1522,6 @@ div.VIAKlaPagerComponent {
 								// }
 
 
-								ul {
-										padding-left: 0;
-
-										li {
-												font-size: 1.1rem;
-												font-weight: bold;
-
-												ul.subMenu {
-														padding-left: @iconWidth;
-														li {
-																font-size: 1.1rem;
-																font-weight: normal;
-														}
-												}
-
-												a {
-														//												color: white;
-														white-space: nowrap;
-
-														span.svg-icon {
-//																text-align: center;
-																display: inline-block;
-																width: @iconWidth;
-																//height: 1rem;
-														}
-
-														span.menuEntryText {
-																.uk-text-truncate();
-														}
-												}
-
-												&.logout {
-														padding-top: 1em;
-												}
-
-												&.menuDivider {
-														padding-top: 1em;
-												}
-										}
-								}
 
 								div.offcanvasClose {
 										position: absolute;
@@ -1546,6 +1547,49 @@ div.VIAKlaPagerComponent {
 										div.pageMenuItems {
 												flex-grow: 1;
 												flex-shrink: 1;
+
+												ul {
+														padding-left: 0;
+
+														li {
+																font-size: 1.1rem;
+																font-weight: bold;
+																margin: 1em 0;
+
+																ul.subMenu {
+																		padding-left: @iconWidth;
+																		li {
+																				font-size: 1.1rem;
+																				font-weight: normal;
+																		}
+																}
+
+																a {
+																		//												color: white;
+																		white-space: nowrap;
+
+																		span.svg-icon {
+																				//																text-align: center;
+																				display: inline-block;
+																				width: @iconWidth;
+																				//height: 1rem;
+																		}
+
+																		span.menuEntryText {
+																				.uk-text-truncate();
+																		}
+																}
+
+																&.logout {
+																		padding-top: 1em;
+																}
+
+																&.menuDivider {
+																		padding-top: 1em;
+																}
+														}
+												}
+
 										}
 										
 										div.pageMenuFooter {
@@ -1575,6 +1619,16 @@ div.VIAKlaPagerComponent {
 				}
 
 				&.VIAKlaNavigatorPage div.klaroPage {
+
+						.topbar {
+								div.topbarLeft {
+										span.klaroLogo {
+												display: inline-block;
+												width: 60px;
+										}
+								}
+						}
+
 						svg.navigatorStage {
 								width: 100%;
 								height: auto;
@@ -1606,18 +1660,18 @@ div.VIAKlaPagerComponent {
 
 								g#Hexenhaus {
 										> g {
-//												visibility: hidden;
-												opacity: 0.1;
+												visibility: hidden;
+//												opacity: 0.1;
 										}
 
 										g#Haus_00 {
-												opacity: 1;
-//												visibility: visible;
+//												opacity: 1;
+												visibility: visible;
 										}
 										
 										> g.moduleFinished {
-												opacity: 1;
-//												visibility: visible;												
+//												opacity: 1;
+												visibility: visible;												
 										}
 								}
 
@@ -1702,45 +1756,62 @@ div.VIAKlaPagerComponent {
 										border-radius: 0.5em;
 										margin: 1em 0;
 										position: relative;
-										display: flex;
-										justify-content: space-between;
-										align-items: flex-start;
-										
+										// display: flex;
+										// justify-content: space-between;
+										// align-items: flex-start;
 
-										div.exerciseTitle {
-												font-size: 200%;
+										&.disabled {
+												div.rowOne, div.rowTwo {
+														opacity: 0.5;
+												}
+										}
+										
+										div.rowOne {
+												display: flex;
+												justify-content: space-between;
+												align-items: center;
+										
+												div.exerciseTitle {
+														font-size: 2.3rem;
+														// display: flex;
+														// justify-content: space-between;
+												}
+
+												span.progress {
+														position: absolute;
+														top: 10px;
+														right: 10px;
+												}
+
+												span.actionSymbol {
+														// position: absolute;
+														// right: 10px;
+														// top: 10px;
+														//												top: 45%;
+
+														&.nextTask {
+																display: inline-block;
+//																margin-top: 0.5em;
+																.pulseAnimation();
+														}
+
+														img.svgImage {
+																margin-left: 0.5em;
+														}
+												}
+										}
+										
+										div.rowTwo {
 												// display: flex;
 												// justify-content: space-between;
-										}
+												// align-items: flex-start;
 
-										span.progress {
-												position: absolute;
-												top: 10px;
-												right: 10px;
-										}
-
-										span.actionSymbol {
-												// position: absolute;
-												// right: 10px;
-												// top: 10px;
-//												top: 45%;
-
-												&.nextTask {
+												span.infoButton {
 														display: inline-block;
-														margin-top: 0.5em;
-														.pulseAnimation();
+														background-color: white;
+														border: 1px solid @l-color-blue;
+														padding: 1px 15px;
 												}
-
-												img.svgImage {
-														margin: 0 0.5em;
-												}
-										}
-
-										span.infoButton {
-												display: inline-block;
-												background-color: white;
-												border: 1px solid @l-color-blue;
-												padding: 1px 15px;
 										}
 								}								
 						}
@@ -1766,7 +1837,7 @@ svg.stationNumber {
 		.circle {
 				fill: #fff;
 				stroke: @l-color-blue;
-				stroke-miterlimit: 10;
+//				stroke-miterlimit: 10;
 				stroke-width: 2.5px;
 		}
 		.text {
@@ -1775,6 +1846,10 @@ svg.stationNumber {
 				font-size: 16.96px;
 //				font-weight: 500;
 		}
+}
+
+div.developmentTools {
+		margin-bottom: 10em;
 }
 
 // =======================================================================

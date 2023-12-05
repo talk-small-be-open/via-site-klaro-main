@@ -168,9 +168,12 @@ function enableAudio () {
   var audioCtx = new window.AudioContext();
   var myArrayBuffer = audioCtx.createBuffer(1, bufferLength, audioCtx.sampleRate);
 
+
+	// if (audioCtx.state !== 'suspended') return;
+
   var nowBuffering = myArrayBuffer.getChannelData(0);
-  for (var i = 0; i < bufferLength; i++) {    
-    nowBuffering[i] = Math.random() * 2 - 1;
+  for (var i = 0; i < bufferLength; i++) {
+    nowBuffering[i] = Math.random() * 0.1 - 0.05; // low volume noise
   }
 
   function playFakeAudio (callback) {
@@ -185,7 +188,7 @@ function enableAudio () {
     source.start(0);
 
 		// If not played, then this timer will catch it a bit later
-    setTimeout(function () {if (!done) callback(false)}, bufferLength + 50);
+    setTimeout(function () {if (!done) callback(false)}, 50); "Precise milliseconds: audioCtx.sampleRate * 1000 * bufferLength"
   }
 
   playFakeAudio(function (isAudioEnabled) {
