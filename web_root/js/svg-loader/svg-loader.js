@@ -1,6 +1,9 @@
 "use strict";
 
-async function svgLoadInline(elemId, callback) {
+// Taken and extremely simplified for our needs, from MIT licensed SVG-Loader:
+// https://github.com/shubhamjain/svg-loader
+
+function svgLoadInline(elemId, callback) {
 	const elem = document.getElementById(elemId);
   const url = new URL(elem.getAttribute("data-svgloader-src"), globalThis.location);
 
@@ -10,7 +13,7 @@ async function svgLoadInline(elemId, callback) {
 		const doc = parser.parseFromString(body, "text/html");
 		const fragment = doc.querySelector("svg");
 
-		// Copy the inner SVG
+		// Copy the SVG content
 		elem.innerHTML = fragment.innerHTML;
 
 		// Copy the attributes on top level, no override
