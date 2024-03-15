@@ -10,12 +10,28 @@
 		-moz-user-select: none;
 		-ms-user-select: none;
 		cursor: default;
+
+		-webkit-touch-callout: none;
 }
 
 // Prevent touch actions
 .noTouch() {
 		touch-action: none;
 }
+
+.preventStupidTouchStuff() {
+		.noUserSelect();
+		user-drag: none;
+		-webkit-user-drag: none;
+
+		// NON STANDARD, but the only way to stop iPad from react to long clicks?!
+		-webkit-touch-callout: none !important;
+
+		-webkit-tap-highlight-color: transparent;
+
+}
+
+
 
 // .draggable() {
 // 		.noUserSelect();
@@ -42,17 +58,26 @@
 @keyframes pulse { 
 		0% {
 				opacity: 100%;
+
+				//filter: saturate(30%);
+//				scale: 100%;
+//				translate: 0 0;
 		} 
-		50% {
+		100% {
 				opacity: 30%;
+//				filter: saturate(110%);
+				//				scale: 110%;
+//				translate: 0 -5px;
 		} 
 }
 .pulseAnimation() {
 		animation-name: pulse;
-		animation-duration: 1s;
+		animation-duration: 0.5s;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
+		transform-origin: 50% 50%;
+		transform-box: fill-box;
 }
 
 // See https://animista.net/play/entrances/slide-in/slide-in-right
@@ -68,8 +93,24 @@
   }
 }
 
+@keyframes pageAppearBack {
+  0% {
+    transform: translateX(-300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .pageAppear() {
 		animation: pageAppear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+// Back should be faster and from left to right
+.pageAppearBack() {
+		animation: pageAppearBack 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @keyframes pageDisappear {
@@ -104,7 +145,12 @@
 		}
 }
 
-
+// Hm, howto give less-piece into a mixin?
+// .ifHoverable() {
+// 		@media (hover: hover) {
+//        LESS goes here...
+// 		}
+// }
 
 
 // Local Variables:
