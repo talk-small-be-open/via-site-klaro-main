@@ -1559,6 +1559,8 @@ div.VIAKlaPagerComponent {
 
 				div.klaroPage {
 						padding: 0;
+
+						
 					//	display: none; // default hidden and parked away
 						position: relative; // ?
 
@@ -1919,18 +1921,16 @@ div.VIAKlaPagerComponent {
 
 				
 				&.VIAKlaExercisePage div.klaroPage {
-						// height: 80vh; // why?
-
-						//padding: 0 1em;
-
-						// position: absolute;
-						// top: 0;
-						// bottom: 0;
-						// left: 0;
-						// right: 0;
 
 						.preventStupidTouchStuff();
 
+						padding: 0 @pageSidePad;
+						
+						// Not small phones
+						@media (min-width: @breakpoint-medium) {
+								padding: 0 10%;
+						}
+						
 						.topbar {
 								margin-top: 1em;
 						}
