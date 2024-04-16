@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="39.55" height="22.86" viewBox="0 0 39.55 22.86">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #5883a5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="Gruppe_1842" data-name="Gruppe 1842">
+    <path id="Pfad_2530" data-name="Pfad 2530" class="cls-1" d="M28.22,1l10.34,10.34-10.52,10.52"/>
+    <line id="Linie_363" data-name="Linie 363" class="cls-1" x1="38.55" y1="11.33" x2="1" y2="11.33"/>
+  </g>
+</svg>

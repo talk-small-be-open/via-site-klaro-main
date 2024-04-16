@@ -1,77 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   id="Ebene_1"
-   width="65.730003"
-   height="58"
-   viewBox="0 0 65.730003 58"
-   version="1.1"
-   sodipodi:docname="k_app_bewertung_rechts_1.svg"
-   inkscape:version="1.3 (0e150ed, 2023-07-21)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="12.498141"
-     inkscape:cx="54.60812"
-     inkscape:cy="28.964307"
-     inkscape:window-width="2560"
-     inkscape:window-height="1395"
-     inkscape:window-x="0"
-     inkscape:window-y="23"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="Ebene_1" />
-  <defs
-     id="defs1">
-    <style
-       id="style1">.cls-1{fill:none;}.cls-1,.cls-2,.cls-3{stroke:#89b3c3;stroke-linecap:round;stroke-linejoin:round;}.cls-2{stroke-width:2px;}.cls-2,.cls-3{fill:#fff;}.cls-4{opacity:.7;}.cls-3{stroke-width:3px;}.cls-5{fill:#eaf2f5;stroke-width:0px;}</style>
+<svg id="Ebene_1" width="65.739998" height="58" viewBox="0 0 65.739998 58" version="1.1" sodipodi:docname="k_app_bewertung_rechts_1.svg" inkscape:version="1.3.1 (91b66b0, 2023-11-16)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview id="namedview8" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" showguides="true" inkscape:zoom="6.6715265" inkscape:cx="29.378584" inkscape:cy="28.928912" inkscape:window-width="1440" inkscape:window-height="855" inkscape:window-x="0" inkscape:window-y="23" inkscape:window-maximized="1" inkscape:current-layer="Ebene_1" />
+  <defs id="defs1">
+    <style id="style1">.cls-1{fill:#e9f1f4;}.cls-1,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6{stroke-width:0px;}.cls-2{fill:none;}.cls-3{fill:#e6725a;}.cls-4{fill:#74a070;}.cls-7{opacity:.7;}.cls-5{fill:#88b2c2;}.cls-6{fill:#fff;}</style>
   </defs>
-  <path
-     class="cls-5"
-     d="M 36.73,0 H 0 v 58 h 36.73 c 16.02,0 29,-12.98 29,-29 0,-16.02 -12.99,-29 -29,-29 z"
-     id="path2" />
-  <circle
-     class="cls-3"
-     cx="35.179996"
-     cy="29.1"
-     r="20.120001"
-     id="circle3" />
-  <line
-     class="cls-2"
-     x1="42.630001"
-     y1="19.15"
-     x2="32.880001"
-     y2="39.060001"
-     id="line4" />
-  <line
-     class="cls-2"
-     x1="27.73"
-     y1="31.459999"
-     x2="32.880001"
-     y2="39.060001"
-     id="line5" />
-  <g
-     class="cls-4"
-     id="g7"
-     transform="translate(-68.77)">
-    <polyline
-       class="cls-1"
-       points="79.51 53.36 84.78 48.08 79.41 42.72"
-       id="polyline6" />
-    <line
-       class="cls-1"
-       x1="84.779999"
-       y1="48.080002"
-       x2="73.940002"
-       y2="48.080002"
-       id="line7" />
-  </g>
+  <path class="cls-1" d="M 36.74,0 H 0 v 58 h 36.74 c 16.02,0 29,-12.98 29,-29 0,-16.02 -12.98,-29 -29,-29 z" id="path2" />
+  <path id="Pfad_3439" class="cls-6" d="m 55.3,29.1 c 0,11.11 -9.01,20.12 -20.12,20.12 -11.11,0 -20.12,-9.01 -20.12,-20.12 0,-11.11 9.01,-20.12 20.12,-20.12 v 0 c 11.11,0 20.12,9.01 20.12,20.12" />
+  <path class="cls-4" d="m 35.19,50.72 c -11.92,0 -21.62,-9.7 -21.62,-21.62 0,-11.92 9.7,-21.62 21.62,-21.62 11.92,0 21.62,9.7 21.62,21.62 0,11.92 -9.7,21.62 -21.62,21.62 z m 0,-40.24 c -10.26,0 -18.62,8.35 -18.62,18.62 0,10.27 8.35,18.62 18.62,18.62 10.27,0 18.62,-8.35 18.62,-18.62 0,-10.27 -8.35,-18.62 -18.62,-18.62 z" id="path5" />
+  <line id="Linie_407" class="cls-2" x1="42.640003" y1="19.15" x2="32.890003" y2="39.060001" />
+  <line id="Linie_409" class="cls-2" x1="27.74" y1="31.459999" x2="32.890003" y2="39.060001" />
+  <path class="cls-4" d="m 43.07,18.25 c -0.5,-0.24 -1.09,-0.04 -1.34,0.46 L 32.74,37.07 28.55,30.9 c -0.31,-0.46 -0.93,-0.58 -1.39,-0.27 -0.46,0.31 -0.58,0.93 -0.27,1.39 l 5.15,7.59 c 0,0 0.04,0.04 0.05,0.06 0.02,0.02 0.03,0.04 0.05,0.06 0.08,0.09 0.17,0.16 0.27,0.21 0,0 0,0 0,0 0,0 0.01,0 0.02,0 0.13,0.06 0.27,0.1 0.42,0.1 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0,0 0.01,0 0.02,0 0.03,0 0.08,0 0.17,-0.01 0.25,-0.04 0.03,0 0.06,-0.03 0.09,-0.04 0.06,-0.02 0.12,-0.05 0.17,-0.08 0,0 0.01,0 0.02,0 0.01,-0.01 0.02,-0.03 0.04,-0.04 0.08,-0.06 0.14,-0.13 0.2,-0.21 0.02,-0.03 0.04,-0.06 0.06,-0.09 0.01,-0.02 0.03,-0.04 0.04,-0.06 l 9.74,-19.91 c 0.24,-0.5 0.04,-1.09 -0.46,-1.34 z" id="path6" />
+  <path class="cls-5" d="m 16.51,48.09 c 0,-0.14 -0.06,-0.27 -0.16,-0.36 l -5.36,-5.36 c -0.2,-0.2 -0.51,-0.2 -0.71,0 -0.2,0.2 -0.2,0.51 0,0.71 l 4.51,4.51 H 5.16 c -0.28,0 -0.5,0.22 -0.5,0.5 0,0.28 0.22,0.5 0.5,0.5 h 9.63 l -4.42,4.42 c -0.2,0.2 -0.2,0.51 0,0.71 0.1,0.1 0.23,0.15 0.35,0.15 0.12,0 0.26,-0.05 0.35,-0.15 l 5.26,-5.26 c 0.1,-0.09 0.16,-0.22 0.16,-0.36 z" id="path8" style="opacity:0.7" />
 </svg>
