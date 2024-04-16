@@ -123,9 +123,9 @@ class SpeedReaderTimer {
 		}
 	}
 	
-	continue() {
+	continue(sync = true) {
 		this.isStateRunning = true;
-		this.syncWithServer();
+		if (sync) { this.syncWithServer(); }
 
 		this.interval = setInterval( () => { this.intervalTicker() }, this.step);
 		this.gameBoard.removeClass('pausing').addClass('playing');
@@ -164,8 +164,8 @@ class SpeedReaderTimer {
 
 	}
 
-	start() {
-		this.continue();
+	start(sync = true) {
+		this.continue(sync);
 	}
 
 	stop() {
@@ -175,7 +175,7 @@ class SpeedReaderTimer {
 	}
 
 	autostart() {
-		if (!this.isPaused()) { this.start() }
+		if (!this.isPaused()) { this.start(false) }
 	}
 
 	loadAnimation(animeAnimation) {
