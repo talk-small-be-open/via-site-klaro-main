@@ -76,13 +76,17 @@ class SpeedReaderTimer {
 
 
 	init(gameBoardId, milliseconds, finishedCallback, syncCallback) {
+		// If been re-init, then we assure that we clean up the existing running stuff
+		this.stopAllTimers();
+
 		this.gameBoard = $('#'+gameBoardId);
 		this.milliseconds = milliseconds;
 		this.millisecondsTogo = this.milliseconds;
 		this.finishedCallback = finishedCallback;
 		this.syncCallback = syncCallback;
-		this.redraw();
+//		this.redraw();
 //		this.beSpeedNormal();
+
 	}
 
 
@@ -98,12 +102,6 @@ class SpeedReaderTimer {
 	// 	this.speedFactor = 2;
 	// }
 
-	redraw() {
-		//	var completness = this.milliseconds_togo / this.milliseconds;
-		// if (completness == 1) { completness = 0.999 }
-		// $("span.mainButton.active svg.sign path.timerArc").attr('d', describeArc(35, 35, 32, 360 * completness))
-	}
-
 	syncWithServer() {
 		var data = this.isRunning();
 		this.syncCallback(data);
@@ -112,13 +110,19 @@ class SpeedReaderTimer {
 	pause() {
 		this.isStateRunning = false;
 		this.syncWithServer();
+		this.stopAllTimers();
 
-		clearInterval(this.interval);
-		this.interval = null;
 		this.gameBoard.removeClass('playing').addClass('pausing');
 		if (this.animeAnimation) { this.animeAnimation.pause() }
 	}
 
+	stopAllTimers() {
+		if (this.interval) {
+			clearInterval(this.interval);
+			this.interval = null;
+		}
+	}
+	
 	continue() {
 		this.isStateRunning = true;
 		this.syncWithServer();
@@ -154,7 +158,7 @@ class SpeedReaderTimer {
 
 	finished() {
 		clearInterval(this.interval);
-		this.redraw();
+		// this.redraw();
 		this.finishedCallback();
 		if (this.animeAnimation) { this.animeAnimation.pause() }
 
@@ -183,7 +187,7 @@ class SpeedReaderTimer {
 		if (this.millisecondsTogo <= 0) {
 			this.finished();
 		} else {
-			this.redraw();
+			//this.redraw();
 		}
 		
 	}
