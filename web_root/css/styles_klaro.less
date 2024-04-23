@@ -260,6 +260,10 @@ h3 {
 //		font-weight: bold;
 }
 
+h1, h2, h3 {
+		margin-bottom: 0.5em;
+}
+
 strong {
 		font-weight: bold;
 }
@@ -271,6 +275,36 @@ em {
 u {
 		text-decoration: underline;
 }
+
+form {
+		label {
+				display: block;
+				margin: 0.5em 0;
+		}
+
+		button[type=submit] {
+				border: 1px solid @l-color-blue;
+				padding: 10px;
+				cursor: pointer;
+				background-color: @l-color-blue-l;
+				color: white;
+
+				&:hover {
+						background-color: @l-color-blue;
+						color: white;
+				}
+		}
+
+
+		input[type=checkbox] {
+				// display: inline-block;
+				// width: 1em;
+				// height: 1em;
+				// border: 1px solid black;
+				appearance: checkbox;
+		}
+}
+
 
 .topBuffer {
 		margin-top: 20px;
@@ -403,11 +437,15 @@ span.klaroLogo {
 div.VIAMainComponent {
 //		min-height: 99vh;
 		position: relative;
-		box-sizing: border-box;
-		
-		// .toccamoduleBorderColor("div.t-header nav.t-menubar ul.uk-navbar-nav li.active");
-		// .toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'stroke');
-		// .toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'fill');				
+		box-sizing: border-box;		
+}
+
+div.backButton {
+		padding: 0.5em;
+		img.menu_zurueck {
+				width: 1.3em;
+				margin-right: 1em;
+		}
 }
 
 div.VIADeviceDetectorComponent {
@@ -569,6 +607,11 @@ div.VIAPublicHomeComponent {
 		}
 
 		div.loginSection {
+				div.error {
+						background-color: maroon;
+						color: white;
+						padding: 2em;
+				}
 				margin: 1em 0;
 				padding: 0 1em;
 		}
@@ -1383,19 +1426,19 @@ div.exercise {
 // 		}
 // }
 
-div.VIAKlaMyProfileComponent, div.VIAKlaTeacherMyCockpit, div.VIAKlaMyPortfolioComponent {
+// div.VIAKlaMyProfileComponent, div.VIAKlaTeacherMyCockpit, div.VIAKlaMyPortfolioComponent {
 
-		padding-top: 1em;
+// 		padding-top: 1em;
 
-		h1 {
-				color: @l-color-main;
-		}
+// 		h1 {
+// 				color: @l-color-main;
+// 		}
 		
-		h1, h2, h3, h4 {
-				text-align: left;
-		}
+// 		h1, h2, h3, h4 {
+// 				text-align: left;
+// 		}
 		
-}
+// }
 
 // div.VIAKlaTeacherMyCockpit {
 
@@ -2182,6 +2225,12 @@ svg.stationNumber {
 //				font-weight: 500;
 		}
 }
+
+div.VIAKlaMyProfileComponent {
+		padding: 1em;
+}
+
+
 
 div.developmentTools {
 		margin-bottom: 10em;

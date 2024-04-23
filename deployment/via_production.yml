@@ -80,8 +80,11 @@ via:
   installationPath: "/opt/via"
 
   # Backup target (duplicity backends). See manual for duplicity for backend URLs
-  backupTarget: "boto3+s3://hep-klaro"
-  backupS3Endpoint: 'https://sos-ch-dk-2.exo.io'
+  # backupTarget: "boto3+s3://hep-klaro"
+  # backupS3Endpoint: 'https://sos-ch-dk-2.exo.io'
+  # Neu ab 04.2024 https://es34.objects.nineapis.ch/hep-aurea-backup
+  backupTarget: "boto3+s3://hep-klaro-backup"
+  backupS3Endpoint: 'https://es34.objects.nineapis.ch'
 
 
 
