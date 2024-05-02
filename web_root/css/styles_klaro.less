@@ -869,7 +869,7 @@ div.VIAKlaModuleExerciser {
 																position: relative;
 														}
 
-														@topGapForHead: @size * 0.2;
+														@topGapForHead: @size * 0.17;
 														
 														&.read {
 
@@ -1108,6 +1108,7 @@ div.VIAKlaModuleExerciser {
 																}
 																span.mainButton.listen.replay {
 																		display: inline-block;
+																		cursor: pointer;
 																}
 														}
 												}
@@ -1921,13 +1922,19 @@ div.VIAKlaPagerComponent {
 																		}
 																}
 
-																&.logout {
-																		padding-top: 1em;
+																// &.logout {
+																// 		padding-top: 1em;
+																// }
+
+																span.menuDivider {
+																		display: block;
+																		height: 0.5em;
 																}
 
-																&.menuDivider {
-																		padding-top: 1em;
+																&.small {
+																		font-size: 0.9rem;
 																}
+
 														}
 												}
 
