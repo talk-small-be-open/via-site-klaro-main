@@ -88,20 +88,10 @@
 
 
 // prefix @l = "local"
-// @a-color-background-light: #EAE7E380; // TODO? Transparenz?
-
-// @a-color-black: #575754;
-
-// @a-color-text-light: #878787;
-// @a-color-text-line: #87878780;
-
-// @a-color-main-light: #0382A60D;
-
 
 @l-color-lightgreen: #F6F7E5;
 @l-color-green: #B7C18D;
-
-
+@l-color-mediumgreen: #E5EED8;
 
 @l-color-blue-d: #40627A;
 @l-color-blue: #5883A5;
@@ -111,32 +101,18 @@
 @l-color-blue-llll: #EAF2F5;
 @l-color-blue-lllll: #FAFCFC;
 
-
 @l-color-blue-gray: #70899B;
 
-
-
-
-// @a-header-height:             4rem;
 @l-header-background: white;
-// @a-header-padding:            0;
-
-
 
 @l-color-background: #EAE7E3;
 @l-color-text: @l-color-blue; //  #575754;
 @l-color-main: @l-color-blue;
 
 
-
-
 // Redefine basics for this via sub-website
 @via-basic-color: @l-color-text;
 @via-basic-background-color: @l-color-background;
-// @via-coloredbutton-color: #555;
-// @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
-// @wrongColor: red;
-// @correctColor: #cfc;
 
 
 // Breakpoints
@@ -171,55 +147,24 @@
 // General Styles
 // =======================================================================
 
-html {
-		//bad		height: 100%;
-		//scroll-behavior: smooth;
-}
+// html {
 
-// Our own SVG icon set
-// span.svg-icon {
-// 		@size: 1.1em;
-// 		text-align: center;
-// 		font-size: @size;
-// 		//height: 1em;
-// 		width: @size;
-// 		display: inline-block;
-// 		svg.svg-icon {
-// 				//				width: 1.1em;
-// 				// height: 1em;
-// 				width: 100%;
-// 				height: 100%;
-// 				//stroke: currentcolor;
-// 				fill: currentcolor;
-// 				//				font-size: 1.25em;
-// 				// font-size: 1em;
-// 		}
 // }
+
 
 body {
 		font-family: 'FF Unit Rounded Pro Regular';
 		font-size: 15px;
 		color: @l-color-text;
 
-//		.noUserSelect();
 		.preventStupidTouchStuff();
 										 
-		div.footer {
-				// padding: 40px 50px;
-				// background-color: @a-color-black;
-				// color: white;				
-		}
-
-
-		// background should always span screen
-//?		min-height: 100vh;
-
+		// div.footer {
+		// }
 
 		// Styles for the non-logged in public UI
-		&.public {
-
-
-		}
+		// &.public {
+		// }
 }
 
 
@@ -233,7 +178,6 @@ a {
 				color: @l-color-blue-d;
 				text-decoration: none;
 		}
-
 		
 		@media (hover: hover) {
 				&:hover {
@@ -249,15 +193,12 @@ a {
 
 h1 {
 		font-size: 2rem;
-//		font-weight: bold;
 }
 h2 {
 		font-size: 1.5rem;
-//		font-weight: bold;
 }
 h3 {
 		font-size: 1.2rem;
-//		font-weight: bold;
 }
 
 h1, h2, h3 {
@@ -295,12 +236,7 @@ form {
 				}
 		}
 
-
 		input[type=checkbox] {
-				// display: inline-block;
-				// width: 1em;
-				// height: 1em;
-				// border: 1px solid black;
 				appearance: checkbox;
 		}
 }
@@ -368,21 +304,7 @@ svg, img.svgImage {
 				// 				.activeButton();
 				// 		}
 				// }
-
-				// &.read, &.speak, &.listen {
-				// 		// path.timerArc {
-				// 		// 		fill: none;
-				// 		// 		stroke-width: 4px;
-				// 		// 		stroke: @l-color-blue;
-				// 		// }
-				// }
-
-
-
-				
 		}
-
-		
 }
 
 span.pillarDocument {
@@ -398,7 +320,6 @@ span.pillarDocument {
 						margin: 0.5em;
 						border: 1px solid black;
 				}
-
 				
 				.noWrap {
 						white-space: nowrap;
@@ -459,114 +380,13 @@ div.VIADeviceDetectorComponent {
 		.spinner {
 				color: black;
 				font-size: 3rem;
-				// width: 33vw;
-				// height: 33vw;
 		}
 		
 		a.spinnerMessage {
-//				.uk-text-muted();
 				color: #666;
 				font-size: 80%;
 		}
 }
-
-//
-// header 
-//
-// div.klaroHeader {
-    
-// 		background-color: @l-header-background;
-// 		color: white;
-// 		// padding: @a-header-padding;
-// 		// height: @a-header-height;
-
-// 		a.klaroLogo {
-// 				font-size: 1.5rem;
-// 				font-weight: bold;
-// 				color: white;
-
-// 				svg.klaroLogo {
-// 						//stroke: currentcolor;
-// 						fill: currentcolor;
-// 						width: 2em;
-// 				}
-// 		}
-
-// 		nav {
-// 		//		height: @a-header-height;
-
-// 				// div.uk-navbar-left {
-// 				// 		padding-left: 0.5em;
-// 				// }
-				
-// 				&.klaroMenubar {
-
-// 						// div.menubarCenter {
-// 						// 		.uk-navbar-center();
-// 						// }
-
-// 						display: flex;
-// 						justify-content: space-between;
-
-// 						div.menubarLeft {
-// 								display: flex;
-// 								align-items: center;
-// 								padding-left: 0.5em;
-// 								padding-right: 0.5rem;
-// 						}
-// 						div.menubarCenter {
-								
-// 								// &.activeHome {
-// 								// 		border-color: @a-color-main;
-// 								// 		a svg {
-// 								// 				stroke: @a-color-main;
-// 								// 				fill: @a-color-main;
-// 								// 		}
-// 								// }
-// 								li a span.menuLabel {
-// 										margin-left: 0.1em;
-// 								}
-
-// 						}
-// 						div.menubarRight {
-								
-// 						}
-						
-// 						// button {
-// 						// 		color: white;
-// 						// 		vertical-align: middle;
-// 						// 		background-color: transparent;
-// 						// 		border: none;
-// 						// 		cursor: pointer;
-// 						// }
-
-// 						a {
-// 								color: white;
-// 								vertical-align: middle;
-
-// 								+ a {
-// 										margin-left: 0.5rem;
-// 								}
-								
-// 								&.mainMenuToggler {
-// 								}
-// 						}
-
-// 						form.searchForm {
-								
-// 								input.searchInput {
-// 										background-color: white;
-// 										color: black;
-// 										//width: 3em;
-
-// 										&::placeholder {
-// 												color: #999;
-// 										}
-// 								}
-// 						}
-// 				}
-// 		}
-// }
 
 
 div.inputDialog {
@@ -630,25 +450,8 @@ div.VIAPublicHomeComponent {
 }
 
 
-// div.VIAKlaLoginComponent {
-// 		height: 100%;
-// }
-
-// div.VIAKlaStartComponent {
-// 		padding: 2em 0;
-
-// 		div.VIAModuleFinderComponent {
-// 				margin-bottom: 2em;
-// 		}
-		
-// }
-
-
-
 div.VIAKlaModuleExerciser {
 
-		// Header gets units background color
-//		.toccamoduleBackgroundColor("div.moduleNavigation");
 
 		margin: 0 @pageSidePad;
 
@@ -658,7 +461,7 @@ div.VIAKlaModuleExerciser {
 				@borderRadius: @sidePad + @circleWidth/2;
 				@height: 2 * @borderRadius;
 
-				margin-top: 1em;
+				// margin-top: 1em;
 				padding: @sidePad;
 				height: @height;
 				background-color: @l-color-blue-llll;
@@ -693,7 +496,7 @@ div.VIAKlaModuleExerciser {
 										path.top, path.bottom {
 												fill: white;
 												stroke: @l-color-blue-l;
-												//										stroke-miterlimit: 10;
+												// stroke-miterlimit: 10;
 												stroke-width: 1px;
 										}
 
@@ -738,9 +541,7 @@ div.VIAKlaModuleExerciser {
 						@iconSize: 1.7em;
 						
 						span.modeIndicator {
-								//						float: right;
 								display: inline-block;
-								//								margin: auto 0;
 								min-width: 1.5 * @iconSize;
 								text-align: center;
 								img.svgImage {
@@ -757,8 +558,8 @@ div.VIAKlaModuleExerciser {
 								z-index: 999; // must overlap on top of next flex item
 								text-align: right;
 								img.svgImage {
-										height: 1.3 * @iconSize;
-										margin: 0 0.3em;
+										height: 1.5 * @iconSize; // Etwas grösser weil ein Kreis darum ist
+										margin-left: 0.6em;
 								}
 
 						}
@@ -808,13 +609,13 @@ div.VIAKlaModuleExerciser {
 												// min-height: 30vh;
 												flex-basis: 50%;
 												display: flex;
-												justify-content: center; /* Align horizontal */
+												justify-content: center;
 												align-items: center;
 												overflow: hidden;
 
 												div.speedTextAreaContent {
 														display: flex;
-														justify-content: center; /* Align horizontal */
+														justify-content: center;
 														align-items: center;
 														overflow: hidden;
 														
@@ -838,14 +639,9 @@ div.VIAKlaModuleExerciser {
 
 										
 										div.navigationArea {
-												//										padding: 1em;
-												//										margin: 1em 0;
 												display: flex;
 												justify-content: center;
 												align-items: flex-start;
-
-
-												//height: 12vh;
 
 												> span {
 														flex-shrink: 0;
@@ -856,10 +652,14 @@ div.VIAKlaModuleExerciser {
 												}
 
 												span.mainButton {
-														@size: 110px;
+														//@size: 110px;
+														//@size: 15vmin;
+														//@size: 4cm;
+														@width: 7rem;
+														@height: @width * 0.7;
 														display: inline-block;
-														width: @size;
-														height: @size * 0.7;
+														width: @width;
+														height: @height;
 														position: relative;
 														// geht nicht wegen rechtem icon verschiedene breite text-align: center;
 														//margin: @size * 0.2;
@@ -869,7 +669,7 @@ div.VIAKlaModuleExerciser {
 																position: relative;
 														}
 
-														@topGapForHead: @size * 0.17;
+														@topGapForHead: @height * 0.24;
 														
 														&.read {
 
@@ -896,40 +696,25 @@ div.VIAKlaModuleExerciser {
 																.activeButton();
 														}
 
-														// img.svgImage {
-														// 		width: 100%;
-														// }
-
 												}
 										}
 
 										div.subNavigationArea {
-												//										padding: 1em;
-												//										margin: 1em 0;
 												display: flex;
 												justify-content: center;
 												align-items: center;
 
-												// height: 12vh;
-												
 												span.nextButton, span.playPauseButton {
 														display: inline-block;
 														width: 9em;
-														//												height: 3em;
-														//												margin: 1em;
 
 														img.svgImage {
 																width: 100%;
 														}
 												}
 
-												
-
-												span.playPauseButton {
-														//												position: relative;												
-												}
-
-												
+												// span.playPauseButton {
+												// }
 
 												span.redoButton, span.doneButton {
 														display: inline-block;
@@ -940,35 +725,14 @@ div.VIAKlaModuleExerciser {
 																width: 100%;
 														}
 												}
-
-												// Play/Pause button switcher
-												// span.playPauseButton {
-												// 		img.play {
-												// 				visibility: hidden;
-												// 				div.speedReader.pausing & {
-												// 						visibility: visible;
-												// 				}
-												// 		}
-												// 		img.pause {
-												// 				visibility: hidden;
-												// 				div.speedReader.playing & {
-												// 						visibility: visible;
-												// 				}
-												// 		}
-												// }
 										}
 
 
-
 										.activeButton() {
-												//										background-color: yellow;
 
 												.activeDark {
 														fill: @l-color-blue-l;
 												}
-												// .activeNormal {
-												// 		fill: @l-color-blue-ll;
-												// }
 												.activeLight {
 														fill: @l-color-blue-llll;
 												}
@@ -980,17 +744,11 @@ div.VIAKlaModuleExerciser {
 										
 
 										div.speedChooser {
-												//														@border: 2px solid @l-color-blue;
-												
-												// z-index: 1;
-												//														border: @border;
-												
 
 												display: flex;
 												justify-content: space-between;
 												align-items: center;
 												margin: 1em 0;
-												// width: 50%;
 
 												div.line {
 														background-color: @l-color-blue-llll;
@@ -1000,14 +758,9 @@ div.VIAKlaModuleExerciser {
 
 												
 												div.speed {
-														//														padding: 0.1em 1em 0.1em 0;
 														white-space: nowrap;
 														cursor: pointer;
 
-														// span.icon {
-														// 		width: 1.3em;
-														// 		display: inline-block;
-														// }
 														svg.radioButton {
 																width: 20px;
 														}
@@ -1033,8 +786,6 @@ div.VIAKlaModuleExerciser {
 												height: @height;
 												border-radius: @radius;
 												background-color: @l-color-blue-llll;
-												// position: fixed;
-												// bottom: 1em;
 												margin: 1em 0;
 
 												div.filledBar {
@@ -1060,12 +811,7 @@ div.VIAKlaModuleExerciser {
 																display: unset;
 														}
 												}
-												// div.speedChooser {
-												// 		display: none;
-												// }
-												
 										}
-
 								}
 								// Automatic timer is pausing
 								&.pausing {
@@ -1078,9 +824,6 @@ div.VIAKlaModuleExerciser {
 																display: none;
 														}
 												}
-												// div.speedChooser {
-												// 		display: unset;
-												// }
 										}
 								}
 								// Is on step listen
@@ -1125,11 +868,8 @@ div.VIAKlaModuleExerciser {
 										div.speedTextArea.magic-spell {
 												div.speedTextAreaContent {
 														background-color: @l-color-blue-lllll;
-														// width: 40vh;
-														// height: 40vh;
 														border-radius: 50%;
 														overflow: visible;
-														// flex-shrink: 0;
 
 														div.speedText {
 																padding: 0.5em;
@@ -1152,29 +892,26 @@ div.exercise {
 		
 		@dropTargetHoverColor: yellow;
 		
-		// Wozu?
-//		margin-bottom: 50px;
-
 		// General wrapping styles for backend usage
-		.spaced {
-				letter-spacing: 0.1em;
-				line-height: 1.6em;
-		}
-		.framed {
-				padding: 10px;
-				margin: 15px 0;
-				border: 1px solid #aaa;
-		}
-		.smaller {
-				font-size: 88%;
-		}
-		.indented {
-				margin-left: 10%;
-				margin-right: 10%;
-		}
+		// Not in use so far
+		// .spaced {
+		// 		letter-spacing: 0.1em;
+		// 		line-height: 1.6em;
+		// }
+		// .framed {
+		// 		padding: 10px;
+		// 		margin: 15px 0;
+		// 		border: 1px solid #aaa;
+		// }
+		// .smaller {
+		// 		font-size: 88%;
+		// }
+		// .indented {
+		// 		margin-left: 10%;
+		// 		margin-right: 10%;
+		// }
 
 		table {
-				//						border: 1px solid #999;
 				border-collapse: collapse;
 
 				tr {
@@ -1201,20 +938,6 @@ div.exercise {
 				margin: -2px 0;
 		}
 
-		// input[type=text].clozeTextPlaceholder {
-		// 		.clozeTextPlaceholder();
-
-		// 		&:focus {
-		// 				outline: 1px solid #ccc;
-		// 				background-color: #ffd;
-		// 		}
-
-		// 		// Intentionally set as empty by user
-		// 		&.markedAsEmpty {
-		// 				background-color: black;
-		// 		}
-		// }
-
 		p {
 				margin-top: 3px;
 				margin-bottom: 3px;
@@ -1223,265 +946,31 @@ div.exercise {
 		hr.divider {
 				border-color: #999;
 				margin: 2em 0;
-		}
-
-
-		
- 
-		// div.exerciserMainButtons {
-		// 		margin-top: 30px;
-		// }
-
-
-		// div.audioPlayer {
-		// 		.clearfix();
-
-		// 		margin: 10px 0px;
-		// 		span.assetInfo {
-		// 				float: right;
-		// 		}
-		// }
-
-		
-		// div.videoPlayer {
-		// 		.clearfix();
-				
-		// 		div.videoContainer {
-		// 				margin-right: 10px;
-
-		// 				video {
-		// 						width: 100%;
-		// 						height: auto;
-		// 						//box-sizing: border-box;
-		// 				}
-		// 		}
-
-
-		// 		span.assetInfo {
-		// 				float: right;
-		// 		}
-		// }
-
-
-		// div.imageDisplayer {
-		// 		span.image {
-		// 				margin-top: 0.5em;
-		// 				margin-bottom: 0.5em;
-		// 				display: inline-block;
-		// 				text-align: right;
-		// 				img {
-		// 						display: block;
-		// 				}
-		// 				span.assetInfo {
-		// 				}
-						
-		// 		}
-		// }
-
-		// div.fileDownloader {
-		// 		a {
-		// 				.icon {
-		// 						margin-right: 0.5em;
-		// 				}
-
-		// 				img.downloadPreview {
-		// 						max-width: 10em;
-		// 						border: 1px solid #eee;
-		// 				}
-
-		// 				&:hover {
-		// 						img.downloadPreview {
-		// 								max-width: 10em;
-		// 								border-color: @base-link-color;
-		// 						}
-								
-		// 				}
-		// 		}
-		// 		span.assetInfo {
-		// 				margin-left: 0.5em;
-		// 		}
-				
-		// }
-
-		// span.assetInfo {
-		// 		cursor: pointer;
-		// }
-
-		// span.hintSymbol {
-		// 		display: inline-block;
-		// 		margin: 0.2em;
-		// }
-
-
-
-
-
-
-		// div.taskGroup {
-				
-		// 		div.taskGroupItem {
-		// 				margin: 10px 0px;
-		// 		}
-		// }
-
-		// div.taskBrickGroupToggler {
-		// 		padding: 0.5em 3px;
-		// 		margin: 0.5em 0;
-		// 		cursor: pointer;
-		// 		background-color: #eee;
-		// 		//						color: white;
-		// 		border: none;
-
-		// 		&:hover {
-		// 				background: #999;
-		// 		}
-		// }
-
-		// div.taskBrickGroup {
-		// 		// border: 1px solid black;
-		// 		padding: 5px;
-
-		// 		&.hidden {
-		// 				.hiddenSectionButWithDefinedDimension()
-		// 		}
-
-		// }
-		
-
-// 		div.dualImageSwitcher {
-// 				div.imagesContainer {
-// 						display: inline-block;
-// 						div.image {
-// 								display: inline-block;
-// 								text-align: right;
-// 								img {
-// 										display: block;
-// 								}
-// 								span.assetInfo {
-// 								}
-// 								&.hidden {
-// 										display: none;
-// 								}
-// 								// &.image2 {
-// 								// 		img {
-// 								// 				border: 2px solid yellow;
-// 								// 		}
-// 								// }
-// 						}
-// 				}
-
-// 				div.tools {
-// //						.uk-margin-top();
-// 						.printThis {
-// //								.uk-margin-left();
-// 								float: right;
-// 						}
-// 				}
-// 		}
-
-
-		// div.textMemo {
-		// 		background-color: #eee;
-		// 		padding: 1em;
-		// 		textarea.textMemo {
-		// 				width: 100%;
-		// 				margin-top: 1em;
-		// 				padding: 1em;
-		// 				border: 1px solid #666;
-		// 				background-color: #fefefe;
-		// 				box-sizing: border-box;
-		// 		}
-		// }
-		
+		}		
 } // div.exercise
 
 
+div.VIAKlaMyProfileComponent {
 
-// div.zoomBox {
-// 		padding: 0.3em;
-// 		margin-top: 0.3em;
-// 		//		border: 1px solid black;
-// 		div.header {
-// 				position: relative;
-// 				padding: 0.5em 0;
-// //				background-color: #999;
-// 				color: #999;
-// 				font-size: 85%;
-// 				text-align: center;
-// 				//border-bottom: 1px dotted black;
-				
-// 				span.title {
-						
-// 				}
-// 				span.close {
-// 						font-size: 2rem;
-// 						//				font-weight: bold;
-// //						text-align: right;
-// 						position: absolute;
-// 						right: 0;
-// 						top: 2px;
-// 						a {
-// 								color: black;
-// 						}
-// 				}
-// 		}
-// }
+		padding-top: 1em;
 
-// div.VIAKlaMyProfileComponent, div.VIAKlaTeacherMyCockpit, div.VIAKlaMyPortfolioComponent {
-
-// 		padding-top: 1em;
-
-// 		h1 {
-// 				color: @l-color-main;
-// 		}
-		
-// 		h1, h2, h3, h4 {
-// 				text-align: left;
-// 		}
-		
-// }
-
-// div.VIAKlaTeacherMyCockpit {
-
-// 		.invitationCode {
-// 				font-family: monospace;
-// 				font-size: 120%;
-// 				border: 1px solid black;
-// 		}
-// }
-
-// div.VIAKlaMyPortfolioComponent {
-
-// 		h4.currentUnit {
-// 				margin-top: 0;
-// 		}
-		
-// 		div.legend {
-// 				text-align: right;
-// 				font-size: 80%;
-// 		}
-
-// 		a.deleteAction {
-// //				margin-top: 0.3em;
-// 				margin-right: 1em;
-// //				flex-shrink: 0;
-// //				color: black;
-// //				float: right;
-// //				vertical-align: bottom;
-// 		}
-		
-// }
-
-
-
-
-div.lightboxModal {
-		div.invitationCode {
-				font-size: 300%;
-				text-align: center;
-				font-family: monospace;
+		h1 {
+				color: @l-color-main;
 		}
+		
+		h1, h2, h3, h4 {
+				text-align: left;
+		}
+		
 }
+
+// div.lightboxModal {
+// 		div.invitationCode {
+// 				font-size: 300%;
+// 				text-align: center;
+// 				font-family: monospace;
+// 		}
+// }
 
 
 div.VIAInformationComponent {
@@ -1490,9 +979,9 @@ div.VIAInformationComponent {
 		}
 }
 
-// div.VIAStaticTextDisplayerComponent {
-// 		padding: 1em;
-// }
+div.VIAStaticTextDisplayerComponent {
+		padding: 1em;
+}
 
 // div.VIACaptchaComponent {
 // 		pre.captcha {
@@ -1509,11 +998,6 @@ div.VIAInformationComponent {
 // 		}
 // }
 
-// div.VIAKlaRegisterComponent {
-// 		label {
-// 				font-weight: bold;
-// 		}
-// }
 
 // ===========================================
 // Demo
@@ -1572,117 +1056,6 @@ div.VIAInformationComponent {
 // Misc
 // ============================================
 
-// TODO: Oben einsortieren!
-
-// figure.inlineAssetImage {
-// 		display: inline-block;
-// 		margin: 0;
-
-// 		figcaption {
-// 				line-height: 1em;
-// 				span.assetInfo {
-// 						font-size: 75%;
-// 						float: right;
-// 				}
-// 		}
-// }
-
-// span.inlineAssetAudio {
-// 		audio {
-// 				display: inline-block;
-// 				width: 5em;
-// 		}
-
-// 		div.mejs__container {
-// 				display: inline-block;
-// 				width: 5em;
-// 				vertical-align: middle;
-// 		}
-// }
-
-// .correct {
-// 		background-color: @correctColor;
-// }
-
-// .wrong {
-// }
-
-// span.partiallyCorrectIcon {
-// 		color: orange;
-// }
-
-// span.correctIcon {
-// 		color: #1a1;
-// }
-
-// span.wrongIcon {
-// 		color: red;
-// 		padding-left: 2px;
-// 		padding-right: 2px;
-// }
-
-// div.webui-popover {
-// 		div.webui-popover-content {
-// 				word-break: break-word;
-// 				max-width: 20em;
-// 		}
-		
-// 		span.markAsEmpty {
-// 				cursor: pointer;
-// 				border: 2px solid green;
-
-// 				&.active {
-// 						background-color: green;
-// 				}
-// 		}
-
-// 		// &.webui-popover-hintBalloon {
-// 		// 		background-color: yellow;
-// 		// 		// div.webui-popover-content {
-// 		// 		// 		background-color: yellow;
-// 		// 		// }				
-// 		// }
-// }
-
-
-
-// // div.VIAKlaExerciserFinishedComponent {
-// // 		.solution {
-
-// // 				&.answerWasWrong {
-// // 						// background-color: transparent;
-// // 				}
-
-// // 		}
-// // }
-
-
-// span.copyPaste, pre.copyPaste {
-// 		cursor: pointer;
-// }
-
-
-
-
-// // TODO Evt. innerhalb taskEditor
-// div.inputEditor {
-// 		> div.inputEditor {
-// 				border: 1px solid #333;
-// 				background-color: #f3f3f3;
-// 				padding: 5px;
-// 				margin: 10px 0;
-// 		}
-// }
-
-// span.dictionaryEntry {
-// 		// border-bottom: 1px dotted #333;
-// 		text-decoration: underline;
-// 		text-decoration-color: #333;
-// 		text-decoration-style: dotted; 
-// }
-
-
-
 
 
 div.moduleBody {
@@ -1700,7 +1073,9 @@ div.moduleBody {
 }
 
 
-
+// ==============================================
+// Klaro App Hauptkomponenten
+// ==============================================
 
 @pageSidePad: 1em;
 
@@ -1741,6 +1116,7 @@ div.VIAKlaPagerComponent {
 								display: flex;
 								flex-direction: column;
 								justify-content: space-between;
+								gap: 0.5em;
 
 								div.VIAKlaModuleExerciser,
 								div.moduleBody,
@@ -1844,7 +1220,7 @@ div.VIAKlaPagerComponent {
 								padding: 5em 1em 1em 1em;
 
 								// Not small phones
-								@media (min-width: @breakpoint-medium) {
+								@media (min-width: @breakpoint-small) {
 								// Only large screens
 								//@media (min-width: @breakpoint-large) {
 										left: 66vw;
@@ -2105,10 +1481,15 @@ div.VIAKlaPagerComponent {
 						div.lottieAnimation {
 								// width: 100vw;
 								// height: 100vh;
+								flex-grow: 2;
 
 								&.manualToAutomatic, &.startManual, &.finish {
-										width: 100%;
-										height: 80vh;
+										// width: 100%;
+										margin-left: -@pageSidePad;
+										margin-right: -@pageSidePad;
+										// box-sizing: border-box;
+//										height: 80vh;
+										background-color: @l-color-mediumgreen;
 								}
 						}
 
@@ -2159,11 +1540,19 @@ div.VIAKlaPagerComponent {
 														// justify-content: space-between;
 												}
 
-												span.progress {
-														position: absolute;
-														top: 10px;
-														right: 10px;
+												span.infoButton {
+														display: inline-block;
+														background-color: white;
+														border: 1px solid @l-color-blue;
+														padding: 5px 15px;
+														margin-top: 10px;
 												}
+
+												// span.progress {
+												// 		position: absolute;
+												// 		top: 10px;
+												// 		right: 10px;
+												// }
 
 												span.actionSymbol {
 														// position: absolute;
@@ -2179,6 +1568,7 @@ div.VIAKlaPagerComponent {
 
 														img.svgImage {
 																margin-left: 0.5em;
+																width: 3em;
 														}
 												}
 										}
@@ -2188,12 +1578,6 @@ div.VIAKlaPagerComponent {
 												// justify-content: space-between;
 												// align-items: flex-start;
 
-												span.infoButton {
-														display: inline-block;
-														background-color: white;
-														border: 1px solid @l-color-blue;
-														padding: 5px 15px;
-												}
 										}
 								}								
 						}
