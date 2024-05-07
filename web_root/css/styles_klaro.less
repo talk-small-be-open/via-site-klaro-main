@@ -109,6 +109,7 @@
 @l-color-text: @l-color-blue; //  #575754;
 @l-color-main: @l-color-blue;
 
+@l-color-pink: #F2B2B4;
 
 // Redefine basics for this via sub-website
 @via-basic-color: @l-color-text;
@@ -250,6 +251,18 @@ form {
 		margin-bottom: 20px;
 }
 
+.anchorButton, button.clickButton {
+		cursor: pointer;
+		display: inline-block;
+		padding: 0.5em;
+		border: 1px solid black;
+		border-radius: 0.5em;
+
+		&:active {
+				background-color: #eee;
+		}
+}
+
 // Basics for our inline svg
 svg, img.svgImage {
 		vertical-align: middle;
@@ -309,6 +322,7 @@ svg, img.svgImage {
 
 span.pillarDocument {
 
+
 		div.pillarParagraph {
 
 				+ div.pillarParagraph {
@@ -323,6 +337,25 @@ span.pillarDocument {
 				
 				.noWrap {
 						white-space: nowrap;
+				}
+
+				// Custom styles, used with pillar syntax ((style blablabl))
+				.red {
+						color: red;
+				}
+
+				.green {
+						color: green;
+				}
+
+				
+				// Custom paragraph styles, used with pillar syntax @@style blablabl
+				&.red {
+						.red();
+				}
+
+				&.green {
+						.green();
 				}
 				
 		}
@@ -1598,6 +1631,96 @@ div.VIAKlaPagerComponent {
 				}
 				
 		}
+		
+}
+
+div.VIAKlaIntroductionComponent {
+		@videoBackground: #F7F7EB; // nicht ganz @l-color-lightgreen
+		
+		background-color: @videoBackground;
+		min-height: 100dvh;
+//		padding-top: 1em;
+		box-sizing: border-box;
+
+		div.videoContainer {
+				width: 100vw;
+				max-width: 720px;
+				position: relative;
+				margin: 0 auto;
+
+				// retina
+				@media only screen and (min-resolution: 2dppx) {
+						max-width: 360px;
+				}
+
+				
+				video {
+						background-color: @l-color-lightgreen;
+						display: block;
+						width: 100%;
+						height: auto;
+				}
+
+				div.videoControlOverlay {
+						// visibility: hidden;
+						position: absolute;
+						top: 0;
+//						bottom: 0;
+						right: 0;
+						left: 0;
+						z-index: 1;
+						padding: 2em 0.5em;
+//						background: rgba(50%,50%,50%,0.3);
+//						background-color: fade(@l-color-lightgreen, 70%);
+
+						.anchorButton, button.clickButton {
+								display: block;
+								background-color: white;
+								width: 100%;
+								margin: 1em 0;
+								font-size: 1.5rem;
+						}
+						button.continueButton {
+								visibility: hidden;
+						}
+
+						span.klaroLogo {
+								display: block;
+								margin-bottom: 1em;
+								filter: drop-shadow(0px 0px 5px black);
+						}
+				}
+	
+				&.playing {
+						div.videoControlOverlay {
+								display: none;
+						}
+				}
+
+				&.pausing {
+						div.videoControlOverlay {
+								button.continueButton {
+										visibility: visible;
+								}
+						}
+
+						video {
+								filter: opacity(50%);
+						}
+				}
+				&.ended {
+						div.videoControlOverlay {
+								button.playButton {
+										background-color: transparent;
+								}
+								button.continueButton {
+										visibility: hidden;
+								}
+						}
+				}
+		}
+
+		
 		
 }
 
