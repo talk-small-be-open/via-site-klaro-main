@@ -1694,6 +1694,7 @@ div.VIAKlaPagerComponent {
 
 div.VIAKlaIntroductionComponent {
 		@videoBackground: #F7F7EB; // nicht ganz @l-color-lightgreen
+		@videoBackgroundEnd: #F5B0B4;
 		
 		background-color: @videoBackground;
 		height: 100dvh;
@@ -1741,6 +1742,7 @@ div.VIAKlaIntroductionComponent {
 						padding: 2em 0.5em;
 //						background: rgba(50%,50%,50%,0.3);
 //						background-color: fade(@l-color-lightgreen, 70%);
+						background-color: @videoBackground;
 
 						.anchorButton, button.clickButton {
 								display: block;
@@ -1768,17 +1770,19 @@ div.VIAKlaIntroductionComponent {
 
 				&.pausing {
 						div.videoControlOverlay {
+								background-color: transparent;
 								button.continueButton {
 										visibility: visible;
 								}
 						}
 
 						video {
-								filter: opacity(50%);
+								filter: opacity(50%) blur(2px);
 						}
 				}
 				&.ended {
 						div.videoControlOverlay {
+								background-color: @videoBackgroundEnd;
 								button.playButton {
 										background-color: transparent;
 								}
