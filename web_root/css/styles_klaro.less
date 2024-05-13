@@ -12,7 +12,9 @@
 		font-family: 'DCH';
 		font-weight: 700;
 		font-style: normal;
-		src: url('fonts/dchbasisschrift.woff') format('woff');
+		src: url('fonts/DCH-Basisschrift.woff2') format('woff2'),
+				 url('fonts/DCH-Basisschrift.otf') format('otf')
+//				 url('fonts/dchbasisschrift.woff') format('woff');
 }
 
 
@@ -24,43 +26,43 @@
 }
 
 
-@font-face {
-    font-family: 'FF Unit Rounded Pro Light';
-    font-style: normal;
-    font-weight: normal;
-    src: local('FF Unit Rounded Pro Light'), url('fonts/FF Unit Rounded Pro Light.woff') format('woff');
-}
+// @font-face {
+//     font-family: 'FF Unit Rounded Pro Light';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('FF Unit Rounded Pro Light'), url('fonts/FF Unit Rounded Pro Light.woff') format('woff');
+// }
 
 
-@font-face {
-    font-family: 'FF Unit Rounded Pro Medium';
-    font-style: normal;
-    font-weight: normal;
-    src: local('FF Unit Rounded Pro Medium'), url('fonts/FF Unit Rounded Pro Medium.woff') format('woff');
-}
+// @font-face {
+//     font-family: 'FF Unit Rounded Pro Medium';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('FF Unit Rounded Pro Medium'), url('fonts/FF Unit Rounded Pro Medium.woff') format('woff');
+// }
 
 
-@font-face {
-    font-family: 'FF Unit Rounded Pro Bold';
-    font-style: normal;
-    font-weight: normal;
-    src: local('FF Unit Rounded Pro Bold'), url('fonts/FF Unit Rounded Pro Bold.woff') format('woff');
-}
+// @font-face {
+//     font-family: 'FF Unit Rounded Pro Bold';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('FF Unit Rounded Pro Bold'), url('fonts/FF Unit Rounded Pro Bold.woff') format('woff');
+// }
 
-@font-face {
-    font-family: 'FF Unit Rounded Pro Black';
-    font-style: normal;
-    font-weight: normal;
-    src: local('FF Unit Rounded Pro Black'), url('fonts/FF Unit Rounded Pro Black.woff') format('woff');
-}
+// @font-face {
+//     font-family: 'FF Unit Rounded Pro Black';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('FF Unit Rounded Pro Black'), url('fonts/FF Unit Rounded Pro Black.woff') format('woff');
+// }
 
 
-@font-face {
-    font-family: 'FF Unit Rounded Pro Ultra';
-    font-style: normal;
-    font-weight: normal;
-    src: local('FF Unit Rounded Pro Ultra'), url('fonts/FF Unit Rounded Pro Ultra.woff') format('woff');
-}
+// @font-face {
+//     font-family: 'FF Unit Rounded Pro Ultra';
+//     font-style: normal;
+//     font-weight: normal;
+//     src: local('FF Unit Rounded Pro Ultra'), url('fonts/FF Unit Rounded Pro Ultra.woff') format('woff');
+// }
 
 
 
@@ -91,7 +93,9 @@
 
 @l-color-lightgreen: #F6F7E5;
 @l-color-green: #B7C18D;
-@l-color-mediumgreen: #E5EED8;
+@l-color-mediumgreen: #F4F6E7; // #E5EED8;
+
+
 
 @l-color-blue-d: #40627A;
 @l-color-blue: #5883A5;
@@ -251,7 +255,7 @@ form {
 		margin-bottom: 20px;
 }
 
-.anchorButton, button.clickButton {
+.anchorButton, button.clickButton, button.submitButton {
 		cursor: pointer;
 		display: inline-block;
 		padding: 0.5em;
@@ -469,14 +473,23 @@ div.VIAPublicHomeComponent {
 				padding: 0 1em;
 		}
 
-		form.codeInput {
+		form {
+				margin: 1em 0;				
+		}
+		
+		div.codeInput {
 				margin: 1em 0;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 5px;
 				
 				input[type=text] {
 						border: 1px solid black;						
-						width: 100%;
+						width: 5em;
+						flex-grow: 2;
+						flex-basis: 30%;
 						padding: 0.2em;
-						margin: 1em 0;
 				}
 		}
 
@@ -750,8 +763,12 @@ div.VIAKlaModuleExerciser {
 												// }
 
 												span.redoButton, span.doneButton {
+														// buttons sind 66x58
+														@width: 4em;
+														@ratio: 66/58;
 														display: inline-block;
-														width: 4em;
+														width: @width;
+														height: @width / @ratio;
 														margin: 0.1em;
 
 														img.svgImage {
@@ -829,9 +846,6 @@ div.VIAKlaModuleExerciser {
 										}
 
 								}
-								// &.read { div.navigationArea span.mainButton.read { .activeButton() }}
-								// &.speak { div.navigationArea span.mainButton.speak { .activeButton() }}
-								// &.listen { div.navigationArea svg.sign.listen { .activeButton() }}
 
 								// Automatic timer is playing
 								&.playing {
@@ -1183,11 +1197,17 @@ div.VIAKlaPagerComponent {
 										display: flex;
 								}
 
-								&.appear {
-										.pageAppear();
+								// Default appearance style
+								&.slide {
+										.pageSlide();
 								}
-								&.appearBack {
-										.pageAppearBack();
+								&.slide-back {
+										.pageSlideBack();
+								}
+
+								// Simplest appearance style
+								&.appear, &.appear-back {
+										.pageAppear();										
 								}
 						}
 
@@ -1260,7 +1280,7 @@ div.VIAKlaPagerComponent {
 								}
 
 								
-								.slide-inout();
+								.slide-side-inout();
 								
 								// &.in {
 								// 		display: block;
@@ -1515,6 +1535,8 @@ div.VIAKlaPagerComponent {
 								// width: 100vw;
 								// height: 100vh;
 								flex-grow: 2;
+//								flex-basis: 50%;
+								height: 100%;
 
 								&.manualToAutomatic, &.startManual, &.finish {
 										// width: 100%;
@@ -1620,9 +1642,15 @@ div.VIAKlaPagerComponent {
 
 						.preventStupidTouchStuff();
 
-						dotlottie-player.transientAnimation {
-								width: 100vw;
-								height: 100vh;
+						div.lottieAnimation {
+								&.animationName-01-HW-Uebergang-Schildkroete {
+										background-color: @l-color-mediumgreen;
+								}
+								
+								dotlottie-player.transientAnimation {
+										width: 100vw;
+										height: 100vh;
+								}
 						}
 				}
 

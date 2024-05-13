@@ -38,17 +38,42 @@ function processHtmlDocument(contextElement) {
 	//  $('textarea', contextElement).autosize();
 }
 
+// Default global error handler
+window.onerror = (a, b, c, d, e) => {
+  console.log(`message: ${a}`);
+  console.log(`source: ${b}`);
+  console.log(`lineno: ${c}`);
+  console.log(`colno: ${d}`);
+  console.log(`error: ${e}`);
+
+	// Ignore some typical errors which we dont bother
+	if (e instanceof DOMException) { return false }
+	
+	javascriptErrorStandardBehaviour(e);
+
+	// Continue with handling the error
+  return false;
+};
+
+function javascriptErrorStandardBehaviour(errorIfAny) {
+	if (confirm('Ups, verhext! Da war ein Fehler, wir rufen nun den Zauberlehrer! Hokus pokus Wunderwürmer und Zaubermaden, die Klaro-App wird neu geladen!')) {
+		window.location.reload();
+	}
+}
+
 /* =========== PAGER ================ */
 
 // provided by seaside: function pager_getPager()
 
-function pager_gotoPage(pagerId, pageId, isBack = false) {
+function pager_gotoPage(pagerId, pageId, isBack = false, transition = 'slide') {
+
+	// Transition names: silde, appear
 	processHtmlDocument(pageId);
 	window.scroll({behavior: 'auto', top: 0});
 
-	const appearanceStyle = isBack ? 'appearBack' : 'appear';
+	const appearanceStyle = isBack ? (transition + '-back') : transition;
 	
-	$('div.klaroPage', pagerId).removeClass('current appear appearBack');
+	$('div.klaroPage', pagerId).removeClass('current slide slide-back appear appear-back');
 
 	// Slide-In Animation! See CSS ...
 	
@@ -62,7 +87,7 @@ function pager_gotoPage(pagerId, pageId, isBack = false) {
 class SpeedReaderTimer {
 	milliseconds = 0;
 	millisecondsTogo = 0;
-	step = 100;
+	step = 500; // Ticker-Step Dauer in ms
 	interval;
 	finishedCallback;
 	syncCallback;

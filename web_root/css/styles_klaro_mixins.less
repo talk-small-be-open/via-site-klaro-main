@@ -59,7 +59,7 @@
 
 // See https://animista.net/play/entrances/slide-in/slide-in-right
 
-@keyframes pageAppear {
+@keyframes pageSlide {
   0% {
     transform: translateX(300px);
     opacity: 0;
@@ -70,7 +70,7 @@
   }
 }
 
-@keyframes pageAppearBack {
+@keyframes pageSlideBack {
   0% {
     transform: translateX(-300px);
     opacity: 0;
@@ -81,38 +81,53 @@
   }
 }
 
+@keyframes pageAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.pageSlide() {
+		animation: pageSlide 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+// Back should be faster and from left to right
+.pageSlideBack() {
+		animation: pageSlideBack 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
 .pageAppear() {
 		animation: pageAppear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-// Back should be faster and from left to right
-.pageAppearBack() {
-		animation: pageAppearBack 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
 
-@keyframes pageDisappear {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-		display: block;
-  }
-  100% {
-    transform: translateX(300px);
-    opacity: 0;
-		display: none;
-  }
-}
-
-.pageDisappear() {
-		animation: pageDisappear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
+// @keyframes pageDisappear {
+//   0% {
+//     transform: translateX(0);
+//     opacity: 1;
+// 		display: block;
+//   }
+//   100% {
+//     transform: translateX(300px);
+//     opacity: 0;
+// 		display: none;
+//   }
+// }
+// .pageDisappear() {
+// 		animation: pageDisappear 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+// }
 
 
-.slide-inout() {
+.slide-side-inout() {
 		transform: translateX(100vw);
     opacity: 0;
-		transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
-
+//		transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+		transition-property: transform, opacity;
+		transition-duration: 0.3s; // faster out than in (below)
+		transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 		&.slideIn {
 				transform: translateX(0);
 				opacity: 1;
@@ -121,6 +136,7 @@
 				transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
 		}
 }
+
 
 // Hm, howto give less-piece into a mixin?
 // .ifHoverable() {
