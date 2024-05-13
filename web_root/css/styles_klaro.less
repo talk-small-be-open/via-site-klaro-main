@@ -499,11 +499,11 @@ div.VIAPublicHomeComponent {
 div.VIAKlaModuleExerciser {
 
 
-		margin: 0 @pageSidePad;
+		margin: 0 var(--pageSidePad);
 
 		div.titlePanel {
 				@circleWidth: 2em;
-				@sidePad: @pageSidePad;
+				@sidePad: 1em;
 				@borderRadius: @sidePad + @circleWidth/2;
 				@height: 2 * @borderRadius;
 
@@ -924,8 +924,15 @@ div.VIAKlaModuleExerciser {
 														}
 												}
 										}
-
 								}
+
+								// Sequence Blitz
+								&.sequenceblitz {
+										div.mainPlayArea div.navigationArea span.mainButton {
+												// No given fixed width. Better centering of head.
+												width: auto;
+										}
+								}								
 						}
 				}
 		}
@@ -1129,6 +1136,8 @@ div.moduleBody {
 
 div.VIAKlaPagerComponent {
 
+		--pageSidePad: @pageSidePad;
+
 
 		div.VIAKlaPageComponent {
 
@@ -1226,7 +1235,7 @@ div.VIAKlaPagerComponent {
 								background-color: white;
 								display: flex;
 								justify-content: space-between;
-								padding: 0.5em @pageSidePad;
+								padding: 0.5em var(--pageSidePad);
 
 								div.topbarLeft {
 										display: flex;
@@ -1403,7 +1412,7 @@ div.VIAKlaPagerComponent {
 						left: 0;
 						right: 0;
 						background-color: @l-color-lightgreen;
-						padding: @pageSidePad;
+						padding: 0.5em var(--pageSidePad);
 						z-index: 1;
 						
 						div.infoPanelContent {
@@ -1519,7 +1528,7 @@ div.VIAKlaPagerComponent {
 
 						.preventStupidTouchStuff();
 
-						padding: 0 @pageSidePad;
+						padding: 0 var(--pageSidePad);
 						
 						// Not small phones
 						@media (min-width: @breakpoint-medium) {
@@ -1532,16 +1541,36 @@ div.VIAKlaPagerComponent {
 
 								
 						div.lottieAnimation {
+
+								@circleWidth: 2em;
+								@sidePad: 1em;
+								@borderRadius: @sidePad + @circleWidth/2;
+
+								border-top-left-radius: @borderRadius;
+								border-top-right-radius: @borderRadius;
+								// margin-left: @sidePad;
+								// margin-right: @sidePad;
+								
 								// width: 100vw;
 								// height: 100vh;
 								flex-grow: 2;
 //								flex-basis: 50%;
-								height: 100%;
+								//								height: 100%;
+
+								min-height: 0; // Prevents having a big auto minimal height and overflow!
+								
+								// display: flex;
+								// align-items: stretch;
+								// justify-content: center;
+								
+								// dotlottie-player {
+								// 		height: 100%;
+								// }
 
 								&.manualToAutomatic, &.startManual, &.finish {
 										// width: 100%;
-										margin-left: -@pageSidePad;
-										margin-right: -@pageSidePad;
+										margin-left: -var(--pageSidePad);
+										margin-right: -var(--pageSidePad);
 										// box-sizing: border-box;
 //										height: 80vh;
 										background-color: @l-color-mediumgreen;
@@ -1565,8 +1594,8 @@ div.VIAKlaPagerComponent {
 						}
 
 						div.exercisePanels {
-								padding-left: @pageSidePad;
-								padding-right: @pageSidePad;
+								padding-left: var(--pageSidePad);
+								padding-right: var(--pageSidePad);
 								
 								div.exercisePanel {
 										background-color: white;
@@ -1666,34 +1695,45 @@ div.VIAKlaIntroductionComponent {
 		@videoBackground: #F7F7EB; // nicht ganz @l-color-lightgreen
 		
 		background-color: @videoBackground;
-		min-height: 100dvh;
+		height: 100dvh;
 //		padding-top: 1em;
 		box-sizing: border-box;
 
-		div.videoContainer {
-				width: 100vw;
+		.maxDimensions() {
+				max-height: 100dvh;
 				max-width: 720px;
-				position: relative;
-				margin: 0 auto;
 
 				// retina
 				@media only screen and (min-resolution: 2dppx) {
 						max-width: 360px;
 				}
+				
+		}
+		
+		div.videoContainer {
+				width: 100vw;
+				position: relative;
+				margin: 0 auto;
 
+				.maxDimensions();
 				
 				video {
-						background-color: @l-color-lightgreen;
-						display: block;
-						width: 100%;
-						height: auto;
+						.maxDimensions();
+						
+						background-color: @videoBackground;
+//						display: block;
+//						max-width: 100%;
+//						height: auto;
+//						max-height: 100%;
+						object-fit: contain;
 				}
 
 				div.videoControlOverlay {
+//						.maxDimensions();
 						// visibility: hidden;
 						position: absolute;
 						top: 0;
-//						bottom: 0;
+						bottom: 0;
 						right: 0;
 						left: 0;
 						z-index: 1;

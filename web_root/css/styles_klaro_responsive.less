@@ -17,11 +17,12 @@
 		}
 
 		div.VIAKlaPagerComponent {
+				--pageSidePad: @pageSidePad;
 				div.VIAKlaPageComponent {
 						&.VIAKlaStationPage div.klaroPage {
 								div.exercisePanels {
-										padding-left: @pageSidePad;
-										padding-right: @pageSidePad;
+										padding-left: var(--pageSidePad);
+										padding-right: var(--pageSidePad);
 								}
 						}
 				}
@@ -34,8 +35,6 @@
 		}
 
 		div.VIAPublicHomeComponent {
-				// padding-left: @pageSidePad;
-				// padding-right: @pageSidePad;
 				margin: 0 auto;
 				width: 30em;
 				
