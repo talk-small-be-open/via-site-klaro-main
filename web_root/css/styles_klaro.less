@@ -119,6 +119,8 @@
 @via-basic-color: @l-color-text;
 @via-basic-background-color: @l-color-background;
 
+@pageSidePad: 1em;
+
 
 // Breakpoints
 // ========================================================================
@@ -141,6 +143,7 @@
 
 
 
+
 // =======================================================================
 // Mixins
 // =======================================================================
@@ -156,6 +159,9 @@
 
 // }
 
+:root {
+		--pageSidePad: @pageSidePad;
+}
 
 body {
 		font-family: 'FF Unit Rounded Pro Regular';
@@ -207,6 +213,11 @@ h3 {
 }
 
 h1, h2, h3 {
+		&:not(:first-child) {
+				margin-top: 0.7em;
+		}
+
+		font-weight: bold;
 		margin-bottom: 0.5em;
 }
 
@@ -229,21 +240,27 @@ form {
 		}
 
 		button[type=submit] {
-				border: 1px solid @l-color-blue;
+				border-color: @l-color-blue;
 				padding: 10px;
 				cursor: pointer;
-				background-color: @l-color-blue-l;
+				background-color: @l-color-blue;
 				color: white;
 
 				&:hover {
-						background-color: @l-color-blue;
-						color: white;
+						border-color: @l-color-blue-l;
+						background-color: @l-color-blue-l;
 				}
 		}
 
 		input[type=checkbox] {
 				appearance: checkbox;
 		}
+
+		input[type=text] {
+				border: 1px solid black;						
+				padding: 0.2em;
+		}
+
 }
 
 
@@ -255,6 +272,14 @@ form {
 		margin-bottom: 20px;
 }
 
+.centerContainer {
+		margin: 5%;
+}
+
+.error {
+		color: maroon;
+}
+
 .anchorButton, button.clickButton, button.submitButton {
 		cursor: pointer;
 		display: inline-block;
@@ -264,6 +289,10 @@ form {
 
 		&:active {
 				background-color: #eee;
+		}
+
+		&+& {
+				margin-left: 0.5em;
 		}
 }
 
@@ -443,14 +472,22 @@ div.VIAConfirmationComponent {
 
 div.VIAPublicHomeComponent {
 
-		padding: 1em 0;
+		@sidePad: 2em;
+		@buffer: 1em;
+		
+		padding: @sidePad 0;
 		font-size: 120%;
 		line-height: 150%;
 
 		div.klaroLogo {
-				margin: 0 auto;
-				display: flex;
-				justify-content: center;
+				margin: 0 @sidePad;
+				// display: flex;
+				// justify-content: center;
+
+				span.klaroLogo {
+						display: inline-block;
+						width: 10rem;
+				}
 		}
 		
 		div.klaroBanner {
@@ -458,39 +495,59 @@ div.VIAPublicHomeComponent {
 				justify-content: center;
 		}
 		
-		div.info {
-				margin: 1em 0;
-				padding: 0 1em;
+		> div.info {
+				margin: @buffer 0;
+				padding: 0 @sidePad;
 		}
 
 		div.loginSection {
+				margin: @buffer 0;
+				padding: 0 @sidePad;
+
 				div.error {
 						background-color: maroon;
 						color: white;
-						padding: 2em;
+						padding: 1em;
 				}
-				margin: 1em 0;
-				padding: 0 1em;
+
+				div.codeInput {
+						margin: @buffer 0;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						gap: 5px;
+						
+						input[type=text] {
+								border: 1px solid black;						
+								width: 5em;
+								flex-grow: 2;
+								padding: 0.2em;
+
+								&.part1, &.part3 {
+										flex-basis: 30%;
+								}
+
+								&.part2 {
+										flex-basis: 10%;
+								}
+						}
+				}
+		}
+
+		div.hepLogo {
+				height: 5vh;
+//				width: auto;
+				display: block;
+				padding-left: 3rem;
 		}
 
 		form {
-				margin: 1em 0;				
+				margin: @buffer 0;				
 		}
 		
-		div.codeInput {
-				margin: 1em 0;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				gap: 5px;
-				
-				input[type=text] {
-						border: 1px solid black;						
-						width: 5em;
-						flex-grow: 2;
-						flex-basis: 30%;
-						padding: 0.2em;
-				}
+		
+		button.submitCoupon {
+				width: 100%;
 		}
 
 }
@@ -498,8 +555,8 @@ div.VIAPublicHomeComponent {
 
 div.VIAKlaModuleExerciser {
 
-
-		margin: 0 var(--pageSidePad);
+		// no effect since contents only
+		// margin: 0 var(--pageSidePad);
 
 		div.titlePanel {
 				@circleWidth: 2em;
@@ -517,6 +574,7 @@ div.VIAKlaModuleExerciser {
 				align-items: center;
 				justify-content: space-between;
 				overflow: visible;
+				margin: 0 var(--pageSidePad);
 
 				// img.svgImage {
 				// 		width: 3em;
@@ -627,6 +685,7 @@ div.VIAKlaModuleExerciser {
 
 						// "Gameboard"
 						div.speedReader {
+								margin: 0 var(--pageSidePad);
 								div.automaticStarter {
 										position: absolute;
 										top: 0;
@@ -1037,27 +1096,49 @@ div.VIAStaticTextDisplayerComponent {
 		padding: 1em;
 }
 
-// div.VIACaptchaComponent {
-// 		pre.captcha {
-// 				line-height: 1.1em;
-// 		}
-// 		input.captcha {
-// 				font-size: 200%;
-// 				font-family: monospace;
-// 				border: 2px solid green;
-// 				padding: 0.2em;
-// 				margin: 0.2em 0 0.2em 0;
-// 				max-width: 100%;
-// 				box-sizing: border-box;
-// 		}
-// }
+div.VIACaptchaComponent {
+		pre.captcha {
+				line-height: 1.1em;
+		}
+		input.captcha {
+				font-size: 200%;
+				font-family: monospace;
+				border: 2px solid green;
+				padding: 0.2em;
+				margin: 0.2em 0 0.2em 0;
+				max-width: 100%;
+				box-sizing: border-box;
+		}
+}
+
+div.infoPanel {
+		position: fixed;
+		display: flow-root;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: @l-color-lightgreen;
+		padding: 0.5em var(--pageSidePad);
+		z-index: 1;
+		
+		div.infoPanelContent {
+				background-color: white;
+				padding: 1em;
+				border-radius: 0.5em;
+
+				img.menu_x {
+						width: 2rem;
+				}
+		}
+}
 
 
 // ===========================================
 // Demo
 // ===========================================
 
-// @demoColor: #fffd37;
+@demoColor: #fffd37;
 
 // span.uk-label.demoLabel {
 // 		background-color: @demoColor;
@@ -1078,28 +1159,28 @@ div.VIAStaticTextDisplayerComponent {
 // // 		}
 // // }
 
-// div.demoRibbon {
-// 		@dim: 20em;
+div.demoRibbon {
+		@dim: 12em;
 		
-// 		position: fixed;
-// 		width: @dim;
-// 		height: @dim;
-// 		bottom: -(@dim/1.8);
-// 		right: -(@dim/1.9);
-// 		padding-top: 1em;
-// 		transform-origin: center;
-// 		transform: rotate(-45deg);
-// 		z-index: 999999; 
+		position: fixed;
+		width: @dim;
+		height: @dim;
+		bottom: -(@dim/1.8);
+		right: -(@dim/1.9);
+		padding-top: 1em;
+		transform-origin: center;
+		transform: rotate(-45deg);
+		z-index: 999999; 
 
-// 		div.ribbonText {
-// 				width: 100%;
-// 				text-align: center;
-// 				border-top: 1px solid black;
-// 				padding: 0.3em 1em 10em 1em;
-// 				background: @demoColor;
-// 				color: black;
-// 		}
-// }
+		div.ribbonText {
+				width: 100%;
+				text-align: center;
+				border-top: 2px solid black;
+				padding: 0.3em 1em 10em 1em;
+				background: @demoColor;
+				color: black;
+		}
+}
 
 // Cookiebar redefinitions
 // #cookie-bar-button {
@@ -1131,12 +1212,12 @@ div.moduleBody {
 // Klaro App Hauptkomponenten
 // ==============================================
 
-@pageSidePad: 1em;
+//@pageSidePad: 1em;
 
 
 div.VIAKlaPagerComponent {
 
-		--pageSidePad: @pageSidePad;
+//		--pageSidePad: @pageSidePad;
 
 
 		div.VIAKlaPageComponent {
@@ -1174,15 +1255,15 @@ div.VIAKlaPagerComponent {
 								justify-content: space-between;
 								gap: 0.5em;
 
-								div.VIAKlaModuleExerciser,
-								div.moduleBody,
-								div.VIAKlaTaskExerciser,
-								div.exercise,
-								div.taskGroup,
-								div.taskGroupItem,
-								div.VIAKlaSpeedReaderExerciser {
-										display: contents;
-								}
+								// div.VIAKlaModuleExerciser,
+								// div.moduleBody,
+								// div.VIAKlaTaskExerciser,
+								// div.exercise,
+								// div.taskGroup,
+								// div.taskGroupItem,
+								// div.VIAKlaSpeedReaderExerciser {
+								// 		display: contents;
+								// }
 
 								div.speedReader {
 										flex-grow: 2;
@@ -1235,12 +1316,15 @@ div.VIAKlaPagerComponent {
 								background-color: white;
 								display: flex;
 								justify-content: space-between;
-								padding: 0.5em; // var(--pageSidePad)
+								padding: 0.5em 0.5em 0.5em 0.5em; // var(--pageSidePad);
 
 								div.topbarLeft {
 										display: flex;
 										align-items: center;
-										font-size: 0.8rem;
+										justify-content: flex-start;
+										font-size: 1rem;
+										flex-basis: 20%;
+										flex-grow: 2;
 										img.svgImage.menu_zurueck {
 												width: 1.5em;
 												margin-right: 0.5em;
@@ -1262,6 +1346,8 @@ div.VIAKlaPagerComponent {
 								div.topbarRight {
 										display: flex;
 										align-items: center;
+										justify-content: flex-end;
+										flex-basis: 20%;
 										img.svgImage.menu {
 												width: 2em;
 										}
@@ -1278,8 +1364,8 @@ div.VIAKlaPagerComponent {
 								right: 0;
 								bottom: 0;
 								z-index: 999999;
-								background-color: @l-color-green;
-								padding: 5em 1em 1em 1em;
+								background-color: @l-color-blue-llll;
+								padding: 3.5rem 1em 1em 1em;
 
 								// Not small phones
 								@media (min-width: @breakpoint-small) {
@@ -1304,12 +1390,17 @@ div.VIAKlaPagerComponent {
 
 								span.offcanvasClose {
 										position: absolute;
-										top: 5px;
-										right: 5px;
-										span.svg-icon {
-												display: inline-block;
-												width: 2rem;
-										}
+										top: 10px;
+										right: 10px;
+										width: 2.5rem;
+										background-color: white;
+										border-radius: 50%;
+										padding: 0.5rem;
+
+										// span.svg-icon {
+										// 		display: inline-block;
+										// 		width: 2rem;
+										// }
 								}
 
 								div.pageMenuContainer {
@@ -1333,20 +1424,31 @@ div.VIAKlaPagerComponent {
 
 														li {
 																font-size: 1.1rem;
-																font-weight: bold;
-																margin: 1em 0;
+																font-weight: normal;
+																//																margin: 1em 0;
 
-																ul.subMenu {
-																		padding-left: @iconWidth;
-																		li {
-																				font-size: 1.1rem;
-																				font-weight: normal;
+																@menuBorder: 1px solid @l-color-blue-ll;
+																@menuSpace: 0.5em;
+
+																// ul.subMenu {
+																// 		padding-left: @iconWidth;
+																// 		li {
+																// 				font-size: 1.1rem;
+																// 				font-weight: normal;
+																// 		}
+																// }
+
+																&:first-child {
+																		a {
+																				border-top: @menuBorder;
 																		}
 																}
-
 																a {
 																		//												color: white;
 																		white-space: nowrap;
+																		padding: @menuSpace 0;
+																		display: block;
+																		border-bottom: @menuBorder;
 
 																		span.svg-icon {
 																				//																text-align: center;
@@ -1358,6 +1460,11 @@ div.VIAKlaPagerComponent {
 																		span.menuEntryText {
 //																				.uk-text-truncate();
 																		}
+
+																		&:hover, &:active {
+																				color: white;
+																				background-color: @l-color-blue;
+																		}
 																}
 
 																// &.logout {
@@ -1366,7 +1473,8 @@ div.VIAKlaPagerComponent {
 
 																span.menuDivider {
 																		display: block;
-																		height: 0.5em;
+																		height: 3em;
+																		border-bottom: @menuBorder;
 																}
 
 																&.small {
@@ -1389,6 +1497,12 @@ div.VIAKlaPagerComponent {
 														height: 5vh;
 														//										width: @offcanvas-bar-width
 												}
+
+												div.betatestInfo {
+														margin-top: 2em;
+														color: grey;
+														font-size: 50%;
+												}
 										}
 
 								}
@@ -1405,24 +1519,8 @@ div.VIAKlaPagerComponent {
 				}
 
 				div.infoPanel {
-						position: fixed;
-						display: flow-root;
-						top: 0;
-						bottom: 0;
-						left: 0;
-						right: 0;
-						background-color: @l-color-lightgreen;
-						padding: 0.5em var(--pageSidePad);
-						z-index: 1;
-						
-						div.infoPanelContent {
-								background-color: white;
-								padding: 1em;
-								border-radius: 0.5em;
-
-								div.teacherNotes {
-										margin: 1em 0;
-								}
+						div.teacherNotes {
+								margin: 1em 0;
 						}
 				}
 
@@ -1528,17 +1626,32 @@ div.VIAKlaPagerComponent {
 
 						.preventStupidTouchStuff();
 
-						padding: 0 var(--pageSidePad);
+//						padding: 0 var(--pageSidePad);
 						
 						// Not small phones
-						@media (min-width: @breakpoint-medium) {
-								padding: 0 10%;
+						// @media (min-width: @breakpoint-medium) {
+						// 		padding: 0 10%;
+						// }
+
+						&.noScroll {
+
+								// passivate many container elements for flex taking the relevant objects
+								div.VIAKlaModuleExerciser,
+								div.moduleBody,
+								div.VIAKlaTaskExerciser,
+								div.exercise,
+								div.taskGroup,
+								div.taskGroupItem,
+								div.VIAKlaSpeedReaderExerciser {
+										display: contents;
+								}
 						}
+
 						
-						.topbar {
-								margin-top: 1em;
-								margin-left: 1em;
-						}
+						// .topbar {
+						// 		margin-top: 1em;
+						// 		margin-left: 1em;
+						// }
 
 								
 						div.lottieAnimation {
@@ -1574,7 +1687,12 @@ div.VIAKlaPagerComponent {
 										margin-right: -var(--pageSidePad);
 										// box-sizing: border-box;
 //										height: 80vh;
+								}
+								&.startManual, &.finish {
 										background-color: @l-color-mediumgreen;
+								}
+								&.manualToAutomatic {
+										background-color: white;
 								}
 						}
 
@@ -1673,7 +1791,9 @@ div.VIAKlaPagerComponent {
 						.preventStupidTouchStuff();
 
 						div.lottieAnimation {
-								&.animationName-01-HW-Uebergang-Schildkroete {
+								&.animationName-01-HW-Uebergang-Schildkroete,
+								&.animationName-01-HW-Uebergang-Hase,
+								&.animationName-01-HW-Uebergang-Bravo {
 										background-color: @l-color-mediumgreen;
 								}
 								
@@ -1682,6 +1802,18 @@ div.VIAKlaPagerComponent {
 										height: 100vh;
 								}
 						}
+				}
+
+				&.VIAKlaRewardPage div.klaroPage {
+						div.lottieAnimation {
+								background-color: @l-color-mediumgreen;
+								
+								dotlottie-player {
+										width: 100vw;
+										height: 100vh;
+								}
+						}
+						
 				}
 
 				span.pagerAnchor {
@@ -1695,6 +1827,9 @@ div.VIAKlaPagerComponent {
 div.VIAKlaIntroductionComponent {
 		@videoBackground: #F7F7EB; // nicht ganz @l-color-lightgreen
 		@videoBackgroundEnd: #F5B0B4;
+
+		@videoWidth: 720;
+		@videoHeight: 1280;
 		
 		background-color: @videoBackground;
 		height: 100dvh;
@@ -1702,22 +1837,29 @@ div.VIAKlaIntroductionComponent {
 		box-sizing: border-box;
 
 		.maxDimensions() {
-				max-height: 100dvh;
-				max-width: 720px;
-
+				height: 100dvh;
+				max-width: ~"min(@{videoWidth}px, 100vw)"; // Literal CSS, using min NOT from less
+				//max-width: 100vw;
+				aspect-ratio: @videoWidth / @videoHeight;
+				width: auto;
 				// retina
-				@media only screen and (min-resolution: 2dppx) {
-						max-width: 360px;
-				}
+				// @media only screen and (min-resolution: 2dppx) {
+				// 		max-width: 360px;
+				// }
 				
 		}
 		
 		div.videoContainer {
-				width: 100vw;
+				// width: 100vw;
 				position: relative;
 				margin: 0 auto;
 
 				.maxDimensions();
+
+				// Trick: Keeps aspect ratio, see https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
+				// @aspectRatioPad: (@videoWidth*100/@videoHeight) / 2;
+				// padding-right: unit(@aspectRatioPad, %);
+				// padding-left: unit(@aspectRatioPad, %);
 				
 				video {
 						.maxDimensions();
@@ -1742,59 +1884,224 @@ div.VIAKlaIntroductionComponent {
 						padding: 2em 0.5em;
 //						background: rgba(50%,50%,50%,0.3);
 //						background-color: fade(@l-color-lightgreen, 70%);
-						background-color: @videoBackground;
+						//background-color: @videoBackground;
+						background-color: transparent;
 
-						.anchorButton, button.clickButton {
-								display: block;
+						a.closeAnchor {
+								position: absolute;
+								top: 2%;
+								right: 5%;
+								z-index: 2;
+								width: 2.5rem;
 								background-color: white;
-								width: 100%;
-								margin: 1em 0;
-								font-size: 1.5rem;
+								border-radius: 50%;
+								padding: 0.5rem;
 						}
-						button.continueButton {
-								visibility: hidden;
-						}
+						
+						div.dynamicPart {
+								position: absolute;
+								top: 0;
+								bottom: 0;
+								right: 0;
+								left: 0;
+								display: flex;
+								flex-direction: column;
+								justify-content: flex-start;
+								align-items: stretch;
+								padding: 1em;
+								
+								.anchorButton, button.clickButton {
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+										background-color: white;
+										border: none;
+										margin: 1em 0;
+										font-size: 1.5rem;
+										height: 4rem;
+										
+										img.svgImage {
+												width: 2rem;
+										}
+								}
+								// button.continueButton {
+								// 		width: 100%;
+								// }
+								button.playButton {
+										width: 100%;
+								}
 
-						span.klaroLogo {
-								display: block;
-								margin-bottom: 1em;
-								filter: drop-shadow(0px 0px 5px black);
+								img.play_gross_1 {
+										cursor: pointer;
+								}
+								
+								a.anchorButton {
+										&.exitButton {
+												width: 100%;
+												visibility: hidden;
+										}
+								}
+								
+								a.skipAnchor {
+										position: absolute;
+										visibility: hidden;
+										bottom: 5em;
+										right: 1em;
+								}
+
+								// a.repeatAnchor {
+								// 		position: absolute;
+								// 		bottom: 5em;
+								// 		left: 1em;
+								// }
+
+								span.klaroLogo {
+										display: none;
+										padding: 0 20%;
+										margin-bottom: 1em;
+										//								filter: drop-shadow(0px 0px 5px black);
+								}
+								img.video_ende_rosa_screen, img.klara_winkend {
+										padding: 0 20%;
+										display: none;
+										//										width: 100%;
+										flex-basis: 50%;
+										margin: 1em 0;
+								}
+
+
+								div.videoControls {
+										display: flex;
+										justify-content: space-around;
+										button {
+												text-align: center;
+										}
+								}
 						}
 				}
-	
+				
+				// Video at start but paused
+				&.readyToStart {
+						div.videoControlOverlay div.dynamicPart {
+
+								img.klara_winkend {
+										display: block;
+								}
+								div.videoControls {
+										display: none;
+								}
+								// button.continueButton {
+								// 		visibility: hidden;
+								// }
+								button.playButton {
+										span.start {
+												display: inline;
+										}
+										span.repeat {
+												display: none;
+										}
+								}
+								a.anchorButton {
+										&.exitButton {
+												visibility: hidden;
+										}
+								}
+
+								// a.clickAction {
+										
+								a.skipAnchor {
+										visibility: visible;
+								}
+
+								// 		&.repeatAnchor {
+								// 				visibility: hidden;
+								// 		}
+
+								// }
+
+						}
+				}
+				
+				// Video is playing
 				&.playing {
-						div.videoControlOverlay {
+						div.videoControlOverlay div.dynamicPart {
 								display: none;
 						}
 				}
 
+				// Video is pausing
 				&.pausing {
-						div.videoControlOverlay {
-								background-color: transparent;
-								button.continueButton {
-										visibility: visible;
+						div.videoControlOverlay div.dynamicPart {
+
+								span.klaroLogo {
+										display: block;
 								}
+
+								button.playButton {
+										visibility: hidden;
+								}
+								// button.continueButton {
+								// 		visibility: hidden;
+								// }
+								
+								// a.clickAction {
+										
+								// 		&.repeatAnchor {
+								// 				visibility: visible;
+								// 		}
+
+								// }
 						}
 
 						video {
 								filter: opacity(50%) blur(2px);
 						}
 				}
+
+				// Video has ended
 				&.ended {
 						div.videoControlOverlay {
 								background-color: @videoBackgroundEnd;
-								button.playButton {
-										background-color: transparent;
-								}
-								button.continueButton {
-										visibility: hidden;
+								div.dynamicPart {
+										//								position: fixed;
+
+										// span.klaroLogo {
+										// 		display: none;
+										// }
+										span.klaroLogo {
+												display: none;
+										}
+										img.video_ende_rosa_screen {
+												display: block;
+										}
+										button.playButton {
+												visibility: visible;
+												background-color: lighten(@videoBackgroundEnd, 10%);
+
+												span.start {
+														display: none;
+												}
+												span.repeat {
+														display: inline;
+												}
+												
+										}
+										// button.continueButton {
+										// 		visibility: hidden;
+										// }
+										a.exitButton {
+												visibility: visible;
+										}
+										// a.skipAnchor {
+										// 		visibility: hidden;
+										// }
+										div.videoControls {
+												display: none;
+										}
 								}
 						}
 				}
-		}
-
-		
-		
+		}		
 }
 
 
@@ -1815,6 +2122,8 @@ svg.stationNumber {
 
 div.VIAKlaMyProfileComponent {
 		padding: 1em;
+		background-color:  @l-color-lightgreen;
+		height: 100dvh;
 }
 
 

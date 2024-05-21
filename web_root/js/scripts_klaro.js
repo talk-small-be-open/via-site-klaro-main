@@ -36,7 +36,13 @@ function swapContent(a, b) {
 // but also when content is being loaded partially
 function processHtmlDocument(contextElement) {
 	//  $('textarea', contextElement).autosize();
+
+	if ( ! (typeof JoelPurra === 'undefined') ) {
+		$('input.clozeTextPlaceholder', contextElement).plusAsTab();
+	}
+
 }
+
 
 // Default global error handler
 window.onerror = (a, b, c, d, e) => {
@@ -56,7 +62,7 @@ window.onerror = (a, b, c, d, e) => {
 };
 
 function javascriptErrorStandardBehaviour(errorIfAny) {
-	if (confirm('Ups, verhext! Da war ein Fehler, wir rufen nun den Zauberlehrer! Hokus pokus Wunderwürmer und Zaubermaden, die Klaro-App wird neu geladen!')) {
+	if (confirm('Ups, verhext! Da war ein Fehler, wir rufen nun den Zauberlehrer! Hokus pokus Zaubermaden, die Klaro-App wird neu geladen!')) {
 		window.location.reload();
 	}
 }
@@ -326,4 +332,12 @@ $(document).ready(function(){
 
 	enableAudio();
 
+	if ( ! (typeof JoelPurra === 'undefined') ) {
+		JoelPurra.PlusAsTab.setOptions({
+			// Use the enter key as tab keys
+			key: [13]
+		});
+	}
+
+	
 });

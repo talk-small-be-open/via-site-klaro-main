@@ -3,7 +3,8 @@
 // Taken and extremely simplified for our needs, from MIT licensed SVG-Loader:
 // https://github.com/shubhamjain/svg-loader
 
-function svgLoadInline(elemId, callback) {
+// returns promise
+function svgLoadInline(elemId) {
 	const elem = document.getElementById(elemId);
   const url = new URL(elem.getAttribute("data-svgloader-src"), globalThis.location);
 
@@ -29,22 +30,21 @@ function svgLoadInline(elemId, callback) {
 		}
 
 		// Finished loading. Callback to some code from the app.
-		callback();
+		//callback();
 		
 	};
 
 	// Start the fetching of the file
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error(`Request for '${url.toString()}' returned ${response.status} (${response.statusText})`);
-      }
-      return response.text();
-    })
-    .then((body) => {
-      renderBody(elem, body);
-    })
-    .catch((e) => {
-      console.error(e);
-    });
+  return fetch(url).then((response) => {
+    if (!response.ok) {
+      throw Error(`Request for '${url.toString()}' returned ${response.status} (${response.statusText})`);
+    }
+		return response.text(); // promise!
+  })
+  .then((body) => {
+    renderBody(elem, body);
+  })
+  .catch((e) => {
+    console.error(e);
+  });
 };

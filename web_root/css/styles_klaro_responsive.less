@@ -1,10 +1,22 @@
-// UI Breakpoints
+// Responsive UI
 
+
+// // Browser only
+// @media (display-mode: browser) {		
+// }
+
+// // PWA only
+// @media (display-mode: standalone) {
+// }
 
 // Not small phones =======================================================================================
 @media (min-width: @breakpoint-small) {
 
 		@pageSidePad: 10%;
+
+		:root {
+				--pageSidePad: @pageSidePad;				
+		}
 		
 		body {
 				font-size: 18px;
@@ -17,7 +29,6 @@
 		}
 
 		div.VIAKlaPagerComponent {
-				--pageSidePad: @pageSidePad;
 				div.VIAKlaPageComponent {
 						&.VIAKlaStationPage div.klaroPage {
 								div.exercisePanels {
