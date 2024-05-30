@@ -539,6 +539,11 @@ div.VIAPublicHomeComponent {
 //				width: auto;
 				display: block;
 				padding-left: 3rem;
+
+				svg.hepLogo {
+						width: 15rem;
+						fill: black;
+				}
 		}
 
 		form {
@@ -697,6 +702,7 @@ div.VIAKlaModuleExerciser {
 										text-align: center;
 										font-size: 200%;
 										padding-top: 4em;
+										cursor: pointer;
 								}
 
 								div.mainPlayArea {
@@ -731,7 +737,7 @@ div.VIAKlaModuleExerciser {
 																text-align: center;
 
 																&.long {
-																		font-size: 4rem;
+																		font-size: 3rem;
 																}
 														}
 
@@ -792,7 +798,8 @@ div.VIAKlaModuleExerciser {
 
 														&.listen {
 																img.svgImage {
-																		height: 75%;
+//																		height: 75%;
+																		height: 95%;
 																		top: @topGapForHead;
 																}
 														}
@@ -972,9 +979,18 @@ div.VIAKlaModuleExerciser {
 								&.read {
 										// Zauberspruch
 										div.speedTextArea.magic-spell {
+												background-image: url(/site/images/magic-spell.svg);
+												background-position: center;
+												background-repeat: no-repeat;
+												background-size: contain;
+
 												div.speedTextAreaContent {
-														background-color: @l-color-blue-lllll;
-														border-radius: 50%;
+														// background-color: @l-color-blue-llll;
+														// border-radius: 50%;
+														// background-image: url(/site/images/magic-spell.svg);
+														// background-position: center;
+														// background-repeat: no-repeat;
+														
 														overflow: visible;
 
 														div.speedText {
@@ -1130,7 +1146,18 @@ div.infoPanel {
 				img.menu_x {
 						width: 2rem;
 				}
+
+				.pillarDocument {
+						a {
+								color: @l-color-pink;
+								&:hover, &:active {
+										text-decoration: underline;
+								}
+						}
+				}
+
 		}
+
 }
 
 
@@ -1493,8 +1520,9 @@ div.VIAKlaPagerComponent {
 												flex-grow: 0;
 												flex-shrink: 0;
 
-												img.hepLogo {
+												svg.hepLogo {
 														height: 5vh;
+														fill: @l-color-blue;
 														//										width: @offcanvas-bar-width
 												}
 
@@ -1889,13 +1917,18 @@ div.VIAKlaIntroductionComponent {
 
 						a.closeAnchor {
 								position: absolute;
-								top: 2%;
-								right: 5%;
+								top: 30px;
+								right: 8px;
 								z-index: 2;
 								width: 2.5rem;
 								background-color: white;
 								border-radius: 50%;
+								border-color: grey;
+								border-width: 1px;
+								border-style: solid;
 								padding: 0.5rem;
+								// filter: drop-shadow(0px 0px 10px white);
+								outline: 3px solid white;
 						}
 						
 						div.dynamicPart {
