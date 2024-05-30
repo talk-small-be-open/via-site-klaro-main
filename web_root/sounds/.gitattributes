@@ -1,0 +1,3 @@
+*.m4a filter=git-crypt diff=git-crypt
+*.mp3 filter=git-crypt diff=git-crypt
+*.wav filter=git-crypt diff=git-crypt
