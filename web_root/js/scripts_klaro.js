@@ -74,6 +74,7 @@ function javascriptErrorStandardBehaviour(errorIfAny) {
 function pager_gotoPage(pagerId, pageId, isBack = false, transition = 'slide') {
 
 	// Transition names: silde, appear
+
 	processHtmlDocument(pageId);
 	window.scroll({behavior: 'auto', top: 0});
 
@@ -232,52 +233,101 @@ const speedReaderTimer = new SpeedReaderTimer();
 
 
 // =============== AUDIO ================
-function enableAudio () {
-  var bufferLength = 10;
-  var audioCtx = new window.AudioContext();
-  var myArrayBuffer = audioCtx.createBuffer(1, bufferLength, audioCtx.sampleRate);
+class AudioPlayer {
+	unlocked = false;
+	unlocker;
+	audioCtx;
+	myArrayBuffer;
+	
+	// constructor() {
+	// }
+	
+	enableAudio() {
+		var bufferLength = 10;
+		this.audioCtx = new window.AudioContext();
+		this.myArrayBuffer = this.audioCtx.createBuffer(1, bufferLength, this.audioCtx.sampleRate);
+//		const me = this;
 
+		this.unlocker = document.getElementById('audioUnlocker');
 
-	// if (audioCtx.state !== 'suspended') return;
+		// if (audioCtx.state !== 'suspended') return;
 
-  var nowBuffering = myArrayBuffer.getChannelData(0);
-  for (var i = 0; i < bufferLength; i++) {
-    nowBuffering[i] = Math.random() * 0.1 - 0.05; // low volume noise
-  }
+		var nowBuffering = this.myArrayBuffer.getChannelData(0);
+		for (var i = 0; i < bufferLength; i++) {
+			nowBuffering[i] = Math.random() * 0.1 - 0.05; // low volume noise
+		}
 
-  function playFakeAudio (callback) {
-    var done = false;
-		var source = audioCtx.createBufferSource();
-    source.onended = function (a) {
-      done = true;
-      callback(true);
-    }
-		source.buffer = myArrayBuffer;
-		source.connect(audioCtx.destination);
-    source.start(0);
+//		this.playFakeAudio(function (isAudioEnabled) { me.playFakeAudioHandler(isAudioEnabled) } ));
+		this.playFakeAudio( this.playFakeAudioHandler.bind(this) );
+
+	}
+
+	// Play a silent audio and call back
+	playFakeAudio(callback) {
+		const source = this.audioCtx.createBufferSource();
+		const me = this;
+		source.onended = function (a) {
+			me.unlocked = true;
+			callback(true);
+		}
+		source.buffer = this.myArrayBuffer;
+		source.connect(this.audioCtx.destination);
+		source.start(0);
 
 		// If not played, then this timer will catch it a bit later
-    setTimeout(function () {if (!done) callback(false)}, 50); "Precise milliseconds: audioCtx.sampleRate * 1000 * bufferLength"
-  }
+		setTimeout(function () {if (!me.unlocked) callback(false)}, 100); "Precise milliseconds: audioCtx.sampleRate * 1000 * bufferLength"
+	}
 
-  playFakeAudio(function (isAudioEnabled) {
-    if (isAudioEnabled == false) {
+	playFakeAudioHandler(isAudioEnabled) {
+
+		const me = this;
+		
+		if (isAudioEnabled == false) {
 			console.log('Audio NOT unlocked, waiting on next touch event');
 
-			// Trying to catch the next touch event
+			// Trying to catch the next touch event, and try again
 			var onTouch = function () {
-        playFakeAudio(function(){
+				me.playFakeAudio(function(){
 					// Remove event handler, no matter if successful or not
-          document.removeEventListener('touchstart', onTouch)
-        })
-      }
-      // TODO SHow nice dialog to click on: document.write('<h3>BITTE HIER KLICKEN, UM DEN TON EINZUSCHALTEN</h3>')
-      document.addEventListener('touchstart', onTouch)
-    } else {
+					document.removeEventListener('touchstart', onTouch);
+					me.hideUnlocker();
+				})
+			}
+
+			// TODO: on mouse, keyboard?
+			document.addEventListener('touchstart', onTouch);
+
+//			if (this.unlocker) { this.unlocker.style.display = 'block' };
+
+		} else {
 			console.log('Audio UNLOCKED');
+
+			// Probably not needed, but better be safe and hide the dialog (maybe due to race conditions)
+			this.hideUnlocker();
 		}
-  })
+	}
+
+	hideUnlocker() {
+			if (this.unlocker) { this.unlocker.style.display = 'none' };		
+	}
+
+	showUnlocker() {
+			if (this.unlocker) { this.unlocker.style.display = 'block' };
+	}
+
+	// Smart play a sound, or display the unlocker
+	pixiPlay(id, options) {
+		if (!this.unlocked) {
+			this.showUnlocker();
+		}
+		if (PIXI.sound.exists(id)) {
+			PIXI.sound.play(id, options);
+		}
+	}
 }
+
+// Singleton instance
+const audioPlayer = new AudioPlayer();
 
 
 
@@ -322,6 +372,9 @@ function catchPointerAndRetriggerDefaultButton(event) {
 
 
 // ========= Haupt JS init ==============
+
+setCookiesAllowed();
+
 $(document).ready(function(){
 
 	processHtmlDocument(document);
@@ -330,7 +383,7 @@ $(document).ready(function(){
 //TODO nice message		alert('No back function available');
 	});
 
-	enableAudio();
+	audioPlayer.enableAudio();
 
 	if ( ! (typeof JoelPurra === 'undefined') ) {
 		JoelPurra.PlusAsTab.setOptions({

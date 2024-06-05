@@ -233,6 +233,7 @@ u {
 		text-decoration: underline;
 }
 
+
 form {
 		label {
 				display: block;
@@ -240,16 +241,8 @@ form {
 		}
 
 		button[type=submit] {
-				border-color: @l-color-blue;
+				.blueButton();
 				padding: 10px;
-				cursor: pointer;
-				background-color: @l-color-blue;
-				color: white;
-
-				&:hover {
-						border-color: @l-color-blue-l;
-						background-color: @l-color-blue-l;
-				}
 		}
 
 		input[type=checkbox] {
@@ -280,30 +273,50 @@ form {
 		color: maroon;
 }
 
-.anchorButton, button.clickButton, button.submitButton {
+.anchorButton, button.clickButton, button.submitButton, span.standardButton, span.spanButton {
 		cursor: pointer;
 		display: inline-block;
 		padding: 0.5em;
 		border: 1px solid black;
 		border-radius: 0.5em;
+		margin-top: 2px;
+		margin-bottom: 2px;
 
-		&:active {
+		&:active, &:hover {
 				background-color: #eee;
 		}
 
 		&+& {
 				margin-left: 0.5em;
 		}
+
+		a {
+				color: inherit;
+		}
 }
+
+.blueButton() {
+		border-color: @l-color-blue;
+		background-color: @l-color-blue;
+		color: white;
+
+		&:hover {
+				border-color: @l-color-blue-l;
+				background-color: @l-color-blue-l;
+		}
+		
+}
+
 
 // Basics for our inline svg
 svg, img.svgImage {
 		vertical-align: middle;
 		
-		&.svg-icon {
-				stroke: currentcolor;
+		&.svgIcon {
+				stroke-width: 0px;
+//				stroke: currentcolor;
 				fill: currentcolor;
-				width: 2rem; // meaningful default
+				width: 1.5rem; // meaningful default
 		}
 
 		&.sign {
@@ -312,7 +325,7 @@ svg, img.svgImage {
 		}
 
 		// Same styles for colors inside svg icon and bigger signs
-		&.sign, &.svg-icon {
+		&.sign, &.svgIcon {
 				
 				.transparent {
 						fill: none;
@@ -397,7 +410,7 @@ span.pillarDocument {
 
 span.betatestArea {
 		display: block;
-		margin: 1em 0;
+		margin: 2px 0;
 		border: 1px dotted black;
 		font-size: 66%;
 
@@ -424,7 +437,29 @@ span.klaroLogo {
 div.VIAMainComponent {
 //		min-height: 99vh;
 		position: relative;
-		box-sizing: border-box;		
+		box-sizing: border-box;
+
+		#audioUnlocker {
+				position: fixed;
+				width: 100vw;
+				bottom: 0;
+				background-color: black;
+				color: white;
+				z-index: 1;
+				min-height: 15vh;
+				text-align: center;
+				padding: 1em;
+
+				svg.sign.sound {
+						width: 2em;
+						margin-bottom: 0.5em;
+				}
+
+				// span.standardButton {
+				// 		font-size: 2rem;
+				// 		border-color: white;
+				// }
+		}
 }
 
 div.backButton {
@@ -470,39 +505,59 @@ div.VIAConfirmationComponent {
 		}
 }
 
-div.VIAPublicHomeComponent {
+div.narrowContainer {
+		@sidePad: 2em;
+		padding: @sidePad;		
+}
 
+div.VIAPublicHomeComponent {
+		
 		@sidePad: 2em;
 		@buffer: 1em;
 		
-		padding: @sidePad 0;
+//		padding: @sidePad 0;
 		font-size: 120%;
 		line-height: 150%;
 
 		div.klaroLogo {
-				margin: 0 @sidePad;
+//				margin: 0 @sidePad;
 				// display: flex;
 				// justify-content: center;
 
-				span.klaroLogo {
-						display: inline-block;
-						width: 10rem;
+		}
+
+		span.klaroLogo {
+				display: inline-block;
+				width: 10rem;
+		}
+
+		div.infoPanel.installPwa {
+				div.close {
+						float: right;
+				}
+				
+				div.info {
+						margin: 1em 0;
 				}
 		}
 		
 		div.klaroBanner {
 				display: flex;
 				justify-content: center;
+
+				img.svgImage.klara_winkend {
+						max-height: 30vh;
+				}
 		}
 		
-		> div.info {
+		div.info {
 				margin: @buffer 0;
-				padding: 0 @sidePad;
+				// padding: 0 @sidePad;
 		}
 
 		div.loginSection {
-				margin: @buffer 0;
-				padding: 0 @sidePad;
+				margin-bottom: @buffer;
+//				padding: 0 @sidePad;
 
 				div.error {
 						background-color: maroon;
@@ -519,12 +574,12 @@ div.VIAPublicHomeComponent {
 						
 						input[type=text] {
 								border: 1px solid black;						
-								width: 5em;
-								flex-grow: 2;
+								min-width: 2em;
 								padding: 0.2em;
 
 								&.part1, &.part3 {
 										flex-basis: 30%;
+										flex-grow: 2;
 								}
 
 								&.part2 {
@@ -538,7 +593,7 @@ div.VIAPublicHomeComponent {
 				height: 5vh;
 //				width: auto;
 				display: block;
-				padding-left: 3rem;
+//				padding-left: 3rem;
 
 				svg.hepLogo {
 						width: 15rem;
@@ -547,7 +602,7 @@ div.VIAPublicHomeComponent {
 		}
 
 		form {
-				margin: @buffer 0;				
+//				margin: @buffer 0;				
 		}
 		
 		
@@ -555,6 +610,22 @@ div.VIAPublicHomeComponent {
 				width: 100%;
 		}
 
+		div.autologinUsers {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				gap: 5px;
+
+				span.autologinUser {
+						.blueButton();
+						//						flex-basis: 30%;
+
+						a.remove {
+								margin-left: 2em;
+						}
+				}
+		}
+				
 }
 
 
@@ -703,6 +774,11 @@ div.VIAKlaModuleExerciser {
 										font-size: 200%;
 										padding-top: 4em;
 										cursor: pointer;
+
+										img.svgImage.programm_automatisch {
+												width: 5em;
+												margin: 1em 0;
+										}
 								}
 
 								div.mainPlayArea {
@@ -1081,7 +1157,9 @@ div.exercise {
 
 div.VIAKlaMyProfileComponent {
 
-		padding-top: 1em;
+//		padding: 1em;
+		background-color:  @l-color-lightgreen;
+		height: 100dvh;
 
 		h1 {
 				color: @l-color-main;
@@ -1090,6 +1168,30 @@ div.VIAKlaMyProfileComponent {
 		h1, h2, h3, h4 {
 				text-align: left;
 		}
+		
+}
+
+div.VIAKlaOnboardingComponent {
+
+//		padding: 1em;
+		background-color:  @l-color-lightgreen;
+		height: 100dvh;
+		font-size: 120%;
+		line-height: 150%;
+
+		h1 {
+				color: @l-color-main;
+		}
+		
+		h1, h2, h3, h4 {
+				text-align: left;
+		}
+
+
+		img.svgImage.klara_winkend {
+				max-height: 30vh;
+		}
+		
 		
 }
 
@@ -1143,7 +1245,7 @@ div.infoPanel {
 				padding: 1em;
 				border-radius: 0.5em;
 
-				img.menu_x {
+				svg.iconClose {
 						width: 2rem;
 				}
 
@@ -1419,15 +1521,16 @@ div.VIAKlaPagerComponent {
 										position: absolute;
 										top: 10px;
 										right: 10px;
-										width: 2.5rem;
+										// width: 2.5rem;
+										// height: 2.5rem;
 										background-color: white;
 										border-radius: 50%;
 										padding: 0.5rem;
 
-										// span.svg-icon {
-										// 		display: inline-block;
-										// 		width: 2rem;
-										// }
+										svg.svgIcon {
+										 		//display: inline-block;
+										 		width: 1.5rem;
+										}
 								}
 
 								div.pageMenuContainer {
@@ -1477,7 +1580,7 @@ div.VIAKlaPagerComponent {
 																		display: block;
 																		border-bottom: @menuBorder;
 
-																		span.svg-icon {
+																		span.svgIcon {
 																				//																text-align: center;
 																				display: inline-block;
 																				width: @iconWidth;
@@ -1572,7 +1675,17 @@ div.VIAKlaPagerComponent {
 								
 								g[id^="Station_"] {
 
+										@nonHighlighted: #6e9172ff;
 										@highlighted: #e72f72ff;
+
+										g.taskScore {
+												path.inner {
+														fill: none;																
+												}
+												path.outer {
+														fill: @nonHighlighted;
+												}
+										}
 										
 										&.enabled {
 												cursor: pointer;
@@ -1588,8 +1701,12 @@ div.VIAKlaPagerComponent {
 												}
 
 												g.taskScore {
+														path.outer {
+																fill: @highlighted;
+														}
+														
 														&.done {
-																path {
+																path.inner {
 																		fill: @highlighted;
 																}
 														}
@@ -1836,12 +1953,27 @@ div.VIAKlaPagerComponent {
 				}
 
 				&.VIAKlaRewardPage div.klaroPage {
+						background-color: @l-color-mediumgreen;
 						div.lottieAnimation {
-								background-color: @l-color-mediumgreen;
+								// background-color: @l-color-mediumgreen;
+								flex-basis: 80%;
+								flex-grow: 2;
+								min-height: 0;
 								
 								dotlottie-player {
 										width: 100vw;
-										height: 100vh;
+										height: 100%;
+								}
+						}
+
+						div.goAhead {
+								text-align: center;
+								margin-bottom: 3em;
+
+								span.standardButton {
+										background-color: @l-color-blue;
+										border-style: none;
+										color: white;
 								}
 						}
 						
@@ -1931,7 +2063,8 @@ div.VIAKlaIntroductionComponent {
 								border-style: solid;
 								padding: 0.5rem;
 								// filter: drop-shadow(0px 0px 10px white);
-								outline: 3px solid white;
+								// outline: 3px solid white;
+								box-shadow: 0 0 0 3px white;
 						}
 						
 						div.dynamicPart {
@@ -2002,6 +2135,7 @@ div.VIAKlaIntroductionComponent {
 										display: none;
 										//										width: 100%;
 										flex-basis: 50%;
+										min-height: 0;
 										margin: 1em 0;
 								}
 
@@ -2156,11 +2290,6 @@ svg.stationNumber {
 		}
 }
 
-div.VIAKlaMyProfileComponent {
-		padding: 1em;
-		background-color:  @l-color-lightgreen;
-		height: 100dvh;
-}
 
 
 
