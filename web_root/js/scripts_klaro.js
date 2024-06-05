@@ -290,12 +290,14 @@ class AudioPlayer {
 				me.playFakeAudio(function(){
 					// Remove event handler, no matter if successful or not
 					document.removeEventListener('touchstart', onTouch);
+					document.removeEventListener('click', onTouch);
 					me.hideUnlocker();
 				})
 			}
 
 			// TODO: on mouse, keyboard?
 			document.addEventListener('touchstart', onTouch);
+			document.addEventListener('click', onTouch);
 
 //			if (this.unlocker) { this.unlocker.style.display = 'block' };
 
