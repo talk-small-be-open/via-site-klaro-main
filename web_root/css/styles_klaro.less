@@ -518,18 +518,30 @@ div.VIAPublicHomeComponent {
 //		padding: @sidePad 0;
 		font-size: 120%;
 		line-height: 150%;
+//		position: relative;
 
-		div.klaroLogo {
+		div.narrowContainer {
+				position: relative;
+		}
+		
+		div.logos {
 //				margin: 0 @sidePad;
-				// display: flex;
-				// justify-content: center;
+				display: flex;
+				justify-content: space-between;
+				align-items: start;
+
+				span.klaroLogo {
+						display: inline-block;
+						width: 10rem;
+				}
+				svg.hepLogo {
+						margin-top: 1em;
+						width: 7rem;
+						fill: @l-color-blue-l;
+				}
 
 		}
 
-		span.klaroLogo {
-				display: inline-block;
-				width: 10rem;
-		}
 
 		div.infoPanel.installPwa {
 				div.close {
@@ -589,23 +601,7 @@ div.VIAPublicHomeComponent {
 				}
 		}
 
-		div.hepLogo {
-				height: 5vh;
-//				width: auto;
-				display: block;
-//				padding-left: 3rem;
 
-				svg.hepLogo {
-						width: 15rem;
-						fill: black;
-				}
-		}
-
-		form {
-//				margin: @buffer 0;				
-		}
-		
-		
 		button.submitCoupon {
 				width: 100%;
 		}
@@ -618,11 +614,29 @@ div.VIAPublicHomeComponent {
 
 				span.autologinUser {
 						.blueButton();
+						padding: 0.2em 0.5em;
 						//						flex-basis: 30%;
 
 						a.remove {
-								margin-left: 2em;
+								vertical-align: baseline;
+								margin-left: 0.7em;
+
+								svg.close {
+										width: 0.8rem;
+								}
 						}
+				}
+		}
+
+		div.hepLogo {
+				height: 5vh;
+				//				width: auto;
+				display: block;
+				//				padding-left: 3rem;
+
+				svg.hepLogo {
+						width: 15rem;
+						fill: black;
 				}
 		}
 				

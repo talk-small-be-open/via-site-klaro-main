@@ -326,6 +326,12 @@ class AudioPlayer {
 			PIXI.sound.play(id, options);
 		}
 	}
+
+	pixiAdd(id, options) {
+		if (!PIXI.sound.exists(id)) {
+			PIXI.sound.add(id, options);
+		}	
+	}
 }
 
 // Singleton instance
