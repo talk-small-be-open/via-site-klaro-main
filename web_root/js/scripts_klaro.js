@@ -238,34 +238,57 @@ class AudioPlayer {
 	unlocker;
 	audioCtx;
 	myArrayBuffer;
+	audioLength = 5; //ms
+	onTouchHandler;
+	handlerOptions = {capture: true};
+	captureEvents = ['touchstart', 'touchend', 'mousedown'];
 	
 	// constructor() {
+	// too early
 	// }
-	
-	enableAudio() {
-		var bufferLength = 10;
-		this.audioCtx = new window.AudioContext();
+
+	start() {
+		this.audioCtx = PIXI.sound.context.audioContext; // new window.AudioContext();
+
+		// Prepare audio samples for unlock-sound
+		const bufferLength = Math.floor(this.audioLength * this.audioCtx.sampleRate / 1000);
 		this.myArrayBuffer = this.audioCtx.createBuffer(1, bufferLength, this.audioCtx.sampleRate);
-//		const me = this;
+		var nowBuffering = this.myArrayBuffer.getChannelData(0);
+		for (var i = 0; i < bufferLength; i++) {
+			nowBuffering[i] = Math.random() * 0.01 - 0.005; // low volume noise, since total silence would maybe not be considered as sound
+		}
+
+		// Prepare touch event handler
+		const me = this;
+		this.onTouchHandler = function () {
+			me.playFakeAudio(function(enabled){
+				if (enabled) {
+					me.hideUnlocker();
+					for (const e of me.captureEvents) {
+						document.removeEventListener(e, me.onTouchHandler, me.handlerOptions);
+					}
+				}
+			})
+		}
 
 		this.unlocker = document.getElementById('audioUnlocker');
 
-		// if (audioCtx.state !== 'suspended') return;
-
-		var nowBuffering = this.myArrayBuffer.getChannelData(0);
-		for (var i = 0; i < bufferLength; i++) {
-			nowBuffering[i] = Math.random() * 0.1 - 0.05; // low volume noise
-		}
-
-//		this.playFakeAudio(function (isAudioEnabled) { me.playFakeAudioHandler(isAudioEnabled) } ));
-		this.playFakeAudio( this.playFakeAudioHandler.bind(this) );
-
+		this.enableAudio();
 	}
 
-	// Play a silent audio and call back
+	// Try to play a sound to unlock audio context. Works only in a user interaction event. If not started from there,
+	// it then will display an unlocker dialog
+	enableAudio() {
+		const me = this;
+		this.playFakeAudio( isAudioEnabled => me.playFakeAudioHandler(isAudioEnabled) );
+	}
+
+	// Play a simple audio and call back
 	playFakeAudio(callback) {
 		const source = this.audioCtx.createBufferSource();
 		const me = this;
+
+		// Indirect test if it has been playing
 		source.onended = function (a) {
 			me.unlocked = true;
 			callback(true);
@@ -274,8 +297,14 @@ class AudioPlayer {
 		source.connect(this.audioCtx.destination);
 		source.start(0);
 
-		// If not played, then this timer will catch it a bit later
-		setTimeout(function () {if (!me.unlocked) callback(false)}, 100); "Precise milliseconds: audioCtx.sampleRate * 1000 * bufferLength"
+		// Direct test, if it already runs?
+		if ( this.audioCtx.state === 'running') {
+			// maybe already stop here? Reliable enough?
+    } else {
+			// If not played, then this timer will catch it a bit later
+			setTimeout(() => { if (!me.unlocked) callback(false) }, this.audioLength + 300); "must be larger ms than audioLength"
+		}
+    
 	}
 
 	playFakeAudioHandler(isAudioEnabled) {
@@ -284,23 +313,13 @@ class AudioPlayer {
 		
 		if (isAudioEnabled == false) {
 			console.log('Audio NOT unlocked, waiting on next touch event');
-
-			// Trying to catch the next touch event, and try again
-			var onTouch = function () {
-				me.playFakeAudio(function(){
-					// Remove event handler, no matter if successful or not
-					document.removeEventListener('touchstart', onTouch);
-					document.removeEventListener('click', onTouch);
-					me.hideUnlocker();
-				})
+			
+			for (const e of this.captureEvents) {
+				document.addEventListener(e, this.onTouchHandler, this.handlerOptions);
 			}
 
-			// TODO: on mouse, keyboard?
-			document.addEventListener('touchstart', onTouch);
-			document.addEventListener('click', onTouch);
-
-//			if (this.unlocker) { this.unlocker.style.display = 'block' };
-
+// dont, since we might not even want to play audio			this.showUnlocker();
+			
 		} else {
 			console.log('Audio UNLOCKED');
 
@@ -314,17 +333,27 @@ class AudioPlayer {
 	}
 
 	showUnlocker() {
-			if (this.unlocker) { this.unlocker.style.display = 'block' };
+		if (this.unlocker) {
+			this.unlocker.style.display = 'block';
+			// Add JS to play sound on a user interaction, which unlocks the audio context
+			this.unlocker.addEventListener('pointerdown', ()=>this.enableAudio() );
+		} else {
+			// fallback, if we are too early
+			alert('Error: no sound');
+		};
 	}
 
 	// Smart play a sound, or display the unlocker
 	pixiPlay(id, options) {
 		if (!this.unlocked) {
+//			console.log('Locked audio: ' + id);
 			this.showUnlocker();
 		}
+//		} else {
 		if (PIXI.sound.exists(id)) {
 			PIXI.sound.play(id, options);
 		}
+//		}
 	}
 
 	pixiAdd(id, options) {
@@ -336,32 +365,6 @@ class AudioPlayer {
 
 // Singleton instance
 const audioPlayer = new AudioPlayer();
-
-
-
-// function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-//   var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
-
-//   return {
-//     x: centerX + (radius * Math.cos(angleInRadians)),
-//     y: centerY + (radius * Math.sin(angleInRadians))
-//   };
-// }
-
-// function describeArc(centerX, centerY, radius, endAngle){
-
-//     var start = polarToCartesian(centerX, centerY, radius, endAngle);
-//     var end = polarToCartesian(centerX, centerY, radius, 0);
-
-//     var largeArcFlag = endAngle <= 180 ? "0" : "1";
-
-//     var d = [
-//         "M", start.x, start.y, 
-//         "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
-//     ].join(" ");
-
-//     return d;       
-// }
 
 
 // ================ UI Events ====================
@@ -391,7 +394,8 @@ $(document).ready(function(){
 //TODO nice message		alert('No back function available');
 	});
 
-	audioPlayer.enableAudio();
+	// setTimeout( () => audioPlayer.enableAudio(), 5000);
+	audioPlayer.start();
 
 	if ( ! (typeof JoelPurra === 'undefined') ) {
 		JoelPurra.PlusAsTab.setOptions({
@@ -399,6 +403,5 @@ $(document).ready(function(){
 			key: [13]
 		});
 	}
-
 	
 });

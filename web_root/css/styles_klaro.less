@@ -439,27 +439,28 @@ div.VIAMainComponent {
 		position: relative;
 		box-sizing: border-box;
 
-		#audioUnlocker {
-				position: fixed;
-				width: 100vw;
-				bottom: 0;
-				background-color: black;
-				color: white;
-				z-index: 1;
-				min-height: 15vh;
-				text-align: center;
-				padding: 1em;
+}
 
-				svg.sign.sound {
-						width: 2em;
-						margin-bottom: 0.5em;
-				}
+#audioUnlocker {
+		position: fixed;
+		width: 100vw;
+		bottom: 0;
+		background-color: black;
+		color: white;
+		z-index: 1;
+		min-height: 15vh;
+		text-align: center;
+		padding: 1em;
 
-				// span.standardButton {
-				// 		font-size: 2rem;
-				// 		border-color: white;
-				// }
+		svg.sign.sound {
+				width: 2em;
+				margin-bottom: 0.5em;
 		}
+
+		// span.standardButton {
+		// 		font-size: 2rem;
+		// 		border-color: white;
+		// }
 }
 
 div.backButton {
@@ -790,7 +791,7 @@ div.VIAKlaModuleExerciser {
 										cursor: pointer;
 
 										img.svgImage.programm_automatisch {
-												width: 5em;
+												width: 4em;
 												margin: 1em 0;
 										}
 								}
@@ -826,7 +827,7 @@ div.VIAKlaModuleExerciser {
 																font-size: 6rem;
 																text-align: center;
 
-																&.long {
+																&.long, &.longWord {
 																		font-size: 3rem;
 																}
 														}
@@ -920,7 +921,7 @@ div.VIAKlaModuleExerciser {
 
 												span.redoButton, span.doneButton {
 														// buttons sind 66x58
-														@width: 4em;
+														@width: 4.5em;
 														@ratio: 66/58;
 														display: inline-block;
 														width: @width;
@@ -954,7 +955,7 @@ div.VIAKlaModuleExerciser {
 												display: flex;
 												justify-content: space-between;
 												align-items: center;
-												margin: 1em 0;
+												margin: 0.5em 0;
 
 												div.line {
 														background-color: @l-color-blue-llll;
@@ -992,7 +993,7 @@ div.VIAKlaModuleExerciser {
 												height: @height;
 												border-radius: @radius;
 												background-color: @l-color-blue-llll;
-												margin: 1em 0;
+												margin: 0.5em 0;
 
 												div.filledBar {
 														height: @height;
