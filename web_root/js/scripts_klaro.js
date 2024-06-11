@@ -380,7 +380,7 @@ function catchPointerAndRetriggerDefaultButton(event) {
 }
 
 
-// ================== Screen lock ================
+// ================== Screen wake lock ================
 
 var screenWakeLock;
 
@@ -388,8 +388,10 @@ var screenWakeLock;
 async function screenWake_requestLock() {
   try {
     screenWakeLock = await navigator.wakeLock.request('screen');
+//		alert('Die automatische Bildschirmabschaltung ist nun AUS.')
   } catch (err) {
     // if wake lock request fails - usually system related, such as battery
+//		alert('Die automatische Bildschirmabschaltung konnte nicht deaktiviert werden.')
   }
 }
 
@@ -419,6 +421,7 @@ function screenWake_off() {
 	if (screenWakeLock && !screenWakeLock.released) {
 		document.removeEventListener('visibilitychange', screenWake_handleVisibilityChange);
 		screenWakeLock.release().then(() => {
+//			alert('Die automatische Bildschirmabschaltung ist wieder normal.')
 			screenWakeLock = null;
 		})
 	}
