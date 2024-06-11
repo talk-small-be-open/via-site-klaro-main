@@ -380,6 +380,50 @@ function catchPointerAndRetriggerDefaultButton(event) {
 }
 
 
+// ================== Screen lock ================
+
+var screenWakeLock;
+
+// create an async function to request a wake lock
+async function screenWake_requestLock() {
+  try {
+    screenWakeLock = await navigator.wakeLock.request('screen');
+  } catch (err) {
+    // if wake lock request fails - usually system related, such as battery
+  }
+}
+
+function screenWake_handleVisibilityChange() {
+  if (screenWakeLock !== null && document.visibilityState === 'visible') {
+    screenWake_requestLock();
+  }
+}
+
+// Used by application to turn ON
+function screenWake_on() {
+
+	// Browser feature check
+	if ( ! 'wakeLock' in navigator) return;
+
+	// Stop, if we already have a lock
+	if (screenWakeLock) return;
+
+  screenWake_requestLock();
+
+  document.addEventListener('visibilitychange', screenWake_handleVisibilityChange);
+	
+}
+
+// Used by application to turn OFF
+function screenWake_off() {
+	if (screenWakeLock && !screenWakeLock.released) {
+		document.removeEventListener('visibilitychange', screenWake_handleVisibilityChange);
+		screenWakeLock.release().then(() => {
+			screenWakeLock = null;
+		})
+	}
+}
+
 
 
 // ========= Haupt JS init ==============

@@ -611,19 +611,37 @@ div.VIAPublicHomeComponent {
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: flex-start;
-				gap: 5px;
+				gap: 1rem;
 
 				span.autologinUser {
 						.blueButton();
-						padding: 0.2em 0.5em;
+						padding: 0.2em 1em 0.2em 0.5em;
+						position: relative;
 						//						flex-basis: 30%;
 
 						a.remove {
-								vertical-align: baseline;
-								margin-left: 0.7em;
+								@w: 0.8rem;
+								
+								position: absolute;
+								top: -0.4rem;
+								right: -0.8rem;
+								//								margin-left: 0.7em;
+								border-radius: 50%;
+								border: 2px solid @l-color-blue-l;
+								background-color: white;
+								color: @l-color-blue;
+								padding: @w / 2;
+								//								display: block;
+//								text-align: center;
 
-								svg.close {
-										width: 0.8rem;
+								span.svgIcon {
+										// display: block;
+										// width: @w;
+										// height: @w;
+										svg.close {
+												display: block;
+												width: @w;
+										}
 								}
 						}
 				}
@@ -815,6 +833,14 @@ div.VIAKlaModuleExerciser {
 												align-items: center;
 												overflow: hidden;
 
+												// Zauberspruch, immer mit Hintergrund
+												&.magic-spell {
+														// defined below on each step background-image: url(/site/images/magic-spell.svg);
+														background-position: center;
+														background-repeat: no-repeat;
+														background-size: contain;
+												}
+	
 												div.speedTextAreaContent {
 														display: flex;
 														justify-content: center;
@@ -867,7 +893,7 @@ div.VIAKlaModuleExerciser {
 														//margin: @size * 0.2;
 
 														
-														img.svgImage {
+														svg.sign {
 																position: relative;
 														}
 
@@ -875,20 +901,21 @@ div.VIAKlaModuleExerciser {
 														
 														&.read {
 
-																img.svgImage {
+																svg.sign {
 																		height: 95%;
 																		top: @topGapForHead;
 																}
 														}
 
 														&.speak {
-																img.svgImage {
+																svg.sign {
 																		height: 100%;
 																}
 														}
 
 														&.listen {
-																img.svgImage {
+//																img.svgImage {
+																svg.sign {
 //																		height: 75%;
 																		height: 95%;
 																		top: @topGapForHead;
@@ -983,6 +1010,13 @@ div.VIAKlaModuleExerciser {
 												&.sound, &.ellipsis {
 														fill: currentcolor;
 												}
+
+												&.disabled {
+														fill: @l-color-blue-lll;
+												}
+												&.enabled {
+														fill: @l-color-blue-l;													
+												}
 										}
 										
 										div.progressbar {
@@ -1030,8 +1064,13 @@ div.VIAKlaModuleExerciser {
 												}
 										}
 								}
+
 								// Is on step listen
 								&.listen {
+										div.speedTextArea.magic-spell {
+												background-image: url(/site/images/magic-spell2.svg);
+										}
+										
 										div.navigationArea {
 												div.listenButtons {
 														span.mainButton.listen.replay {
@@ -1067,20 +1106,13 @@ div.VIAKlaModuleExerciser {
 										}
 								}
 
+								// is on step read
 								&.read {
 										// Zauberspruch
 										div.speedTextArea.magic-spell {
 												background-image: url(/site/images/magic-spell.svg);
-												background-position: center;
-												background-repeat: no-repeat;
-												background-size: contain;
 
 												div.speedTextAreaContent {
-														// background-color: @l-color-blue-llll;
-														// border-radius: 50%;
-														// background-image: url(/site/images/magic-spell.svg);
-														// background-position: center;
-														// background-repeat: no-repeat;
 														
 														overflow: visible;
 
@@ -1089,6 +1121,13 @@ div.VIAKlaModuleExerciser {
 																font-size: 3rem;
 														}
 												}
+										}
+								}
+
+								// Is on step speak
+								&.speak {
+										div.speedTextArea.magic-spell {
+												background-image: url(/site/images/magic-spell2.svg);
 										}
 								}
 
