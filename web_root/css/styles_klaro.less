@@ -943,8 +943,9 @@ div.VIAKlaModuleExerciser {
 														}
 												}
 
-												// span.playPauseButton {
-												// }
+												span.playPauseButton {
+														.poorManActiveEffect();
+												}
 
 												span.redoButton, span.doneButton {
 														// buttons sind 66x58
@@ -955,7 +956,10 @@ div.VIAKlaModuleExerciser {
 														height: @width / @ratio;
 														margin: 0.1em;
 
+
+														
 														img.svgImage {
+																.poorManActiveEffect();
 																width: 100%;
 														}
 												}
@@ -993,7 +997,7 @@ div.VIAKlaModuleExerciser {
 												
 												div.speed {
 														white-space: nowrap;
-														cursor: pointer;
+														.poorManActiveEffect();
 
 														svg.radioButton {
 																width: 20px;
@@ -1094,7 +1098,7 @@ div.VIAKlaModuleExerciser {
 																}
 																span.mainButton.listen.replay {
 																		display: inline-block;
-																		cursor: pointer;
+																		.poorManActiveEffect();
 																}
 														}
 												}
@@ -1742,6 +1746,7 @@ div.VIAKlaPagerComponent {
 										}
 										
 										&.enabled {
+												.poorManActiveEffect();
 												cursor: pointer;
 
 												&.isNewExercise {
@@ -2037,6 +2042,10 @@ div.VIAKlaPagerComponent {
 
 				span.pagerAnchor {
 						cursor: pointer;
+
+						// &:active {
+						// 		filter: brightness(50%);
+						// }
 				}
 				
 		}
@@ -2157,7 +2166,7 @@ div.VIAKlaIntroductionComponent {
 								}
 
 								img.play_gross_1 {
-										cursor: pointer;
+										.poorManActiveEffect();
 								}
 								
 								a.anchorButton {
