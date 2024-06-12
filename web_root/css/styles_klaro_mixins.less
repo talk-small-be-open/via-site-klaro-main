@@ -139,8 +139,11 @@
 
 .poorManActiveEffect() {
 		cursor: pointer;
-		&:active {
-				filter: brightness(75%);
+
+		@media (hover: none) {
+				&:active {
+						filter: brightness(75%);
+				}
 		}
 }
 

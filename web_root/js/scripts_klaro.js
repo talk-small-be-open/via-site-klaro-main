@@ -339,7 +339,7 @@ class AudioPlayer {
 			this.unlocker.addEventListener('pointerdown', ()=>this.enableAudio() );
 		} else {
 			// fallback, if we are too early
-			alert('Error: no sound');
+			// alert('Error: no sound');
 		};
 	}
 

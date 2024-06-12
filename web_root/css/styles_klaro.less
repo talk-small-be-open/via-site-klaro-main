@@ -854,8 +854,14 @@ div.VIAKlaModuleExerciser {
 																text-align: center;
 
 																&.long, &.longWord {
-																		font-size: 3rem;
+																		@media (max-width: @breakpoint-large) {
+																				font-size: 3rem;
+																		}
 																}
+																
+																// &.long, &.longWord {
+																// 		font-size: 3rem;
+																// }
 														}
 
 														svg.sign.sound, svg.sign.ellipsis {
@@ -1933,6 +1939,10 @@ div.VIAKlaPagerComponent {
 										// justify-content: space-between;
 										// align-items: flex-start;
 
+										&.enabled {
+												.poorManActiveEffect();
+										}
+										
 										&.disabled {
 												div.rowOne {
 														div.exerciseTitle, span.infoButton {
