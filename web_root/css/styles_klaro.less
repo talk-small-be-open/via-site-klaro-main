@@ -864,8 +864,15 @@ div.VIAKlaModuleExerciser {
 																font-size: 6rem;
 																text-align: center;
 
-																&.long, &.longWord {
-																		@media (max-width: @breakpoint-large) {
+																// Only on small devices
+																@media (max-width: @breakpoint-medium) {
+																		&.longWord {
+																				font-size: 4.5rem;
+																		}
+																}
+																// Only on smallish devices
+																@media (max-width: @breakpoint-medium) {
+																		&.long {
 																				font-size: 3rem;
 																		}
 																}
