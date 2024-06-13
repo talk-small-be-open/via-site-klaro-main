@@ -472,12 +472,13 @@ div.backButton {
 }
 
 div.VIADeviceDetectorComponent {
-		background-color: @l-color-main;
+		background-color: @l-color-blue-l;
 		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
+		padding: 15% 2em;
 
 		.spinner {
 				color: black;
@@ -485,7 +486,7 @@ div.VIADeviceDetectorComponent {
 		}
 		
 		a.spinnerMessage {
-				color: #666;
+				color: black;
 				font-size: 80%;
 		}
 }
@@ -589,6 +590,16 @@ div.VIAPublicHomeComponent {
 								border: 1px solid black;						
 								min-width: 2em;
 								padding: 0.2em;
+
+								&::placeholder {
+										color: #999;
+								}
+
+								&:focus {
+										&::placeholder {
+												color: transparent;
+										}
+								}
 
 								&.part1, &.part3 {
 										flex-basis: 30%;
@@ -1303,12 +1314,19 @@ div.infoPanel {
 		background-color: @l-color-lightgreen;
 		padding: 0.5em var(--pageSidePad);
 		z-index: 1;
+		overflow-y: auto;
+		overscroll-behavior-y: none;
 		
 		div.infoPanelContent {
 				background-color: white;
 				padding: 1em;
 				border-radius: 0.5em;
+//				overflow-y: auto;
 
+				// * {
+				// 		pointer-events: none;
+				// }
+				
 				svg.iconClose {
 						width: 2rem;
 				}
@@ -1420,6 +1438,7 @@ div.VIAKlaPagerComponent {
 
 				div.klaroPage {
 						padding: 0;
+//						will-change: contents, transform, opacity; // Inform browser for better UI performance on slide in/out
 
 						
 					//	display: none; // default hidden and parked away
@@ -1542,6 +1561,7 @@ div.VIAKlaPagerComponent {
 										justify-content: flex-end;
 										flex-basis: 30%;
 										img.svgImage.menu {
+												.poorManActiveEffect();
 												width: 2em;
 										}
 								}
@@ -1789,6 +1809,10 @@ div.VIAKlaPagerComponent {
 
 										g#Haus_00 {
 //												opacity: 1;
+												visibility: visible;
+										}
+
+										g#Schild {
 												visibility: visible;
 										}
 										

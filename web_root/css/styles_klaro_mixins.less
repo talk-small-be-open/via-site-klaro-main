@@ -122,12 +122,13 @@
 
 
 .slide-side-inout() {
-		transform: translateX(100vw);
+		transform: translateX(100%);
     opacity: 0;
 //		transition: all 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
 		transition-property: transform, opacity;
 		transition-duration: 0.3s; // faster out than in (below)
 		transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+//		will-change: transform, opacity; // Inform browser for better UI performance on slide in/out
 		&.slideIn {
 				transform: translateX(0);
 				opacity: 1;
@@ -145,6 +146,12 @@
 						filter: brightness(75%);
 				}
 		}
+		// @media (hover: hover) {
+		// 		&:hover {
+		// 				filter: brightness(95%);
+		// 		}
+		// }
+
 }
 
 

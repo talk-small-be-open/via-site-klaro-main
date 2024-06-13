@@ -37,9 +37,9 @@ function swapContent(a, b) {
 function processHtmlDocument(contextElement) {
 	//  $('textarea', contextElement).autosize();
 
-	if ( ! (typeof JoelPurra === 'undefined') ) {
-		$('input.clozeTextPlaceholder', contextElement).plusAsTab();
-	}
+	// if ( ! (typeof JoelPurra === 'undefined') ) {
+	// 	$('input.clozeTextPlaceholder', contextElement).plusAsTab();
+	// }
 
 }
 
@@ -189,7 +189,7 @@ class SpeedReaderTimer {
 	// }
 
 	finished() {
-		clearInterval(this.interval);
+		this.stopAllTimers();
 		// this.redraw();
 		this.finishedCallback();
 		if (this.animeAnimation) { this.animeAnimation.pause() }
