@@ -898,10 +898,10 @@ div.VIAKlaModuleExerciser {
 												> span {
 														flex-shrink: 0;
 												}
-												> span:first-child {
-														// Heads-Asymmetrie zentrieren
-														margin-left: 40px;
-												}
+												// > span:first-child {
+												// 		// Heads-Asymmetrie zentrieren
+												// 		margin-left: 40px;
+												// }
 
 												span.mainButton {
 														//@size: 110px;
@@ -915,6 +915,7 @@ div.VIAKlaModuleExerciser {
 														position: relative;
 														// geht nicht wegen rechtem icon verschiedene breite text-align: center;
 														//margin: @size * 0.2;
+														text-align: center;
 
 														
 														svg.sign {
@@ -922,6 +923,7 @@ div.VIAKlaModuleExerciser {
 														}
 
 														@topGapForHead: @height * 0.24;
+														@leftGapForHead: 0.4rem;
 														
 														&.read {
 
@@ -934,6 +936,7 @@ div.VIAKlaModuleExerciser {
 														&.speak {
 																svg.sign {
 																		height: 100%;
+																		left: @leftGapForHead; // center gravity
 																}
 														}
 
@@ -943,6 +946,7 @@ div.VIAKlaModuleExerciser {
 //																		height: 75%;
 																		height: 95%;
 																		top: @topGapForHead;
+																		left: @leftGapForHead; // center gravity
 																}
 														}
 
