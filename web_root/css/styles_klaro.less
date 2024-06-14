@@ -866,12 +866,12 @@ div.VIAKlaModuleExerciser {
 
 																// Only on small devices
 																@media (max-width: @breakpoint-medium) {
-																		&.longWord {
+																		&.longWord, &.long {
 																				font-size: 4.5rem;
 																		}
 																}
-																// Only on smallish devices
-																@media (max-width: @breakpoint-medium) {
+																// Only on very small devices
+																@media (max-width: @breakpoint-small) {
 																		&.long {
 																				font-size: 3rem;
 																		}
@@ -957,6 +957,8 @@ div.VIAKlaModuleExerciser {
 												display: flex;
 												justify-content: center;
 												align-items: center;
+
+												height: 5em; // To avoid jumping UI, if button height is not consistent. Make it a bit bigger than biggest button
 
 												span.nextButton, span.playPauseButton {
 														display: inline-block;

@@ -121,6 +121,13 @@ class SpeedReaderTimer {
 
 	}
 
+	// Check, if meaningful values, to be ready
+	enabled() {
+		// 0 milliseconds means, that no timer should run.
+		// We assume, that to fast makes no sense
+		return this.milliseconds >= 100
+	}
+
 
 	// beSpeedNormal() {
 	// 	this.speedFactor = 1;
@@ -156,6 +163,9 @@ class SpeedReaderTimer {
 	}
 	
 	continue(sync = true) {
+
+		if (!this.enabled()) return;
+		
 		this.isStateRunning = true;
 		if (sync) { this.syncWithServer(); }
 
@@ -213,6 +223,16 @@ class SpeedReaderTimer {
 	loadAnimation(animeAnimation) {
 		this.animeAnimation = animeAnimation;
 	}
+
+	// Use from outside, to manually kick the timer end
+	forceFinished() {
+		this.finished();
+	}
+
+	forceAbort() {
+		this.stopAllTimers();
+	}
+
 
 	intervalTicker() {
 		this.millisecondsTogo = this.millisecondsTogo - this.step;
