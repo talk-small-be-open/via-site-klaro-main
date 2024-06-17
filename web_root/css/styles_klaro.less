@@ -368,6 +368,47 @@ svg, img.svgImage {
 
 span.pillarDocument {
 
+		a {
+				color: @l-color-pink;
+				text-decoration: underline;
+				&:hover, &:active {
+						background-color: #eee;
+						//text-decoration: underline;
+				}
+		}
+
+		ul {
+				list-style: disc inside;
+		}
+
+		ol {
+				list-style: roman inside;
+		}
+
+		s {
+				text-decoration: line-through;
+		}
+
+		sup {
+				top: -0.5em;
+				font-size: 75%;
+				line-height: 0;
+				position: relative;
+				vertical-align: baseline;
+		}
+
+		table {
+				border-collapse: collapse;
+				td, th {
+						border: 1px solid grey;
+						padding: 2px 5px;
+				}
+
+				th {
+						font-weight: bold;
+				}
+				
+		}
 
 		div.pillarParagraph {
 
@@ -590,6 +631,7 @@ div.VIAPublicHomeComponent {
 								border: 1px solid black;						
 								min-width: 2em;
 								padding: 0.2em;
+								text-transform: uppercase;
 
 								&::placeholder {
 										color: #999;
@@ -782,6 +824,7 @@ div.VIAKlaModuleExerciser {
 								z-index: 999; // must overlap on top of next flex item
 								text-align: right;
 								img.svgImage {
+										.poorManActiveEffect();
 										height: 1.5 * @iconSize; // Etwas grösser weil ein Kreis darum ist
 										margin-left: 0.6em;
 								}
@@ -807,22 +850,71 @@ div.VIAKlaModuleExerciser {
 						div.speedReader {
 								margin: 0 var(--pageSidePad);
 								div.automaticStarter {
-										position: absolute;
-										top: 0;
-										left: 0;
-										right: 0;
-										bottom: 0;
-										z-index: 99;
+										// position: relative;
+										// top: 0;
+										// left: 0;
+										// right: 0;
+										// bottom: 0;
+										// z-index: 9999;
 										background-color: white;
 										text-align: center;
-										font-size: 200%;
 										padding-top: 4em;
-										cursor: pointer;
 
-										img.svgImage.programm_automatisch {
-												width: 4em;
-												margin: 1em 0;
+										img.svgImage {
+												&.programm_automatisch, &.programm_blitz {
+														height: 4rem;
+														margin: 2rem 0;
+												}
 										}
+
+										div.starterButton {
+												font-size: 200%;
+												cursor: pointer;
+												
+										}
+
+										div.speedChooser {
+
+												display: flex;
+												justify-content: center;
+												align-items: center;
+												margin: 2rem 0;
+
+												div.line {
+														background-color: @l-color-blue-llll;
+														height: 0.5rem;
+														width: 3rem;
+												}
+
+												
+												div.speed {
+														white-space: nowrap;
+														.poorManActiveEffect();
+														padding: 1em 0;
+
+
+														&.labeled {
+//																width: 7rem;
+
+																&.left {
+																		//																		text-align: right;
+																		margin-right: 1em;
+																}
+														}
+
+														span.label {
+																margin: 0 0.1rem;																
+														}
+														
+														img.play_gross_1 {
+//														svg.radioButton {
+																width: 20px;
+														}
+														
+												}
+										}
+
+										
 								}
 
 								div.mainPlayArea {
@@ -866,13 +958,13 @@ div.VIAKlaModuleExerciser {
 
 																// Only on small devices
 																@media (max-width: @breakpoint-medium) {
-																		&.longWord, &.long {
+																		&.longWord, &.sentence, &.anyLongWord, &.anySentence {
 																				font-size: 4.5rem;
 																		}
 																}
 																// Only on very small devices
 																@media (max-width: @breakpoint-small) {
-																		&.long {
+																		&.sentence, &.anySentence {
 																				font-size: 3rem;
 																		}
 																}
@@ -1014,14 +1106,15 @@ div.VIAKlaModuleExerciser {
 										div.speedChooser {
 
 												display: flex;
-												justify-content: space-between;
+												justify-content: center;
 												align-items: center;
 												margin: 0.5em 0;
 
 												div.line {
 														background-color: @l-color-blue-llll;
 														height: 0.5em;
-														flex-grow: 2;
+														width: 1em;
+//														flex-grow: 2;
 												}
 
 												
@@ -1029,6 +1122,20 @@ div.VIAKlaModuleExerciser {
 														white-space: nowrap;
 														.poorManActiveEffect();
 
+
+														&.labeled {
+																width: 7em;
+																//flex-basis: 10%;
+
+																&.left {
+																		text-align: right;
+																}
+														}
+
+														span.label {
+																margin: 0 0.1em;																
+														}
+														
 														svg.radioButton {
 																width: 20px;
 														}
@@ -1344,14 +1451,8 @@ div.infoPanel {
 						width: 2rem;
 				}
 
-				.pillarDocument {
-						a {
-								color: @l-color-pink;
-								&:hover, &:active {
-										text-decoration: underline;
-								}
-						}
-				}
+				// .pillarDocument {
+				// }
 
 		}
 
@@ -1466,13 +1567,12 @@ div.VIAKlaPagerComponent {
 						overscroll-behavior-y: contain;
 
 //						height: 100vh;
-//						overflow-y: auto;
 
 						&.noScroll {
 								height: 100vh;
 								height: 100svh;
 //								scroll-behavior: smooth;
-								overflow-y: hidden;
+//								overflow-y: hidden;  // will cutoff overflowed exercise, if made landscape for example
 								overflow-x: hidden;
 
 								display: flex;
@@ -1766,6 +1866,8 @@ div.VIAKlaPagerComponent {
 						}
 
 						svg.navigatorStage {
+								background-color: @l-color-mediumgreen; // To fill any strange whitespace at the bottom
+								
 								width: 100%;
 								// Does not work, disables scrolling on iPhone?
 								height: auto;
@@ -2191,7 +2293,7 @@ div.VIAKlaIntroductionComponent {
 								align-items: stretch;
 								padding: 1em;
 								
-								.anchorButton, button.clickButton {
+								.anchorButton, .clickAction {
 										display: flex;
 										justify-content: space-between;
 										align-items: center;
@@ -2208,7 +2310,7 @@ div.VIAKlaIntroductionComponent {
 								// button.continueButton {
 								// 		width: 100%;
 								// }
-								button.playButton {
+								.playButton {
 										width: 100%;
 								}
 
@@ -2257,6 +2359,10 @@ div.VIAKlaIntroductionComponent {
 										justify-content: space-around;
 										button {
 												text-align: center;
+												white-space: nowrap;
+										}
+										img.play_gross_1 {
+												width: 6rem;
 										}
 								}
 						}
@@ -2275,7 +2381,7 @@ div.VIAKlaIntroductionComponent {
 								// button.continueButton {
 								// 		visibility: hidden;
 								// }
-								button.playButton {
+								.playButton {
 										span.start {
 												display: inline;
 										}
@@ -2319,7 +2425,7 @@ div.VIAKlaIntroductionComponent {
 										display: block;
 								}
 
-								button.playButton {
+								.playButton {
 										visibility: hidden;
 								}
 								// button.continueButton {
@@ -2356,7 +2462,7 @@ div.VIAKlaIntroductionComponent {
 										img.video_ende_rosa_screen {
 												display: block;
 										}
-										button.playButton {
+										.playButton {
 												visibility: visible;
 												background-color: lighten(@videoBackgroundEnd, 10%);
 

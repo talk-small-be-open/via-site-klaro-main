@@ -231,6 +231,7 @@ class SpeedReaderTimer {
 
 	forceAbort() {
 		this.stopAllTimers();
+		this.isStateRunning = null;
 	}
 
 
