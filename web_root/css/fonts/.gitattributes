@@ -1,2 +1,3 @@
 # Licensed fonts, do not publish
 DCH*.* filter=git-crypt diff=git-crypt
+"FF Unit*.woff" filter=git-crypt diff=git-crypt
