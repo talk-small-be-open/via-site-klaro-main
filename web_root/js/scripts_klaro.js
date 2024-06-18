@@ -109,7 +109,7 @@ class SpeedReaderTimer {
 
 	init(gameBoardId, milliseconds, finishedCallback, syncCallback) {
 		// If been re-init, then we assure that we clean up the existing running stuff
-		this.stopAllTimers();
+		this.stopTimer();
 
 		this.gameBoard = $('#'+gameBoardId);
 		this.milliseconds = milliseconds;
@@ -149,13 +149,13 @@ class SpeedReaderTimer {
 	pause() {
 		this.isStateRunning = false;
 		this.syncWithServer();
-		this.stopAllTimers();
+		this.stopTimer();
 
 		this.gameBoard.removeClass('playing').addClass('pausing');
 		if (this.animeAnimation) { this.animeAnimation.pause() }
 	}
 
-	stopAllTimers() {
+	stopTimer() {
 		if (this.interval) {
 			clearInterval(this.interval);
 			this.interval = null;
@@ -164,6 +164,9 @@ class SpeedReaderTimer {
 	
 	continue(sync = true) {
 
+		// Stop an already running timer
+		this.stopTimer();
+		
 		if (!this.enabled()) return;
 		
 		this.isStateRunning = true;
@@ -203,11 +206,10 @@ class SpeedReaderTimer {
 	// }
 
 	finished() {
-		this.stopAllTimers();
+		this.stopTimer();
 		// this.redraw();
-		this.finishedCallback();
 		if (this.animeAnimation) { this.animeAnimation.pause() }
-
+		this.finishedCallback();
 	}
 
 	start(sync = true) {
@@ -234,7 +236,7 @@ class SpeedReaderTimer {
 	}
 
 	forceAbort() {
-		this.stopAllTimers();
+		this.stopTimer();
 		this.isStateRunning = null;
 	}
 
