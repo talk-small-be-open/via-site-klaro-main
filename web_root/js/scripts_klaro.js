@@ -94,7 +94,7 @@ function pager_gotoPage(pagerId, pageId, isBack = false, transition = 'slide') {
 class SpeedReaderTimer {
 	milliseconds = 0;
 	millisecondsTogo = 0;
-	step = 500; // Ticker-Step Dauer in ms
+	step = 250; // Ticker-Step Dauer in ms
 	interval;
 	finishedCallback;
 	syncCallback;
@@ -125,7 +125,7 @@ class SpeedReaderTimer {
 	enabled() {
 		// 0 milliseconds means, that no timer should run.
 		// We assume, that to fast makes no sense
-		return this.milliseconds >= 100
+		return this.milliseconds >= 50
 	}
 
 
@@ -183,9 +183,13 @@ class SpeedReaderTimer {
 		return this.isStateRunning === false
 	}
 
+	isStateUndefined() {
+		return this.isStateRunning === null		
+	}
+
 	
 	toggle() {
-		if (this.isRunning()) {
+		if ( this.isRunning() || this.isStateUndefined() ) {
 			this.pause();
 		} else {
 			this.continue();
