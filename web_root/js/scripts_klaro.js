@@ -45,17 +45,17 @@ function processHtmlDocument(contextElement) {
 
 
 // Default global error handler
-window.onerror = (a, b, c, d, e) => {
-  console.log(`message: ${a}`);
-  console.log(`source: ${b}`);
-  console.log(`lineno: ${c}`);
-  console.log(`colno: ${d}`);
-  console.log(`error: ${e}`);
+window.onerror = (message, source, lineno, colno, error) => {
+  console.log(`message: ${message}`);
+  console.log(`source: ${source}`);
+  console.log(`lineno: ${lineno}`);
+  console.log(`colno: ${colno}`);
+  console.log(`error: ${error}`);
 
 	// Ignore some typical errors which we dont bother
-	if (e instanceof DOMException) { return false }
+	if (error instanceof DOMException) { return false }
 	
-	javascriptErrorStandardBehaviour(e);
+	javascriptErrorStandardBehaviour(error);
 
 	// Continue with handling the error
   return false;
